@@ -1,3 +1,33 @@
+// Connexion à la base de donnée
+
+const mysql = require('mysql');
+
+// Configuration de la connexion à la base de données
+const connection = mysql.createConnection({
+//   host: 'votre_host',
+  user: 'root',
+  password: '',
+  database: 'notimail',
+});
+
+// Établissement de la connexion à la base de données
+connection.connect((err) => {
+  if (err) {
+    console.error('Erreur de connexion à la base de données :', err);
+    return;
+  }
+
+  console.log('Connecté à la base de données');
+
+  // Exporter la connexion pour l'utiliser dans d'autres fichiers
+  module.exports = connection;
+});
+
+/******************************************************************** */
+
+
+
+
 // server.js
 
 // Importe le framework Express et initialise une instance de l'application
@@ -7,12 +37,16 @@ const app = express();
 app.use(express.json());
 
 
+
+
+
+
 // Importe les différentes routes
 
 
 // Route pour afficher un message sur la route /
 app.get('/', (req, res) => {
-    res.send('Bienvenue sur la page d\'accueil !');
+    res.send(`Bienvenue sur la page d'accueil !`);
 });
 
 // Montage des routes sur des chemins spécifiques
