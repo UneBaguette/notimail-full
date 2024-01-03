@@ -12,7 +12,8 @@
   "dependencies": {
     "icons": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "route": "^0.2.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
