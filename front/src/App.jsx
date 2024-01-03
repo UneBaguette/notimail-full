@@ -2,11 +2,14 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import { Client } from './pages/client'
 import { Home } from './pages/home'
-import { Admin } from './pages/admin'
-import { Gestionnaire } from './pages/gestionnaire'
+import { AccueilAdmin } from './pages/accueilAdmin'
 import { Mail } from './pages/mail'
+import { AccueilUser } from './pages/accueilUser'
+import { Connexion } from './pages/connexion'
+import { Confirm } from './pages/confirm'
+import { User } from './pages/user'
+import { Edit } from './pages/edit'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,10 +22,13 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<Home />}/>
-        <Route path='/client' element={<Client/>}/>
-        <Route path='/admin' element={<Admin/>}/>
-        <Route path='/gestionnaire' element={<Gestionnaire/>}/>
+        <Route path='/connexion' element={<Connexion/>}/>
+        <Route path='/accueilUsers' element={<AccueilUser/>}/>
+        <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
+        <Route path='/confirm' element={<Confirm/>}/>
         <Route path='/mail' element={<Mail/>}/>
+        <Route path='/user' element={<User/>}/>
+        <Route path='/edit' element={<Edit/>}/>
       </Routes>
     </BrowserRouter>
   )
