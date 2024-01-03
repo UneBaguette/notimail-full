@@ -21,8 +21,7 @@ function App() {
         <NavLink to={"/about"}>About</NavLink> */}
       </div>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/connexion' element={<Connexion/>}/>
+        <Route path='/' element={<Connexion/>}/>
         <Route path='/accueilUsers' element={<AccueilUser/>}/>
         <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
         <Route path='/confirm' element={<Confirm/>}/>
