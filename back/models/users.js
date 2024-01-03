@@ -1,7 +1,9 @@
+// models/users.js
+
 const connection = require('../database_info');
 
 // Requête SQL pour créer la table "users"
-const createTableQuery = `
+const createTableUser = `
   CREATE TABLE IF NOT EXISTS users (
     id PRIMARY KEY NOT NULL,
     firm_name String(25),
@@ -18,7 +20,7 @@ const createTableQuery = `
 `;
 
 // Exécution de la requête pour créer la table
-connection.query(createTableQuery, (err, results, fields) => {
+connection.query(createTableUser, (err, results, fields) => {
   if (err) {
     console.error('Erreur lors de la création de la table :', err);
   } else {
