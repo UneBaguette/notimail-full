@@ -1,12 +1,19 @@
-const connection = require('../index');
+const connection = require('../database_info');
 
 // Requête SQL pour créer la table "users"
 const createTableQuery = `
   CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id PRIMARY KEY NOT NULL,
     firm_name String(25),
     first_name String(25),
-    last_name 
+    last_name String(25),
+    email String(50) NOT NULL,
+    phone_number String(25) NOT NULL,
+    password String(25),
+    last_received_mail TIMESTAMP,
+    last_picked_up TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    has_mail BOOLEAN DEFAULT false,
+    is_admin BOOLEAN DEFAULT false
   )
 `;
 
