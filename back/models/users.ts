@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity()
 export class User {
     @PrimaryGeneratedColumn()
-    id: number;
+    id!: number;
 
     @Column()
     firm_name: string = '';
@@ -17,7 +17,7 @@ export class User {
     last_name: string = '';
 
     @Column({ unique: true })
-    email!: string = '';
+    email: string = '';
 
     @Column()
     phone_number: string = '';
@@ -36,10 +36,4 @@ export class User {
 
     @Column({ default: false })
     is_admin: boolean = false;
-
-    @CreateDateColumn()
-    created_at: Date;
-
-    @UpdateDateColumn()
-    updated_at: Date;
 }
