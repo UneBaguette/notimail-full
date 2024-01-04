@@ -1,3 +1,10 @@
+:root{
+    --background-blue-green:#008787;
+    --background-blue:#025892;
+    --background-gray:#E3E3E3;
+    --background-red:#FF3535;
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -18,4 +25,9 @@ nav img {
 
 button {
     margin-top: 5px; /* Ajoutez un espacement si nécessaire */
+}
+
+button a{
+    background-color: var(--background-red);
+    color:var(--background-gray);
 }
