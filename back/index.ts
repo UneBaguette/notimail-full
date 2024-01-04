@@ -20,6 +20,7 @@ connectDB.initialize()
 
 
 // Importe les différentes routes
+import userRoutes from './routes/users';  // Importe les routes d'utilisateur
 
 
 // Route pour afficher un message sur la route /
@@ -30,7 +31,7 @@ app.get('/', (req, res) => {
 // Montage des routes sur des chemins spécifiques
 // Base pour ensuite aller récuperer la route du fichier, par exemple pour user : 
 // http://localhost:3000/user/users
-
+app.use('/user', userRoutes); // Utilisation des routes d'utilisateur
 
 // Middleware pour gérer toutes les autres routes (404: Page not found)
 app.use((req, res) => {

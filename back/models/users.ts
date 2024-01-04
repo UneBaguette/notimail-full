@@ -25,10 +25,10 @@ export class User {
     @Column()
     password: string = '';
 
-    @Column({ nullable: true })
+    @Column({ type: 'timestamp', nullable: true })
     last_received_mail: Date | null = null;
 
-    @Column({ nullable: true })
+    @Column({ type: 'timestamp', nullable: true })
     last_picked_up: Date | null = null;
 
     @Column({ default: false })
