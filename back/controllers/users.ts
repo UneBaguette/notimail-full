@@ -14,11 +14,7 @@ export const createUser = async (req: Request, res: Response) => {
 
         // Vérification que le mot de passe est présent et est égal à 4 chiffres
         const password = req.body.password; // Récupération du mot de passe depuis le corps de la requête
-        if (!password || password.length !== 4 || !/^\d+$/.test(password)) {
-            // Si le mot de passe est absent, a une longueur différente de 4 ou contient des caractères autres que des chiffres
-            throw new Error('Mot de passe invalide'); // Lancer une erreur avec un message approprié
-        }
-
+        
         // Hachage du mot de passe avec bcrypt (une technique de sécurisation des mots de passe)
         const hashedPassword = await bcrypt.hash(password, 10); // Utilisation de bcrypt pour hacher le mot de passe avec un coût de hachage de 10
 

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import { AccueilAdmin } from './pages/accueilAdmin'
@@ -9,8 +9,7 @@ import { Confirm } from './pages/confirm'
 import { User } from './pages/user'
 import { Edit } from './pages/edit'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App = () => {
 
   return (
     <BrowserRouter>
@@ -29,6 +28,4 @@ function App() {
       </Routes>
     </BrowserRouter>
   )
-}
-
-export default App
+};
