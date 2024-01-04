@@ -4,7 +4,7 @@ export const connexion=()=>{
 
 import React, { useState } from 'react';
 
-const App = () => {
+const App = (connexion) => {
   // State pour stocker les informations du formulaire
   const [formData, setFormData] = useState({
     username: '',
