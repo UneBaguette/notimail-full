@@ -2,12 +2,14 @@
 
 // Importe le framework Express et initialise une instance de l'application
 import express from 'express';
+import session from 'express-session';
+import connectDB from './datasource';
+import crypto from 'crypto';
+
 const app = express();
+
 // Middleware express.json pour traiter les données au format JSON
 app.use(express.json());
-
-// Importe directement l'instance connectDB depuis le fichier datasource
-import connectDB from './datasource';
 
 // Utilise l'instance de DataSource initialisée
 connectDB.initialize()
@@ -18,25 +20,31 @@ connectDB.initialize()
         console.error(`Erreur lors de l'initialisation de l'accès à la BDD`, err);
     });
 
-
 // Importe les différentes routes
 import userRoutes from './routes/users';  // Importe les routes d'utilisateur
 import authRoutes from './routes/auth'; // Importe les routes d'authentification
-
 
 // Route pour afficher un message sur la route /
 app.get('/', (req, res) => {
     res.send(`Bienvenue sur la page d'accueil !`);
 });
 
-
 // Montage des routes sur des chemins spécifiques
-// Base pour ensuite aller récuperer la route du fichier, par exemple pour user : 
-// http://localhost:3000/user/users
 app.use('/user', userRoutes); // Utilisation des routes d'utilisateur
 app.use('/auth', authRoutes); // Utilisation des routes d'authentification
 
+// Génération d'une clé secrète aléatoire de 32 octets (256 bits)
+const secretKey = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
+console.log('Clé secrète générée :', secretKey);
 
+// Utilisation de session avec une clé secrète
+app.use(
+    session({
+        secret: secretKey,
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 
 // Middleware pour gérer toutes les autres routes (404: Page not found)
 app.use((req, res) => {
