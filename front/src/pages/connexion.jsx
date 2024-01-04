@@ -1,9 +1,9 @@
 export const Connexion=()=>{
 
   return(
-      <>
-          <img src="https://cours.institutsolacroup.com/pluginfile.php/4087/mod_folder/content/0/LogoByMathysG.JPG" className="logo"></img>
-          
-      </>
-  )
+    <nav>
+        <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet"/>
+        <button><a href="/">Déconnexion</a></button>
+    </nav>
+)
 };
