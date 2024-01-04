@@ -86,7 +86,7 @@ GET http://localhost:3000/user/users/21
 
 ###
 # Mettre à jour un utilisateur par ID
-PUT http://localhost:3000/user/users/25
+PUT http://localhost:3000/user/users/21
 Content-Type: application/json
 
 {
@@ -97,7 +97,7 @@ Content-Type: application/json
     "phone_number": "987654321",
     "password": "5678",
     "has_mail": false,
-    "is_admin": true
+    "is_admin": false
 }
 
 ###
