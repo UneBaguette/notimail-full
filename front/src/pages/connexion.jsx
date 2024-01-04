@@ -58,4 +58,3 @@ const App = (connexion) => {
 };
 
 export default App;
-
