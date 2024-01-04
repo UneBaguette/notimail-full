@@ -1,16 +1,77 @@
 POST http://localhost:3000/user/users
-
 Content-Type: application/json
 
 {
-    "firm_name": "Nom de la société",
-    "first_name": "Prénom",
-    "last_name": "Nom",
+    "firm_name": "Entreprise Admin",
+    "first_name": "Admin",
+    "last_name": "Admin",
     "email": "utilisateur@example.com",
     "phone_number": "123456789",
     "password": "motdepasse123",
-    "last_received_mail": "2024-01-04T12:00:00Z",
-    "last_picked_up": "2024-01-04T12:00:00Z",
+    "has_mail": true,
+    "is_admin": true
+}
+
+###
+
+POST http://localhost:3000/user/users
+Content-Type: application/json
+
+{
+    "firm_name": "Entreprise 1",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "utilisateur1@example.com",
+    "phone_number": "123456789",
+    "password": "motdepasse123",
+    "has_mail": true,
+    "is_admin": false
+}
+
+###
+
+POST http://localhost:3000/user/users
+Content-Type: application/json
+
+{
+    "firm_name": "Entreprise 2",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "utilisateur2@example.com",
+    "phone_number": "123456789",
+    "password": "motdepasse123",
+    "has_mail": true,
+    "is_admin": false
+}
+
+###
+
+POST http://localhost:3000/user/users
+Content-Type: application/json
+
+{
+    "firm_name": "Entreprise 3",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "utilisateur3@example.com",
+    "phone_number": "123456789",
+    "password": "motdepasse123",
+    "has_mail": true,
+    "is_admin": false
+}
+
+###
+
+POST http://localhost:3000/user/users
+Content-Type: application/json
+
+{
+    "firm_name": "Entreprise 4",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "email": "utilisateur4@example.com",
+    "phone_number": "123456789",
+    "password": "motdepasse123",
     "has_mail": true,
     "is_admin": false
 }

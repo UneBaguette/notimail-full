@@ -1,6 +1,6 @@
 // models/users.ts
 
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from 'typeorm';
 
 @Entity()
 export class User {
@@ -36,4 +36,11 @@ export class User {
 
     @Column({ default: false })
     is_admin: boolean = false;
+
+    // Avant l'insertion, initialise les dates à la date d'inscription
+    @BeforeInsert()
+    setDefaultDates() {
+        this.last_received_mail = new Date();
+        this.last_picked_up = new Date();
+    }
 }
