@@ -1,0 +1,21 @@
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px; /* Ajoutez un espacement si nécessaire */
+}
+
+#button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Ajustez cela selon vos besoins */
+    margin-right: 10px; /* Ajoutez un espacement si nécessaire */
+}
+
+nav img {
+    margin-right: 10px; /* Ajoutez un espacement si nécessaire */
+}
+
+button {
+    margin-top: 5px; /* Ajoutez un espacement si nécessaire */
+}
