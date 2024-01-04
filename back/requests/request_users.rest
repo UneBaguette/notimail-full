@@ -7,7 +7,7 @@ Content-Type: application/json
     "last_name": "Admin",
     "email": "utilisateur@example.com",
     "phone_number": "123456789",
-    "password": "motdepasse123",
+    "password": "1234",
     "has_mail": true,
     "is_admin": true
 }
@@ -23,7 +23,7 @@ Content-Type: application/json
     "last_name": "Nom",
     "email": "utilisateur1@example.com",
     "phone_number": "123456789",
-    "password": "motdepasse123",
+    "password": "1234",
     "has_mail": true,
     "is_admin": false
 }
@@ -39,7 +39,7 @@ Content-Type: application/json
     "last_name": "Nom",
     "email": "utilisateur2@example.com",
     "phone_number": "123456789",
-    "password": "motdepasse123",
+    "password": "1234",
     "has_mail": true,
     "is_admin": false
 }
@@ -55,7 +55,7 @@ Content-Type: application/json
     "last_name": "Nom",
     "email": "utilisateur3@example.com",
     "phone_number": "123456789",
-    "password": "motdepasse123",
+    "password": "1234",
     "has_mail": true,
     "is_admin": false
 }
@@ -71,7 +71,35 @@ Content-Type: application/json
     "last_name": "Nom",
     "email": "utilisateur4@example.com",
     "phone_number": "123456789",
-    "password": "motdepasse123",
+    "password": "1234",
     "has_mail": true,
     "is_admin": false
 }
+
+###
+# Récupérer tous les utilisateurs
+GET http://localhost:3000/user/users
+
+###
+# Récupérer un utilisateur par ID
+GET http://localhost:3000/user/users/21
+
+###
+# Mettre à jour un utilisateur par ID
+PUT http://localhost:3000/user/users/25
+Content-Type: application/json
+
+{
+    "firm_name": "Nouveau nom d'entreprise",
+    "first_name": "Nouveau prénom",
+    "last_name": "Nouveau nom",
+    "email": "nouvel_utilisateur@example.com",
+    "phone_number": "987654321",
+    "password": "5678",
+    "has_mail": false,
+    "is_admin": true
+}
+
+###
+# Supprimer un utilisateur par ID
+DELETE http://localhost:3000/user/users/1
