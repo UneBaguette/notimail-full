@@ -9,7 +9,7 @@ import { Confirm } from './pages/confirm'
 import { User } from './pages/user'
 import { Edit } from './pages/edit'
 
-export const App = () => {
+const App = () => {
 
   return (
     <BrowserRouter>
@@ -29,3 +29,5 @@ export const App = () => {
     </BrowserRouter>
   )
 };
+
+export default App;  // Exportez le composant par défaut
