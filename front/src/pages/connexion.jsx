@@ -1,8 +1,10 @@
-export const Connexion=()=>{
+export const connexion=()=>{
     
 }
 
-const LoginPage = () => {
+import React, { useState } from 'react';
+
+const App = () => {
   // State pour stocker les informations du formulaire
   const [formData, setFormData] = useState({
     username: '',
@@ -55,4 +57,5 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default App;
+
