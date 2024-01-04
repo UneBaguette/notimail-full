@@ -1,11 +1,10 @@
 // controllers/auth.ts
 
-
-
-// Importation des modules nécessaires depuis Express et les fichiers locaux
 import { Request, Response } from 'express';
-import connectDB from '../datasource'; // Importation de la connexion à la base de données
-import { User } from '../models/users'; // Importation du modèle User
+import connectDB from '../datasource';
+import { User } from '../models/users';
+import * as jwt from 'jsonwebtoken';
+import * as cookieParser from 'cookie-parser';
 
 // Contrôleur pour gérer l'authentification des utilisateurs
 export const authUser = async (req: Request, res: Response): Promise<void> => {
@@ -30,6 +29,12 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: 'Mot de passe incorrect.' });
       return;
     }
+
+    // Création du token JWT
+    const token = jwt.sign({ userId: user.id }, '6-2s_li96+^6y#azkl@q$bbff13fp-0rten=l37=iqqfnc%s@y', { expiresIn: '3m' });
+
+    // Sauvegarde du token dans un cookie
+    res.cookie('token', token, { maxAge: 180000, httpOnly: true });
 
     // Authentification réussie, renvoie un message de succès et les détails de l'utilisateur
     res.status(200).json({ message: 'Authentification réussie.', user });
