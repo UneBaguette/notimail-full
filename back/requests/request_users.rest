@@ -102,4 +102,4 @@ Content-Type: application/json
 
 ###
 # Supprimer un utilisateur par ID
-DELETE http://localhost:3000/user/users/1
+DELETE http://localhost:3000/user/users/27

@@ -7,6 +7,8 @@ import { createUser, getUsers, getUserById, updateUser, deleteUser } from '../co
 // Crée un routeur Express
 const router = express.Router();
 
+// Toutes les routes users commence par : user/users
+
 // Route POST pour créer un utilisateur
 router.post('/users', createUser);
 

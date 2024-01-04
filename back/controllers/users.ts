@@ -40,81 +40,142 @@ export const createUser = async (req: Request, res: Response) => {
     }
 };
 
-// Fonction pour récupérer tous les utilisateurs
+// Définition d'une fonction contrôleur pour récupérer tous les utilisateurs
 export const getUsers = async (req: Request, res: Response) => {
     try {
+        // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);
 
+        // Récupération de tous les utilisateurs depuis la base de données
         const users = await userRepository.find();
 
+        // Réponse au client avec un code HTTP 200 (OK) et les données des utilisateurs récupérés
         res.status(200).json(users);
     } catch (error) {
+        // Gestion des erreurs : Affichage de l'erreur dans la console
         console.error('Erreur lors de la récupération des utilisateurs :', error);
+
+        // Réponse au client avec un code HTTP 500 (Erreur serveur) et un message d'erreur
         res.status(500).json({ error: 'Erreur serveur lors de la récupération des utilisateurs' });
     }
 };
 
-// Fonction pour récupérer un utilisateur par ID
+// Définition d'une fonction contrôleur pour récupérer un utilisateur par ID
 export const getUserById = async (req: Request, res: Response) => {
     try {
+        // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);
 
-        const id = req.params.id;
-        const user = await userRepository.findOne( id );
+        // Récupération de l'ID utilisateur depuis les paramètres de la requête
+        const userId = parseInt(req.params.id, 10);
 
+        // Vérification de la validité de l'ID
+        if (isNaN(userId)) {
+            res.status(400).json({ error: 'ID utilisateur invalide' });
+            return;
+        }
+
+        // Recherche de l'utilisateur dans la base de données par ID
+        const user = await userRepository.findOne({
+            where: { id: userId },
+        });
+
+        // Vérification de l'existence de l'utilisateur
         if (!user) {
             res.status(404).json({ error: 'Utilisateur non trouvé' });
             return;
         }
 
+        // Réponse au client avec un code HTTP 200 (OK) et les données de l'utilisateur récupéré
         res.status(200).json(user);
     } catch (error) {
+        // Gestion des erreurs : Affichage de l'erreur dans la console
         console.error('Erreur lors de la récupération de l\'utilisateur par ID :', error);
+
+        // Réponse au client avec un code HTTP 500 (Erreur serveur) et un message d'erreur
         res.status(500).json({ error: 'Erreur serveur lors de la récupération de l\'utilisateur par ID' });
     }
 };
 
-// Fonction pour mettre à jour un utilisateur par ID
+// Définition d'une fonction contrôleur pour mettre à jour un utilisateur par ID
 export const updateUser = async (req: Request, res: Response) => {
     try {
+        // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);
 
-        const id = req.body;
-        const user = await userRepository.findOne({ where: { id } });
+        // Récupération de l'ID utilisateur depuis les paramètres de la requête
+        const userId = parseInt(req.params.id, 10);
 
+        // Vérification de la validité de l'ID
+        if (isNaN(userId)) {
+            res.status(400).json({ error: 'ID utilisateur invalide' });
+            return;
+        }
+
+        // Recherche de l'utilisateur dans la base de données par ID
+        const user = await userRepository.findOne({
+            where: { id: userId },
+        });
+
+        // Vérification de l'existence de l'utilisateur
         if (!user) {
             res.status(404).json({ error: 'Utilisateur non trouvé' });
             return;
         }
 
+        // Fusion des données de la requête dans l'objet utilisateur existant
         userRepository.merge(user, req.body);
+
+        // Sauvegarde des modifications dans la base de données
         const updatedUser = await userRepository.save(user);
 
+        // Réponse au client avec un code HTTP 200 (OK) et les données de l'utilisateur mis à jour
         res.status(200).json(updatedUser);
     } catch (error) {
+        // Gestion des erreurs : Affichage de l'erreur dans la console
         console.error('Erreur lors de la mise à jour de l\'utilisateur par ID :', error);
+
+        // Réponse au client avec un code HTTP 500 (Erreur serveur) et un message d'erreur
         res.status(500).json({ error: 'Erreur serveur lors de la mise à jour de l\'utilisateur par ID' });
     }
 };
 
-// Fonction pour supprimer un utilisateur par ID
+// Définition d'une fonction contrôleur pour supprimer un utilisateur par ID
 export const deleteUser = async (req: Request, res: Response) => {
     try {
+        // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);
 
-        const id = req.body;
-        const user = await userRepository.findOne({ where: { id } });
+        // Récupération de l'ID utilisateur depuis les paramètres de la requête
+        const userId = parseInt(req.params.id, 10);
 
+        // Vérification de la validité de l'ID
+        if (isNaN(userId)) {
+            res.status(400).json({ error: 'ID utilisateur invalide' });
+            return;
+        }
+
+        // Recherche de l'utilisateur dans la base de données par ID
+        const user = await userRepository.findOne({
+            where: { id: userId },
+        });
+
+        // Vérification de l'existence de l'utilisateur
         if (!user) {
             res.status(404).json({ error: 'Utilisateur non trouvé' });
             return;
         }
 
+        // Suppression de l'utilisateur de la base de données
         await userRepository.remove(user);
 
-        res.status(204).send();
+        // Réponse au client avec un code HTTP 200 (OK) et un message indiquant que l'utilisateur a été supprimé
+        res.status(200).send('Utilisateur supprimé');
     } catch (error) {
+        // Gestion des erreurs : Affichage de l'erreur dans la console
         console.error('Erreur lors de la suppression de l\'utilisateur par ID :', error);
+
+        // Réponse au client avec un code HTTP 500 (Erreur serveur) et un message d'erreur
         res.status(500).json({ error: 'Erreur serveur lors de la suppression de l\'utilisateur par ID' });
     }
 };
