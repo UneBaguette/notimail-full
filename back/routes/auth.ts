@@ -1,11 +1,18 @@
 // routes/auth.js
 
-import express from 'express'
+// Importation du module Express
+import express from 'express';
 
-import { authUser } from '../controllers/auth'
+// Importation du contrôleur d'authentification
+import { authUser } from '../controllers/auth';
 
-const router = express.Router()
+// Création d'un objet Router d'Express
+const router = express.Router();
 
-router.post('/connexion', authUser)
+// Toutes les routes auth commence par : auth/connexion
 
-export default router
+// Définition de la route POST '/connexion' avec le contrôleur authUser
+router.post('/connexion', authUser);
+
+// Exportation du routeur pour qu'il puisse être utilisé ailleurs dans l'application
+export default router;

@@ -21,7 +21,7 @@ connectDB.initialize()
 
 // Importe les différentes routes
 import userRoutes from './routes/users';  // Importe les routes d'utilisateur
-import userConnexion from './routes/auth'
+import authRoutes from './routes/auth'; // Importe les routes d'authentification
 
 
 // Route pour afficher un message sur la route /
@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 // Base pour ensuite aller récuperer la route du fichier, par exemple pour user : 
 // http://localhost:3000/user/users
 app.use('/user', userRoutes); // Utilisation des routes d'utilisateur
-app.use('/auth', userConnexion)
+app.use('/auth', authRoutes); // Utilisation des routes d'authentification
 
 
 
