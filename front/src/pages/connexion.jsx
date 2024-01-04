@@ -9,7 +9,7 @@ export const Connexion = () => {
 
       <div>
         <label htmlFor="entreprise">Entreprise :</label>
-        <textarea id="entreprise" name="entreprise" rows="4" cols="50"></textarea>
+        <textarea id="entreprise" name="entreprise" rows="4" cols="30"></textarea>
       </div>
     </div>
   );
