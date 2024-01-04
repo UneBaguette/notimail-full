@@ -71,7 +71,7 @@ Content-Type: application/json
     "last_name": "Nom",
     "email": "utilisateur4@example.com",
     "phone_number": "123456789",
-    "password": "1234",
+    "password": "motdepasse1234",
     "has_mail": true,
     "is_admin": false
 }
@@ -102,4 +102,4 @@ Content-Type: application/json
 
 ###
 # Supprimer un utilisateur par ID
-DELETE http://localhost:3000/user/users/27
+DELETE http://localhost:3000/user/users/28
