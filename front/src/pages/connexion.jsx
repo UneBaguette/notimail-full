@@ -1,4 +1,4 @@
-export const connexion=()=>{
+export const Connexion=()=>{
     
 }
 
