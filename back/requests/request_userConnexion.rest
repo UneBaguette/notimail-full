@@ -1,0 +1,9 @@
+# authUser - Authentification d'un utilisateur
+
+POST http://localhost:3000/auth/connexion
+Content-Type: application/json
+
+{
+  "email": "utilisateur@example.com",
+  "password": "motdepasse123"
+}
