@@ -5,6 +5,7 @@ import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
 import * as cookieParser from 'cookie-parser';
+import * as bcrypt from 'bcrypt'; // Importez la bibliothèque bcrypt
 
 // Contrôleur pour gérer l'authentification des utilisateurs
 export const authUser = async (req: Request, res: Response): Promise<void> => {
@@ -24,9 +25,12 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Vérification si le mot de passe fourni correspond à celui enregistré dans la base de données
-    if (user.password !== password) {
-      res.status(401).json({ message: 'Mot de passe incorrect.' });
+    // Vérification si le mot de passe fourni correspond au mot de passe haché enregistré dans la base de données
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    // Si les mots de passe ne correspondent pas, répond avec un statut 401 (Non autorisé) et un message d'erreur
+    if (!passwordMatch) {
+      res.status(401).send('Mot de passe incorrect.');
       return;
     }
 
