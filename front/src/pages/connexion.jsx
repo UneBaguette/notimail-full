@@ -1,6 +1,14 @@
 import React from 'react';
 
 export const Connexion = () => {
+  const [entrepriseValue, setEntrepriseValue] = useState("Entreprise");
+
+  const handleTextareaClick = () => {
+    if (entrepriseValue === "Entreprise") {
+      setEntrepriseValue("");
+    }
+  };
+
   return (
     <div>
       <nav>
@@ -8,12 +16,15 @@ export const Connexion = () => {
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center' }}>
+        <label htmlFor="entreprise">Entreprise :</label>
         <textarea
           id="entreprise"
           name="entreprise"
           rows="4"
           cols="50"
-          defaultValue="Entreprise"
+          value={entrepriseValue}
+          onClick={handleTextareaClick}
+          onChange={(e) => setEntrepriseValue(e.target.value)}
         ></textarea>
         <img
           src="./imagefront/fleche-bas.png"
