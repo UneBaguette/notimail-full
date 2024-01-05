@@ -15,7 +15,7 @@ export const Connexion = () => {
         <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet" />
       </nav>
 
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div>
         <label htmlFor="entreprise">Entreprise :</label>
         <textarea
           id="entreprise"
