@@ -1,0 +1,9 @@
+div {
+    display: 'flex';
+    align-items: 'center';
+}
+
+style {
+    margin-left: 10px ;
+     cursor: 'pointer';
+}
