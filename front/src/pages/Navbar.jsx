@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from "react-router"
+import './NavBar.css'
 
 export const NavBar=()=>{
     const location = useLocation();
@@ -19,7 +20,7 @@ export const NavBar=()=>{
     return(
         <nav>
             <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet"/>
-            <div>
+            <div id='button'>
                 <span>{getNavbarText()}</span>
                 <button><a href="/">Déconnexion</a></button>
             </div>  

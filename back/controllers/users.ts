@@ -119,6 +119,22 @@ export const updateUser = async (req: Request, res: Response) => {
             return;
         }
 
+        // Vérification de la propriété isAdmin dans la requête, 
+        // S'il y en à 2 en BDD, alors on peut passer un admin de true à false
+        // Ca évite de supprimer par inadvertance le seul admin du site lorsqu'on update un user
+        if ('is_admin' in req.body && req.body.is_admin === false) {
+            // Si la mise à jour vise à réduire le statut d'administrateur
+
+            // Comptez le nombre total d'administrateurs
+            const adminCount = await userRepository.count({ where: { is_admin: true } });
+
+            // Assurez-vous qu'il y a au moins deux administrateurs
+            if (adminCount < 2) {
+                res.status(400).json({ error: 'Il doit y avoir au moins deux administrateurs' });
+                return;
+            }
+        }
+
         // Fusion des données de la requête dans l'objet utilisateur existant
         userRepository.merge(user, req.body);
 
