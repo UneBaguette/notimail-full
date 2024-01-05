@@ -29,7 +29,6 @@ export const Connexion = () => {
         <img
           src="./imagefront/fleche-bas.png"
           alt="flèche vers le bas"
-          style={{ marginLeft: '10px', cursor: 'pointer' }}
         />
       </div>
     </div>
