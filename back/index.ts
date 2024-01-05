@@ -2,11 +2,17 @@
 
 // Importe le framework Express et initialise une instance de l'application
 import express from 'express';
-import connectDB from './datasource';
 const app = express();
+
+import connectDB from './datasource';
+// Importation du module CORS
+const cors = require('cors');
 
 // Middleware express.json pour traiter les données au format JSON
 app.use(express.json());
+
+// Middleware CORS pour gérer les politiques CORS
+app.use(cors());
 
 // Utilise l'instance de DataSource initialisée
 connectDB.initialize()

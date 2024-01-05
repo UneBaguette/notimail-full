@@ -4,6 +4,6 @@ POST http://localhost:3000/auth/connexion
 Content-Type: application/json
 
 {
-  "email": "utilisateur@example.com",
+  "firm_name": "Entreprise Admin",
   "password": "1234"
 }

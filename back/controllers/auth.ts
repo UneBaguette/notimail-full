@@ -14,10 +14,10 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     const userRepository = connectDB.getRepository(User);
 
     // Récupération des données d'authentification depuis le corps de la requête
-    const { email, password } = req.body;
+    const { firm_name, password } = req.body;
 
-    // Recherche de l'utilisateur dans la base de données par email
-    const user = await userRepository.findOne({ where: { email } });
+    // Recherche de l'utilisateur dans la base de données par nom d'entreprise
+    const user = await userRepository.findOne({ where: { firm_name } });
 
     // Vérification si l'utilisateur n'existe pas
     if (!user) {
