@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
 import { AccueilAdmin } from './pages/accueilAdmin'
@@ -8,8 +8,21 @@ import { Connexion } from './pages/connexion'
 import { Confirm } from './pages/confirm'
 import { User } from './pages/user'
 import { Edit } from './pages/edit'
+import { fetchUserData } from './apiService'
 
 const App = () => {
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = 'votre_token_d_authentification'; // Remplacez par votre mécanisme d'authentification
+      const userData = await fetchUserData(token);
+      setUserData(userData);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <BrowserRouter>
