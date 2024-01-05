@@ -1,21 +1,46 @@
+// Connexion.js
+
 import React, { useState, useEffect } from 'react';
+// Importe le hook useNavigate de react-router-dom pour gérer la navigation
+import { useNavigate } from "react-router-dom";
 
 export const Connexion = () => {
-  const [selectedUser, setSelectedUser] = useState('');
-  const [users, setUsers] = useState([]);
+
+  // Utilise le hook useNavigate pour gérer la navigation
+  const navigate = useNavigate();
+
   const [password, setPassword] = useState('');
+  const [selectedEntreprise, setSelectedEntreprise] = useState('');
+  const [entreprise, setEntreprise] = useState([]);
+  const [error, setError] = useState('');
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  // Effectue une requête GET pour récupérer la liste des catégories
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/users`)
+        .then(result => result.json())
+        .then(data => {
+            console.log(data);
+            setEntreprise(data);
+        })
+        .catch(Error => {
+            console.log(Error);
+        })
+  }, [])
 
-  const handleUserChange = (e) => {
-    setSelectedUser(e.target.value);
+  
+  // Fonction qui est appelé lorsque l'on choisi une entreprise
+  const handleEntrepriseSelection = (e) => {
+    // On définit que le selectedEntreprise est celui qui correspond au tableau cliqué
+    const selectedEntreprise = e.target.value;
+    
+    // On met à jour le selectedEntreprise via le setter
+    setSelectedEntreprise(selectedEntreprise);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Effectuer la requête POST vers le backend pour l'authentification
     try {
       const response = await fetch('http://localhost:3000/auth/connexion', {
         method: 'POST',
@@ -23,66 +48,58 @@ export const Connexion = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: email,
+          firm_name: selectedEntreprise,
           password: password,
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Erreur lors de la requête');
+      if (response.ok) {
+        // Authentification réussie
+        // Rediriger l'utilisateur ou effectuer d'autres actions nécessaires
+        console.log('Authentification réussie');
+        // Navigue vers la HomePage
+        navigate("/accueilUsers");
+      } else {
+        // Authentification échouée
+        console.error('Authentification échouée');
+        setError('Identifiants incorrects');
       }
-
-      const data = await response.json();
-      console.log('Réponse du serveur :', data);
-      // Traitez la réponse du serveur en conséquence
-
     } catch (error) {
-      console.error('Erreur :', error.message);
-      // Gérez les erreurs ici
+      console.error('Erreur lors de l\'authentification:', error);
+      setError('Erreur lors de l\'authentification');
     }
   };
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/user/users');
-        if (!response.ok) {
-          throw new Error('Erreur lors de la requête');
-        }
-
-        const userData = await response.json();
-        setUsers(userData);
-      } catch (error) {
-        console.error('Erreur :', error.message);
-        // Gérez les erreurs ici
-      }
-    };
-
-    fetchUsers();
-  }, []); // Le tableau vide signifie que cet effet ne s'exécutera qu'une fois après le rendu initial
-
-
   return (
-    <form onSubmit={handleSubmit}>
-      <select value={selectedUser} onChange={handleUserChange}>
-          <option value="">Sélectionnez votre Entreprise</option>
-          {users.map((user) => (
-            <option key={user.id} value={user.email}>
-              {user.firm_name}
+    <div>
+      <h2>Connexion</h2>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Entreprise:
+          <select name="entreprise" value={selectedEntreprise} onChange={handleEntrepriseSelection}>
+            <option value="">
+              Sélectionnez une entreprise
             </option>
-          ))}
-      </select>
-      <br />
-      <label>
-        Mot de passe:
-        <input type="password" value={password} onChange={handlePasswordChange} />
-      </label>
-      <br />
-      <img
-          src="front/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png"
-          alt="flèche vers le bas"
-      />
-      <button type="submit">Se connecter</button>
-    </form>
+            {entreprise.map((entreprise) => (
+              <option key={entreprise.id} value={entreprise.firm_name}>
+                {entreprise.firm_name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <br />
+        <label>
+          Mot de Passe:
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        </label>
+        <br />
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
   );
 };
