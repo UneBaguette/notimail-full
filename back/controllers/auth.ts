@@ -48,3 +48,20 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ message: 'Erreur lors de l\'authentification.' });
   }
 };
+
+
+
+// Contrôleur pour gérer la déconnexion des utilisateurs
+export const deconnexionUser = (req: Request, res: Response): void => {
+  try {
+    // Effacer le cookie contenant le token
+    res.clearCookie('token');
+
+    // Répondre avec un message de déconnexion réussie
+    res.status(200).json({ message: 'Déconnexion réussie.' });
+  } catch (error) {
+    // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
+    console.error('Erreur lors de la déconnexion :', error);
+    res.status(500).json({ message: 'Erreur lors de la déconnexion.' });
+  }
+};
