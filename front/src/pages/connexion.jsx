@@ -8,7 +8,6 @@ export const Connexion = () => {
       </nav>
 
       <div style={{ display: 'flex', alignItems: 'center' }}>
-        <label htmlFor="entreprise">Entreprise :</label>
         <textarea
           id="entreprise"
           name="entreprise"
