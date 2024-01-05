@@ -10,15 +10,15 @@ nav {
     align-items: center;
     background-color: var(--background-gray);
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
-    z-index: 1000;
+    /* z-index: 1000; */
 }
 
 #button {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     margin-right: 10px;
 }
 
