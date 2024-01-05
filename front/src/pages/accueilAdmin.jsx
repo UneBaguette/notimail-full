@@ -27,6 +27,8 @@ export const AccueilAdmin=()=>{
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Numéro de téléphone</th>
                             {/* Ajoutez d'autres colonnes en fonction de vos données utilisateur */}
                         </tr>
                     </thead>
@@ -35,6 +37,8 @@ export const AccueilAdmin=()=>{
                             <tr key={user.id}>
                                 <td>{user.last_name}</td>
                                 <td>{user.first_name}</td>
+                                <td>{user.email}</td>
+                                <td>{user.phone_number}</td>
                                 {/* Ajoutez d'autres cellules en fonction de vos données utilisateur */}
                             </tr>
                         ))}
