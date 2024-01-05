@@ -2,10 +2,7 @@
 
 // Importe le framework Express et initialise une instance de l'application
 import express from 'express';
-import session from 'express-session';
 import connectDB from './datasource';
-import crypto from 'crypto';
-
 const app = express();
 
 // Middleware express.json pour traiter les données au format JSON
@@ -23,6 +20,7 @@ connectDB.initialize()
 // Importe les différentes routes
 import userRoutes from './routes/users';  // Importe les routes d'utilisateur
 import authRoutes from './routes/auth'; // Importe les routes d'authentification
+import mailRoutes from './routes/mail'; // Importe les routes des mails
 
 // Route pour afficher un message sur la route /
 app.get('/', (req, res) => {
@@ -32,19 +30,7 @@ app.get('/', (req, res) => {
 // Montage des routes sur des chemins spécifiques
 app.use('/user', userRoutes); // Utilisation des routes d'utilisateur
 app.use('/auth', authRoutes); // Utilisation des routes d'authentification
-
-// Génération d'une clé secrète aléatoire de 32 octets (256 bits)
-const secretKey = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
-console.log('Clé secrète générée :', secretKey);
-
-// Utilisation de session avec une clé secrète
-app.use(
-    session({
-        secret: secretKey,
-        resave: false,
-        saveUninitialized: true,
-    })
-);
+app.use('/mail', mailRoutes); // Utilisation des routes des mails
 
 // Middleware pour gérer toutes les autres routes (404: Page not found)
 app.use((req, res) => {

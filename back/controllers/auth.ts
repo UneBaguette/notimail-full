@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
-import * as cookieParser from 'cookie-parser';
+import crypto from 'crypto';
 import * as bcrypt from 'bcrypt'; // Importez la bibliothèque bcrypt
 
 // Contrôleur pour gérer l'authentification des utilisateurs
@@ -34,8 +34,12 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    // Génération d'une clé secrète aléatoire de 32 octets (256 bits)
+    const secretKey = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
+    console.log('Clé secrète générée :', secretKey);
+
     // Création du token JWT
-    const token = jwt.sign({ userId: user.id }, '6-2s_li96+^6y#azkl@q$bbff13fp-0rten=l37=iqqfnc%s@y', { expiresIn: '3m' });
+    const token = jwt.sign({ userId: user.id }, `${secretKey}`, { expiresIn: '3m' });
 
     // Sauvegarde du token dans un cookie
     res.cookie('token', token, { maxAge: 180000, httpOnly: true });
