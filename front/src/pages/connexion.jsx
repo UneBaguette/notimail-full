@@ -26,7 +26,7 @@ export const Connexion = () => {
           onChange={(e) => setEntrepriseValue(e.target.value)}
         ></textarea>
         <img
-          src="./imagefront/fleche-bas.png"
+          src="front/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png"
           alt="flèche vers le bas"
         />
       </div>
