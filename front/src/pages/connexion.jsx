@@ -14,7 +14,6 @@ export const Connexion = () => {
       <nav>
         <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet" />
       </nav>
-
       <div>
         <label htmlFor="entreprise">Entreprise :</label>
         <textarea
