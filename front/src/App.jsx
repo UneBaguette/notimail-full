@@ -8,7 +8,6 @@ import { Connexion } from './pages/connexion'
 import { Confirm } from './pages/confirm'
 import { User } from './pages/user'
 import { Edit } from './pages/edit'
-import { fetchUserData } from './apiService'
 
 const App = () => {
 
