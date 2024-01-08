@@ -4,7 +4,6 @@ import { Request, Response } from 'express';
 import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
-import crypto from 'crypto';
 import * as bcrypt from 'bcrypt';
 
 let secretKey: string; // Déclarez une variable globale pour stocker la clé secrète
@@ -36,10 +35,6 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Génération d'une clé secrète aléatoire de 32 octets (256 bits)
-    secretKey = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
-    console.log('Clé secrète générée :', secretKey);
-
     // Création du token JWT
     const token = jwt.sign(
       {
@@ -51,7 +46,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
         phone_number: user.phone_number,
         id: user.id
       },
-      `${secretKey}`,
+      `${process.env.SESSION_SECRET}`,
       { expiresIn: '3m' }
     );
 

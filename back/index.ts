@@ -2,6 +2,7 @@
 
 // Importe le framework Express et initialise une instance de l'application
 import express from 'express';
+import session from 'express-session';
 const app = express();
 
 import connectDB from './datasource';
@@ -22,6 +23,17 @@ connectDB.initialize()
     .catch((err) => {
         console.error(`Erreur lors de l'initialisation de l'accès à la BDD`, err);
     });
+
+// Génération d'une clé secrète aléatoire de 32 octets (256 bits)
+const secretKey = process.env.SESSION_SECRET !;
+console.log('Clé secrète générée :', secretKey);
+
+// Utilise express-session pour gérer les sessions
+app.use(session({
+    secret: secretKey,
+    resave: false,
+    saveUninitialized: true,
+}));
 
 // Importe les différentes routes
 import userRoutes from './routes/users';  // Importe les routes d'utilisateur

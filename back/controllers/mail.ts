@@ -16,7 +16,7 @@ export const receivedMail = async (req: Request, res: Response) => {
         // Note: On utilise `findOneOrFail` pour s'assurer que l'utilisateur est trouvé, sinon une exception est levée
         const user = await userRepository.findOneOrFail({ where: { id: userId } });
 
-        console.log(userId);
+        //console.log(userId);
 
         // Valider la réception du courrier
         user.last_received_mail = new Date(); // Indique la date de réception
