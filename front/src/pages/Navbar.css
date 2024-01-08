@@ -1,3 +1,4 @@
+/* Défini les couleurs par défault */
 :root{
     --background-blue-green:#008787;
     --background-blue:#025892;
@@ -5,35 +6,53 @@
     --background-red:#FF3535;
 }
 
+/* Définir la position principal des élements et de la couleur du font */
 nav {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--background-gray);
     width: 100%;
-    /* position: fixed; */
+    position: fixed;
     top: 0;
-    /* z-index: 1000; */
 }
 
-#button {
+/* centrer les deux elements*/
+#left-content,
+#right-content {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-right: 10px;
 }
 
+/* Met la marge à gauche */
+#left-content {
+    margin-left: 5vw;
+}
+
+/* Mettre en colonne le contenu de droite en colonne et la marge à droite */
+#right-content {
+    flex-direction: column;
+    text-align: center;
+    margin-right: 5vw;
+}
+
+/* Défini la taille maximun de l'image */
 nav img {
-    margin-right: 10px; /* Ajoutez un espacement si nécessaire */
+    max-width: 10vw;
+    max-height: 10vw;
 }
 
+/* determine la couleur de font du bouton déconnexion*/
 button {
-    margin-top: 5px; /* Ajoutez un espacement si nécessaire */
-    background-color: var(--background-red) !important;
+    margin-top: 5px; 
+    background-color: var(--background-red);
     color: var(--background-gray); /* Couleur du texte */
     border: none; /* Ajoutez cette ligne pour supprimer la bordure par défaut du bouton */
+    border-radius: 10px;
     padding: 5px 10px; /* Ajoutez cette ligne pour ajuster le rembourrage du bouton selon vos préférences */
 }
 
+/* Mettre la couleur de l'écriture de gris */
 button a{
     color:var(--background-gray);
 }

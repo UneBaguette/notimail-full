@@ -31,8 +31,11 @@ export const NavBar=()=>{
 
     return(
         <nav>
-            <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet"/>
-            <div id='button'>
+            <div id="left-content">
+                <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet"/>
+            </div>
+
+            <div id='right-content'>
                 <span>{getNavbarText()}</span>
                 <button><a href="/">Déconnexion</a></button>
             </div>  
