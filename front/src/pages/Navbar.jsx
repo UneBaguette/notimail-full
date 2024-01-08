@@ -32,7 +32,7 @@ export const NavBar=()=>{
     return(
         <nav>
             <div id="left-content">
-                <img src="./imagefront/Nouveau-projet-1.png" alt="logo projet"/>
+                <img src="/imagefront/Nouveauprojet1.png" alt="logo projet"/>
             </div>
 
             <div id='right-content'>
