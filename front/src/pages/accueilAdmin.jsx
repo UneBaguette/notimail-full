@@ -1,5 +1,4 @@
 import { NavBar } from './Navbar';
-import { fetchAllUsers } from '../apiService';
 import { useEffect, useState } from 'react';
 import './accueilAdmin.css';
 
