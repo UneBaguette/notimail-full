@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css'
+// import './App.css'
 import { AccueilAdmin } from './pages/accueilAdmin'
 import { Mail } from './pages/mail'
 import { AccueilUser } from './pages/accueilUser'

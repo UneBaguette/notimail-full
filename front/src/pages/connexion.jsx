@@ -1,46 +1,40 @@
-// Connexion.js
-
 import React, { useState, useEffect } from 'react';
-// Importe le hook useNavigate de react-router-dom pour gérer la navigation
 import { useNavigate } from "react-router-dom";
 
+// Définit un composant fonctionnel Connexion
 export const Connexion = () => {
-
-  // Utilise le hook useNavigate pour gérer la navigation
   const navigate = useNavigate();
 
+  // Utilise le hook useState pour gérer l'état du mot de passe, de l'entreprise, de la liste des entreprises, et des erreurs
   const [password, setPassword] = useState('');
   const [selectedEntreprise, setSelectedEntreprise] = useState('');
   const [entreprise, setEntreprise] = useState([]);
   const [error, setError] = useState('');
 
-  // Effectue une requête GET pour récupérer la liste des catégories
+  // Effectue une requête GET pour récupérer la liste des entreprises depuis le backend
   useEffect(() => {
     fetch(`http://localhost:3000/user/users`)
-        .then(result => result.json())
-        .then(data => {
-            console.log(data);
-            setEntreprise(data);
-        })
-        .catch(Error => {
-            console.log(Error);
-        })
-  }, [])
+      .then(result => result.json())
+      .then(data => {
+        console.log(data);
+        setEntreprise(data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }, []);
 
-  
-  // Fonction qui est appelé lorsque l'on choisi une entreprise
+  // Fonction appelée lorsque l'utilisateur choisit une entreprise dans le formulaire
   const handleEntrepriseSelection = (e) => {
-    // On définit que le selectedEntreprise est celui qui correspond au tableau cliqué
     const selectedEntreprise = e.target.value;
-    
-    // On met à jour le selectedEntreprise via le setter
     setSelectedEntreprise(selectedEntreprise);
   };
 
+  // Fonction appelée lors de la soumission du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Effectuer la requête POST vers le backend pour l'authentification
+    // Effectue une requête POST pour l'authentification vers le backend
     try {
       const response = await fetch('http://localhost:3000/auth/connexion', {
         method: 'POST',
@@ -55,9 +49,8 @@ export const Connexion = () => {
 
       if (response.ok) {
         // Authentification réussie
-        // Rediriger l'utilisateur ou effectuer d'autres actions nécessaires
         console.log('Authentification réussie');
-        // Navigue vers la HomePage
+        // Redirige l'utilisateur vers la page d'accueil des utilisateurs
         navigate("/accueilUsers");
       } else {
         // Authentification échouée
@@ -70,9 +63,11 @@ export const Connexion = () => {
     }
   };
 
+  // Rendu du composant
   return (
     <div>
       <h2>Connexion</h2>
+      <img src= "front/imagefront/Nouveauprojet1.png" alt="Description de l'image"></img>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
@@ -91,11 +86,11 @@ export const Connexion = () => {
         <br />
         <label>
           Mot de Passe:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </label>
         <br />
         <button type="submit">Se connecter</button>
