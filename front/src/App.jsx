@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import './App.css'
+import Layout from './Layout';
 import { AccueilAdmin } from './pages/accueilAdmin'
 import { Mail } from './pages/mail'
 import { AccueilUser } from './pages/accueilUser'
@@ -11,6 +12,10 @@ import { Edit } from './pages/edit'
 import { fetchUserData } from './apiService'
 
 const App = () => {
+
+  useEffect(() => {
+    document.title = "Notimail";
+  }, []);
 
   const [userData, setUserData] = useState(null);
 
@@ -26,19 +31,17 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div>
-        {/* <NavLink to={"/"}>Home</NavLink>
-        <NavLink to={"/about"}>About</NavLink> */}
-      </div>
-      <Routes>
-        <Route path='/' element={<Connexion/>}/>
-        <Route path='/accueilUsers' element={<AccueilUser/>}/>
-        <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
-        <Route path='/confirm' element={<Confirm/>}/>
-        <Route path='/mail' element={<Mail/>}/>
-        <Route path='/user' element={<User/>}/>
-        <Route path='/edit' element={<Edit/>}/>
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path='/' element={<Connexion/>}/>
+          <Route path='/accueilUsers' element={<AccueilUser/>}/>
+          <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
+          <Route path='/confirm' element={<Confirm/>}/>
+          <Route path='/mail' element={<Mail/>}/>
+          <Route path='/user' element={<User/>}/>
+          <Route path='/edit' element={<Edit/>}/>
+        </Routes>        
+      </Layout>
     </BrowserRouter>
   )
 };
