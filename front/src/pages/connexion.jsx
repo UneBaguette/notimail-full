@@ -75,8 +75,8 @@ export const Connexion = () => {
           <select name="entreprise" value={selectedEntreprise} onChange={handleEntrepriseSelection}>
             <option value="">
               Sélectionnez une entreprise
-              <img src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png" alt="description de l'image"></img>
             </option>
+            <img src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png" alt="description de l'image"></img>
             {entreprise.map((entreprise) => (
               <option key={entreprise.id} value={entreprise.firm_name}>
                 {entreprise.firm_name}
