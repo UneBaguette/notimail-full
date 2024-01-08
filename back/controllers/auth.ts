@@ -14,10 +14,10 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     const userRepository = connectDB.getRepository(User);
 
     // Récupération des données d'authentification depuis le corps de la requête
-    const { email, password } = req.body;
+    const { firm_name, password } = req.body;
 
     // Recherche de l'utilisateur dans la base de données par email
-    const user = await userRepository.findOne({ where: { email } });
+    const user = await userRepository.findOne({ where: { firm_name } });
 
     // Vérification si l'utilisateur n'existe pas
     if (!user) {
@@ -49,9 +49,11 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       { expiresIn: '3m' }
     );
 
-    // Sauvegarde du token dans un cookie
-    // Sauvegarde du token dans un cookie
-    res.cookie('token', token, { maxAge: 180000, httpOnly: true });
+    // Utilisation de l'ID de l'utilisateur dans le nom du cookie
+    const userCookieName = `token_${user.id}`;
+
+    // Sauvegarde du token dans un cookie avec le nom spécifique à l'utilisateur
+    res.cookie(userCookieName, token, { maxAge: 180000, httpOnly: true });
     console.log('Token créé :', token, user.id);
 
     // Authentification réussie, renvoie un message de succès et les détails de l'utilisateur
