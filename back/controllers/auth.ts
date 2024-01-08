@@ -49,11 +49,8 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       { expiresIn: '3m' }
     );
 
-    // Utilisation de l'ID de l'utilisateur dans le nom du cookie
-    const userCookieName = `token_${user.id}`;
-
-    // Sauvegarde du token dans un cookie avec le nom spécifique à l'utilisateur
-    res.cookie(userCookieName, token, { maxAge: 180000, httpOnly: true });
+    // Sauvegarde du token dans un cookie
+    res.cookie('token', token, { maxAge: 180000, httpOnly: true });
     console.log('Token créé :', token, user.id);
 
     // Authentification réussie, renvoie un message de succès et les détails de l'utilisateur
