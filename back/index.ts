@@ -1,9 +1,18 @@
 // index.ts
 
-// Importe le framework Express et initialise une instance de l'application
+// Importe dotenv et Charge les variables d'environnement à partir du fichier .env
+import dotenv from 'dotenv'; 
+dotenv.config(); 
+
+// Importe le framework Express et ExpressSession et initialise une instance de l'application
 import express from 'express';
 import session from 'express-session';
 const app = express();
+
+// Importe le module cookie-parser pour analyser les cookies
+import cookieParser from 'cookie-parser';
+// Utilise le middleware cookie-parser dans l'application Express
+app.use(cookieParser());
 
 import connectDB from './datasource';
 // Importation du module CORS
@@ -56,8 +65,7 @@ app.use((req, res) => {
     res.status(404).send('404: Page not found');
 });
 
-// Écoute sur le port 3000 et affiche un message lorsque le serveur démarre
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Serveur en écoute sur le port ${PORT}`);
+// Écoute sur le port donné dans le .env et affiche un message lorsque le serveur démarre
+app.listen(process.env.PORT, () => {
+    console.log(`Serveur en écoute sur le port ${process.env.PORT}`);
 });

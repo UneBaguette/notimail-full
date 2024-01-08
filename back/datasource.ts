@@ -6,11 +6,11 @@ import { User } from './models/users';
 
 const connectDB =  new DataSource({
     type: 'mysql',
-    host: '127.0.0.1',
+    host: process.env.DBHOST,
     port: 3306,
-    username: 'root',
-    password: '',
-    database: 'notimail',
+    username: process.env.DBUSERNAME,
+    password: process.env.DBPASSWORD,
+    database: process.env.DBNAME,
     logging: false,
     synchronize: true,
     entities: [User],
