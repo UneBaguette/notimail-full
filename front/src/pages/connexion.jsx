@@ -46,7 +46,7 @@ export const Connexion = () => {
         const user = await response.json(); // Récupérer les informations de l'utilisateur depuis la réponse
         console.log('Authentification réussie', user);
 
-        if (user.is_admin != true) {
+        if (user.user.is_admin === true) {
           navigate('/accueilAdmin');
         } else {
           navigate('/accueilUser');

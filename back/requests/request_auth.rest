@@ -10,4 +10,14 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3000/auth/connexion
+Content-Type: application/json
+
+{
+  "firm_name": "Entreprise 1",
+  "password": "1234"
+}
+
+###
+
 GET http://localhost:3000/auth/deconnexion
