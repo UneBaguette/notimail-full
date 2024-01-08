@@ -66,6 +66,6 @@ app.use((req, res) => {
 });
 
 // Écoute sur le port donné dans le .env et affiche un message lorsque le serveur démarre
-app.listen(process.env.PORT, () => {
-    console.log(`Serveur en écoute sur le port ${process.env.PORT}`);
+app.listen(process.env.BACK_PORT, () => {
+    console.log(`Serveur en écoute sur le port ${process.env.BACK_PORT}`);
 });
