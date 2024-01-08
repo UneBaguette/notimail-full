@@ -68,7 +68,7 @@ export const deconnexionUser = (req: Request, res: Response): void => {
   try {
     // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
     const { token } = req.cookies;
-
+    console.log(token)
     // Vérifier si le token existe
     if (!token) {
       res.status(401).json({ message: "Token non trouvé. L'utilisateur n'est probablement pas connecté." });

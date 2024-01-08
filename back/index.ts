@@ -22,7 +22,10 @@ const cors = require('cors');
 app.use(express.json());
 
 // Middleware CORS pour gérer les politiques CORS
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONT_URL,
+    credentials: true,
+}));
 
 // Utilise l'instance de DataSource initialisée
 connectDB.initialize()
