@@ -8,10 +8,10 @@ export const receivedMail = async (req: Request, res: Response) => {
     try {
         // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);       
-        const userId = req.body.id;
+        const userId = req.params.userId;
         const user = await userRepository.findOneOrFail(userId);
 
-        console.log(user);
+        console.log(userId);
 
         // Valider la réception du courrier
         user.last_received_mail = new Date(); // Indique la date de réception
