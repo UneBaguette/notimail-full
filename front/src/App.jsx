@@ -16,16 +16,6 @@ const App = () => {
 
   const [userData, setUserData] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const token = 'votre_token_d_authentification'; // Remplacez par votre mécanisme d'authentification
-      const userData = await fetchUserData(token);
-      setUserData(userData);
-    };
-
-    fetchData();
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>

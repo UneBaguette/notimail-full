@@ -9,18 +9,6 @@ export const NavBar=()=>{
 
     const location = useLocation();
     const path = location.pathname;
-    const [userName,setUserName] = useState('');
-
-    useEffect(() => {
-        const fetchData = async () => {
-          const userData = await fetchUserData();
-          if (userData) {
-            setUserName(`${userData.first_name} ${userData.last_name}`);
-          }
-        };
-    
-        fetchData();
-    }, []);
 
     const handleClick = () => {
         fetch ('http://localhost:3000/auth/deconnexion')
