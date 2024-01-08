@@ -46,6 +46,10 @@ export const Connexion = () => {
         const user = await response.json(); // Récupérer les informations de l'utilisateur depuis la réponse
         console.log('Authentification réussie', user);
 
+        // Extrait les cookies de la réponse (si nécessaire)
+        const cookies = response.headers.get('token');
+        console.log(cookies);
+
         if (user.user.is_admin === true) {
           navigate('/accueilAdmin');
         } else {

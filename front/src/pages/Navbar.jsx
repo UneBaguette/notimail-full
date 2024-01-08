@@ -11,9 +11,21 @@ export const NavBar=()=>{
     const path = location.pathname;
 
     const handleClick = () => {
-        fetch ('http://localhost:3000/auth/deconnexion')
-        navigate('/');
-    };
+        fetch('http://localhost:3000/auth/deconnexion', {
+            credentials: 'include', // Inclure les cookies dans la requête
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Déconnexion échouée - ${response.status}`);
+            }
+    
+            navigate('/');
+        })
+        .catch(error => {
+            console.error('Erreur lors de la déconnexion :', error.message);
+            // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
+        });
+    };    
     
     // Fonction pour obtenir le texte en fonction de l'URL
     const getNavbarText = () => {
