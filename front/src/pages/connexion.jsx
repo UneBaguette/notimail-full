@@ -71,7 +71,6 @@ export const Connexion = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Entreprise:
           <select name="entreprise" value={selectedEntreprise} onChange={handleEntrepriseSelection}>
             <option value="">Sélectionnez une entreprise</option>
             {entreprise.map((entreprise) => (
@@ -82,7 +81,7 @@ export const Connexion = () => {
           </select>
           <img
             className="image-container"
-            src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png"
+            src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
             alt="description de l'image"
           />
         </label>
