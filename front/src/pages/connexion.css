@@ -1,28 +1,32 @@
-
-:root{
-    --background-blue-green:#008787;
-    --background-blue:#025892;
-    --background-gray:#E3E3E3;
-    --background-red:#FF3535;
+:root {
+    --background-blue-green: #008787;
+    --background-blue: #025892;
+    --background-gray: #E3E3E3;
+    --background-red: #FF3535;
 }
 
-div {
-    display: 'flex';
-    align-items: 'center';
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ajustez la hauteur selon vos besoins */
 }
 
-style {
-    margin-left: 10px ;
-     cursor: 'pointer';
+label {
+    height: 100px;
+    width: 300px;
+    background-color: #E3E3E3;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/* Connexion.css */
+.cadenas {
+    width: 60px;
+    height: 35px;
+    background: var(--background-blue);
+    border-radius: 30px;
+    margin-top: 10px; /* Ajustez la valeur selon vos besoins */
+}
 
-.label {
-    background-color:var(--background-blue); /* Gris clair, vous pouvez ajuster la couleur selon vos préférences */
-    padding: 10px; /* Ajoutez une marge intérieure si nécessaire */
-    display: inline-block; /* Assure que la taille de l'élément s'ajuste à son contenu */
-  }
-  
-
- 
+/* Ajoutez d'autres styles au besoin */
