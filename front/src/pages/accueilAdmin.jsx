@@ -1,6 +1,7 @@
 import { NavBar } from './Navbar';
 import { fetchAllUsers } from '../apiService';
 import { useEffect, useState } from 'react';
+import './accueilAdmin.css';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -11,7 +12,8 @@ export const AccueilAdmin=()=>{
             .then(result => result.json())
             .then(data => {
                 console.log(data);
-                setUsers(data);
+                const filteredUsers = data.filter(user => user.username !== 'admin');
+                setUsers(filteredUsers);
             })
             .catch(Error => {
                 console.log(Error);
@@ -21,7 +23,7 @@ export const AccueilAdmin=()=>{
     return(
         <>
             <NavBar />
-            <div>
+            <main>
                 <h2>Liste des Utilisateurs</h2>  
                 {users.map((user) => (
                     <div key={user.id}>
@@ -32,7 +34,7 @@ export const AccueilAdmin=()=>{
                         {/* Ajoutez d'autres cellules en fonction de vos données utilisateur */}
                     </div>
                 ))}
-            </div>
+            </main>
         </>
     )
 }
