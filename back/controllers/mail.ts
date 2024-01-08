@@ -7,9 +7,14 @@ import { User } from '../models/users';
 export const receivedMail = async (req: Request, res: Response) => {
     try {
         // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
-        const userRepository = connectDB.getRepository(User);       
-        const userId = req.params.userId;
-        const user = await userRepository.findOneOrFail(userId);
+        const userRepository = connectDB.getRepository(User);
+
+        // Récupération de l'ID de l'utilisateur à partir des paramètres de la requête
+        const userId = parseInt(req.params.userId);
+
+        // Utilisation du référentiel pour trouver un utilisateur par son ID
+        // Note: On utilise `findOneOrFail` pour s'assurer que l'utilisateur est trouvé, sinon une exception est levée
+        const user = await userRepository.findOneOrFail({ where: { id: userId } });
 
         console.log(userId);
 
@@ -30,10 +35,15 @@ export const receivedMail = async (req: Request, res: Response) => {
 export const pickUpMail = async (req: Request, res: Response) => {
     try {
         // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
-        const userRepository = connectDB.getRepository(User);       
-        const userId = req.body.id;
-        const user = await userRepository.findOneOrFail(userId);
-    
+        const userRepository = connectDB.getRepository(User);
+
+        // Récupération de l'ID de l'utilisateur à partir des paramètres de la requête
+        const userId = parseInt(req.params.userId);
+
+        // Utilisation du référentiel pour trouver un utilisateur par son ID
+        // Note: On utilise `findOneOrFail` pour s'assurer que l'utilisateur est trouvé, sinon une exception est levée
+        const user = await userRepository.findOneOrFail({ where: { id: userId } });
+
         // Valider la récupération du courrier
         user.last_picked_up = new Date();
         user.has_mail = false;
