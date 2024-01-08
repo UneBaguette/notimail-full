@@ -43,16 +43,15 @@ export const Connexion = () => {
       });
 
       if (response.ok) {
-        console.log('Authentification réussie');
-        if(user.is_admin==true){
+        const user = await response.json(); // Récupérer les informations de l'utilisateur depuis la réponse
+        console.log('Authentification réussie', user);
+
+        if (user.is_admin != true) {
           navigate('/accueilAdmin');
+        } else {
+          navigate('/accueilUser');
         }
-        else{
-          navigate('/accueilUsers');
-        }
-      } 
-      
-      else {
+      } else {
         console.error('Authentification échouée');
         setError('Identifiants incorrects');
       }

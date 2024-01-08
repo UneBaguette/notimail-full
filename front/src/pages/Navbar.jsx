@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
+import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
 
 export const NavBar=()=>{
+
+    const navigate = useNavigate();
+
     const location = useLocation();
     const path = location.pathname;
     const [userName,setUserName] = useState('');
@@ -17,6 +21,11 @@ export const NavBar=()=>{
     
         fetchData();
     }, []);
+
+    const handleClick = () => {
+        fetch ('http://localhost:3000/auth/deconnexion')
+        navigate('/');
+    };
     
     // Fonction pour obtenir le texte en fonction de l'URL
     const getNavbarText = () => {
@@ -37,7 +46,7 @@ export const NavBar=()=>{
 
             <div id='right-content'>
                 <span>{getNavbarText()}</span>
-                <button><a href="/">Déconnexion</a></button>
+                <button onClick={handleClick}>Déconnexion</button>
             </div>  
         </nav>
     )
