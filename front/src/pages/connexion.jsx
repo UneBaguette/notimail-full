@@ -82,6 +82,7 @@ export const Connexion = () => {
               </option>
             ))}
           </select>
+          <img src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png" alt="description de l'image"></img>
         </label>
         <br />
         <label>
@@ -91,6 +92,7 @@ export const Connexion = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <img src="/imagefront/pngtree-black-padlock-png-image_3729324 (1) 1.png" alt="description de l'image"></img>
         </label>
         <br />
         <button type="submit">Se connecter</button>
