@@ -76,13 +76,13 @@ export const Connexion = () => {
             <option value="">
               Sélectionnez une entreprise
             </option>
-            <img src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png" alt="description de l'image"></img>
             {entreprise.map((entreprise) => (
               <option key={entreprise.id} value={entreprise.firm_name}>
                 {entreprise.firm_name}
               </option>
             ))}
           </select>
+          <img src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png" alt="description de l'image"></img>
         </label>
         <br />
         <label>
