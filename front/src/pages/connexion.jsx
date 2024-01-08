@@ -67,7 +67,7 @@ export const Connexion = () => {
   return (
     <div>
       <h2>Connexion</h2>
-      <img src= "front/imagefront/Nouveauprojet1.png" alt="Description de l'image"></img>
+      <img src= "/imagefront/Nouveauprojet1.png" alt="Description de l'image"></img>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
