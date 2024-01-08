@@ -6,3 +6,12 @@
     --background-red:#FF3535;
 }
 
+.accueil-container {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.content-container {
+    margin-top: 20px; /* Ajustez la marge pour l'espace entre la barre de navigation et le titre */
+}

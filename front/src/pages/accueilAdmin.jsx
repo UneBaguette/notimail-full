@@ -20,10 +20,10 @@ export const AccueilAdmin=()=>{
     }, [])
 
     return(
-        <>
+        <div className="accueil-container">
             <NavBar />
-            <main>
-                <h2>Liste des Utilisateurs</h2>  
+            <div className="content-container">
+                <h2>Liste des Utilisateurs</h2>
                 {users.map((user) => (
                     <div key={user.id}>
                         <p>{user.last_name}</p>
@@ -33,7 +33,7 @@ export const AccueilAdmin=()=>{
                         {/* Ajoutez d'autres cellules en fonction de vos données utilisateur */}
                     </div>
                 ))}
-            </main>
-        </>
+            </div>
+        </div>
     )
 }
