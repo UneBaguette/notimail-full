@@ -82,7 +82,7 @@ export const Connexion = () => {
           </select>
           <img
             className="image-container"
-            src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
+            src="/imagefront/pngtree-vector-down-arrow-icon-png-image_4184901 1.png"
             alt="description de l'image"
           />
         </label>

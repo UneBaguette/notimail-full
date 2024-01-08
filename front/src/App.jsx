@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import './App.css'
-import Layout from './Layout';
 import { AccueilAdmin } from './pages/accueilAdmin'
 import { Mail } from './pages/mail'
 import { AccueilUser } from './pages/accueilUser'
@@ -31,17 +30,15 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path='/' element={<Connexion/>}/>
-          <Route path='/accueilUsers' element={<AccueilUser/>}/>
-          <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
-          <Route path='/confirm' element={<Confirm/>}/>
-          <Route path='/mail' element={<Mail/>}/>
-          <Route path='/user' element={<User/>}/>
-          <Route path='/edit' element={<Edit/>}/>
-        </Routes>        
-      </Layout>
+      <Routes>
+        <Route path='/' element={<Connexion/>}/>
+        <Route path='/accueilUsers' element={<AccueilUser/>}/>
+        <Route path='/accueilAdmin' element={<AccueilAdmin/>}/>
+        <Route path='/confirm' element={<Confirm/>}/>
+        <Route path='/mail' element={<Mail/>}/>
+        <Route path='/user' element={<User/>}/>
+        <Route path='/edit' element={<Edit/>}/>
+      </Routes>        
     </BrowserRouter>
   )
 };
