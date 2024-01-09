@@ -46,8 +46,8 @@ export const NavBar=({ userData })=>{
 
             <div id='right-content'>
                 <span>{getNavbarText()}</span>
-                {/* <button onClick={handleClick}>Déconnexion</button> */}
-                {userData && <button onClick={handleClick}>Déconnexion</button>}
+                <button onClick={handleClick}>Déconnexion</button>
+                {/* {userData && <button onClick={handleClick}>Déconnexion</button>} */}
             </div>  
         </nav>
     )
