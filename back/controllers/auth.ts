@@ -1,6 +1,6 @@
 // controllers/auth.ts
 
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
@@ -16,7 +16,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     // Récupération des données d'authentification depuis le corps de la requête
     const { firm_name, password } = req.body;
 
-    // Recherche de l'utilisateur dans la base de données par email
+    // Recherche de l'utilisateur dans la base de données par nom d'entreprise
     const user = await userRepository.findOne({ where: { firm_name } });
 
     // Vérification si l'utilisateur n'existe pas
@@ -43,7 +43,8 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
         last_name: user.last_name,
         email: user.email,
         phone_number: user.phone_number,
-        id: user.id
+        id: user.id,
+        is_admin: user.is_admin,
       },
       `${process.env.SESSION_SECRET}`,
       { expiresIn: '3m' }
@@ -68,7 +69,7 @@ export const deconnexionUser = (req: Request, res: Response): void => {
   try {
     // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
     const { token } = req.cookies;
-    console.log(token)
+
     // Vérifier si le token existe
     if (!token) {
       res.status(401).json({ message: "Token non trouvé. L'utilisateur n'est probablement pas connecté." });
@@ -86,5 +87,31 @@ export const deconnexionUser = (req: Request, res: Response): void => {
     // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
     console.error('Erreur lors de la déconnexion :', error);
     res.status(500).json({ message: 'Erreur lors de la déconnexion.' });
+  }
+};
+
+
+
+
+// Middleware pour ajouter les informations de l'utilisateur à la requête
+export const addUserInfoToRequest = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+      const { token } = req.cookies;
+
+      if (token) {
+          const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
+          const userRepository = connectDB.getRepository(User);
+          const user = await userRepository.findOne({ where: { id } });
+
+          if (user) {
+              req.user = user;
+          }
+      }
+
+      next();
+
+  } catch (error) {
+      console.error('Erreur lors de l\'ajout d\'informations utilisateur à la requête :', error);
+      next();
   }
 };
