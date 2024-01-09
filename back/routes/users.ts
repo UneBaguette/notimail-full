@@ -21,10 +21,10 @@ router.get('/users/:id', validateUserId, getUserById, isAdmin)
 router.get('/users', getUsers);
 
 // Route PUT pour mettre à jour un utilisateur par ID
-router.put('users/:id', updateUser, isAdmin)
+router.put('users/:id', validateUserId, updateUser, isAdmin)
 
 // Route DELETE pour supprimer un utilisateur par ID
-router.delete('/users/:id', deleteUser, isAdmin)
+router.delete('/users/:id', validateUserId, deleteUser, isAdmin)
 
 // Exporte le routeur
 export default router;
