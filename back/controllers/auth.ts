@@ -77,6 +77,9 @@ export const deconnexionUser = (req: Request, res: Response): void => {
     // Décoder le token pour obtenir les informations de l'utilisateur
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 
+    // Suppression du cookie manuellement
+    res.clearCookie('token');
+
     // Répondre avec un message de déconnexion réussie et les informations de l'utilisateur extraites du token
     res.status(200).json({ message: 'Déconnexion réussie.', user: decodedToken });
     console.log(decodedToken);
