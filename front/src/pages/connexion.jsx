@@ -88,15 +88,12 @@ export const Connexion = () => {
               </option>
             ))}
           </select>
-
-          {/* SPAN TIRET SEPARATION */}
-          <span></span>
-
-          {/* ICON FLECHE BAS */}
+            {/* SPAN TIRET SEPARATION */}
+          <span />
           <img
-            className="image-container"
+          className="iconbas"
             src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
-            alt="Icon flêche bas"
+            alt="icon fleche bas"
           />
         </label>
 
@@ -110,7 +107,6 @@ export const Connexion = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
           {/* SPAN TIRET SEPARATION */}
           <span></span>
 
