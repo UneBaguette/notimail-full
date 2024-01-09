@@ -77,6 +77,22 @@ Content-Type: application/json
 }
 
 ###
+
+POST http://localhost:3000/user/users
+Content-Type: application/json
+
+{
+    "firm_name": "Solacroup",
+    "first_name": "Alex",
+    "last_name": "Zicbel",
+    "email": "alexandre.buet@institutsolacroup.com",
+    "phone_number": "123456789",
+    "password": "1234",
+    "has_mail": false,
+    "is_admin": true
+}
+
+###
 # Récupérer tous les utilisateurs
 GET http://localhost:3000/user/users
 
