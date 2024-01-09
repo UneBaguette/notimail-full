@@ -40,8 +40,7 @@ nav {
 
 /* Défini la taille maximun de l'image */
 nav img {
-    max-width: 10vw;
-    max-height: 10vw;
+    width: 40%;
 }
 
 /* determine la couleur de font du bouton déconnexion*/
