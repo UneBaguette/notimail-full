@@ -101,10 +101,10 @@ export const addUserInfoToRequest = async (req: Request, res: Response, next: Ne
       if (token) {
           const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
           const userRepository = connectDB.getRepository(User);
-          const user = await userRepository.findOne({ where: { id } });
+          const user = await userRepository.findOne({ id } );
 
           if (user) {
-              req.user = user;
+              req.body.user = user;
           }
       }
 
