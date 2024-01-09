@@ -20,19 +20,20 @@ export const AccueilAdmin=()=>{
     }, [])
 
     return(
-        <div className="accueil-container">
+        <div className="accueil-container-outside">
             <NavBar />
-            <div className="content-container">
+            <div className="content-container-inside">
                 <h2>Liste des Utilisateurs</h2>
-                {users.map((user) => (
-                    <div key={user.id}>
-                        <p>{user.last_name}</p>
-                        <p>{user.first_name}</p>
-                        <p>{user.email}</p>
-                        <p>{user.phone_number}</p>
-                        {/* Ajoutez d'autres cellules en fonction de vos données utilisateur */}
-                    </div>
-                ))}
+                <div className="contact">
+                    {users.map((user) => (
+                        <div key={user.id}>
+                            <p>{user.last_name}</p>
+                            <p>{user.first_name}</p>
+                            <p>{user.email}</p>
+                            <p>{user.phone_number}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )
