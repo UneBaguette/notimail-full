@@ -14,7 +14,18 @@
     transform: translateX(-50%);  /* Décalage horizontal de -50% de la propre largeur du conteneur pour le recentrer correctement */
     width: 200px;  /* Largeur fixe du conteneur */
     height: 200px;  /* Hauteur fixe du conteneur */
+    display: table-row;
+    align-items: center;
 }
+
+.texte {
+    text-align: center;
+    font-family: 'Kanit', sans-serif; /* Remplacez 'VotrePolice' par le nom de la police de votre choix */
+    /* Vous pouvez également spécifier plusieurs polices de secours après la virgule, par exemple : font-family: 'VotrePolice', Arial, sans-serif; */
+    font-size: 18px; /* Ajustez la taille de la police selon votre préférence */
+    font-weight: normal; /* Vous pouvez spécifier 'bold' pour une police en gras */
+        /* Ajoutez d'autres propriétés de typographie au besoin */
+    }
 
 /* Style pour les images à l'intérieur du conteneur */
 .conteneur img {
@@ -32,6 +43,24 @@
     top: 30px;  /* Distance par rapport au haut du conteneur */
     right: 10px;  /* Distance par rapport à la droite du conteneur */
 }
+
+.textes {
+    background-color: #006C92;
+    color: #FFFFFF;
+    text-align: center;
+    border-radius: 50px;
+    font-family: 'Kanit', sans-serif; /* Remplacez 'VotrePolice' par le nom de la police de votre choix */
+    /* Vous pouvez également spécifier plusieurs polices de secours après la virgule, par exemple : font-family: 'VotrePolice', Arial, sans-serif; */
+    font-size: 18px; /* Ajustez la taille de la police selon votre préférence */
+    font-weight: normal; /* Vous pouvez spécifier 'bold' pour une police en gras */
+        /* Ajoutez d'autres propriétés de typographie au besoin */
+    
+}
+
+.textes h5 {
+    font-size: 25px; /* Vous pouvez ajuster la valeur de font-size selon votre préférence */
+}
+
 
 
 
