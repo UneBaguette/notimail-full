@@ -64,9 +64,13 @@ export const Connexion = () => {
 
   return (
     <div className="container">
-      <img src="/imagefront/Nouveauprojet1.png" alt="Description de l'image" />
+      {/* ICON NOTIMAIL */}
+      <img className='logonotimail' src="/imagefront/Nouveauprojet1.png" alt="Icon Notimail" />
+      {/* MESSAGE D'ERREUR SI ID OU MP INCORECT */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      {/* FORMAULAIRE DE CONNEXION */}
       <form onSubmit={handleSubmit}>
+        {/* CHOIX ENTREPRISE */}
         <label className='Entreprise'>
           <select name="entreprise" value={selectedEntreprise} onChange={handleEntrepriseSelection}>
             <option value="">Sélectionnez une entreprise</option>
@@ -76,15 +80,21 @@ export const Connexion = () => {
               </option>
             ))}
           </select>
+          {/* ICON FLECHE BAS */}
           <img
             className="image-container"
             src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
-            alt="description de l'image"
+            alt="Icon flêche bas"
           />
         </label>
+    
         <br />
+
+        {/* LABEL PASSWORD */}
         <label>
+          {/* INPUT POUR ENTRER LE PASSWORD */}
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {/* ICON CADENA */}
           <img 
               className='cadenas' 
               src="/imagefront/pngtree-black-padlock-png-image_37293241.png" 
