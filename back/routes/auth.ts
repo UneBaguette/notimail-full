@@ -5,6 +5,7 @@ import express from 'express';
 
 // Importation du contrôleur d'authentification
 import { authUser, deconnexionUser } from '../controllers/auth';
+import { isAuthenticated } from '../middlewares/permissions';
 
 
 // Création d'un objet Router d'Express
@@ -12,14 +13,11 @@ const router = express.Router();
 
 // Toutes les routes auth commence par : auth/connexion
 
-// Definition de la route post pour la connexion
+// Definition de la route POST '/connexion' avec le contrôleur authUser
 router.post('/connexion', authUser)
 
 // Définition de la route GET '/deconnexion' avec le contrôleur deconnexionUser
-router.get('/deconnexion', deconnexionUser);
-
-
-
+router.get('/deconnexion', deconnexionUser, isAuthenticated);
 
 // Exportation du routeur pour qu'il puisse être utilisé ailleurs dans l'application
 export default router;

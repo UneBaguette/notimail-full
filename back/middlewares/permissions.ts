@@ -17,6 +17,7 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
 
 // Middleware pour vérifier si l'utilisateur est authentifié
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
+    
     const user = req.body.user as User;
 
     if (user) {

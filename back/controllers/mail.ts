@@ -19,32 +19,41 @@ export const receivedMail = async (req: Request, res: Response) => {
 
         //console.log(userId);
 
-        // Valider la réception du courrier
-        user.last_received_mail = new Date(); // Indique la date de réception
-        user.has_mail = true; // Réinitialise has_mail en true pour indiquer qu'il y a un mail
-        
-        await userRepository.save(user);      
+        // Met à jour la propriété 'last_received_mail' de l'objet 'user' avec la date et l'heure actuelles
+        user.last_received_mail = new Date();
 
-        // Envoi de notifications par email
+        // Définit la propriété 'has_mail' de l'objet 'user' à true, indiquant que l'utilisateur a reçu du courrier
+        user.has_mail = true;
+
+        // Enregistre l'objet 'user' mis à jour dans la base de données en utilisant la méthode 'save' de 'userRepository'
+        await userRepository.save(user);
+
+        // Crée un transporteur (sender) pour l'envoi d'e-mails via le service Gmail
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
+                // Utilise les informations d'identification stockées dans les variables d'environnement pour l'authentification Gmail
                 user: process.env.MAIL_USER,
                 pass: process.env.MAIL_PASSWORD,
             },
         });
 
+        // Définit les options de l'e-mail, y compris l'expéditeur, le destinataire, le sujet et le corps du message
         const mailOptions = {
             from: process.env.MAIL_USER,
-            to: user.email,
+            to: user.email, // Utilise l'adresse e-mail de l'utilisateur comme destinataire
             subject: 'Un nouveau courrier est disponible au 40 !',
+            // Utilise une chaîne de texte formatée pour le corps du message, incluant le prénom, le nom et la date du dernier courrier reçu
             text: `Bonjour ${user.first_name} ${user.last_name}, \n Vous avez un nouveau courrier à récupérer au Bureau Le 40 ! \n Le courrier a été reçu le ${user.last_received_mail} `,
         };
 
+        // Envoie l'e-mail en utilisant le transporteur configuré et les options d'e-mail définies
         await transporter.sendMail(mailOptions);
 
+        // Répond avec un statut 200 et un message indiquant que la réception du courrier a été validée avec succès
         res.status(200).send({ message: 'Réception du courrier validée avec succès' });
     } catch (error) {
+        // En cas d'erreur, répond avec un statut 500 et un message d'erreur
         res.status(500).send({ error: 'Une erreur est survenue lors de la validation de la réception du courrier' });
     }
 };
