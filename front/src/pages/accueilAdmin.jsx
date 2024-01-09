@@ -1,4 +1,3 @@
-import { NavBar } from './Navbar';
 import { useEffect, useState } from 'react';
 import './accueilAdmin.css';
 
