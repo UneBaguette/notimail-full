@@ -10,7 +10,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Ajustez la hauteur selon vos besoins */
+    height: 100vh;
+    /* Ajustez la hauteur selon vos besoins */
 }
 
 .container img.logonotimail {
@@ -21,14 +22,15 @@ label {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content : space-around;
+    justify-content: space-around;
     width: 100%;
     border-radius: 10px;
 }
 
 
-.cadenas, .iconbas {
-    height: 35px;
+.cadenas,
+.iconbas {
+    height: 30px;
     background: var(--background-blue);
     border-radius: 30px;
     position: absolute;
@@ -39,7 +41,8 @@ label {
     background: none !important;
 }
 
-select, input {
+select,
+input {
     width: 60vw;
     height: 100%;
     border: none;
@@ -51,7 +54,8 @@ select, input {
     justify-content: space-evenly;
 }
 
-label span, .separator {
+label span,
+.separator {
     position: absolute;
     width: 1px;
     height: 100%;
@@ -60,6 +64,22 @@ label span, .separator {
 }
 
 select {
-   -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
+
+@media (min-width: 768px) {
+
+    select,
+    input {
+        width: 15vw;
+    }
+
+
+    label span,
+    .separator {
+        right: 20% !important;
+    }
+
+
+}
