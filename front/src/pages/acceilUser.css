@@ -5,28 +5,29 @@
     --background-red: #FF3535;
 }
 
-body {
-    margin: 0;
-}
 
 .conteneur {
-    position: relative;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
 }
 
 .conteneur img {
-    width: 135px;
-    height: 135px;
-    border-radius: 25px; /* ou 50% */
+    width: 200px;
+    height: 200px;
 }
 
 .petit-cercle {
-    width: 34.535pxpx;
-    height: 34.535px;
-    background: red; 
     position: absolute; 
-    z-index: 1000;
-    top: 20px;
-    left: 80px;
+    width: 35px;
+    height: 35px;
+    background: red; 
+    border-radius: 50%;
+    top: 30px;
+    right: 10px;
 }
 
 
