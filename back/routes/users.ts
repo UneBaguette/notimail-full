@@ -14,19 +14,16 @@ const router = express.Router();
 router.post('/users', createUser, isAdmin);
 
 // Route GET par ID pour récupérer un utilisateur spécifique
-router.get('/users/:id', getUserById,)
+router.get('/users/:id', getUserById, isAdmin)
 
-// Définition de la route POST pour récupérer tous les utilisateurs
+// Définition de la route GET pour récupérer tous les utilisateurs
 router.get('/users', getUsers);
 
-// Route GET par ID pour récupérer un utilisateur spécifique
-router.get('/users/:id', getUserById);
-
 // Route PUT pour mettre à jour un utilisateur par ID
-router.put('users/:id', isAdmin, updateUser)
+router.put('users/:id', updateUser, isAdmin)
 
 // Route DELETE pour supprimer un utilisateur par ID
-router.delete('/users/:id', isAdmin, deleteUser)
+router.delete('/users/:id', deleteUser, isAdmin)
 
 // Exporte le routeur
 export default router;
