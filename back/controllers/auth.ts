@@ -42,8 +42,6 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        phone_number: user.phone_number,
-        id: user.id,
         is_admin: user.is_admin,
       },
       `${process.env.SESSION_SECRET}`,

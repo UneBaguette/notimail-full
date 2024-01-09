@@ -36,6 +36,7 @@ export const Connexion = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           firm_name: selectedEntreprise,
           password: password,

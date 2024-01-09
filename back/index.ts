@@ -8,11 +8,11 @@ dotenv.config();
 import express from 'express';
 import session from 'express-session';
 const app = express();
+app.use(express.json()); // Middleware express.json pour traiter les données au format JSON
 
 // Importe le module cookie-parser pour analyser les cookies
 import cookieParser from 'cookie-parser';
-// Utilise le middleware cookie-parser dans l'application Express
-app.use(cookieParser());
+app.use(cookieParser()); // Utilise le middleware cookie-parser dans l'application Express
 
 import connectDB from './datasource';
 // Importation du module CORS
