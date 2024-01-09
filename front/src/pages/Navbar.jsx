@@ -3,7 +3,7 @@ import { useLocation } from "react-router"
 import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
 
-export const NavBar=({ userData })=>{
+export const NavBar=()=>{
 
     const navigate = useNavigate();
 
@@ -46,8 +46,7 @@ export const NavBar=({ userData })=>{
 
             <div id='right-content'>
                 <span>{getNavbarText()}</span>
-                <button onClick={handleClick}>Déconnexion</button>
-                {/* {userData && <button onClick={handleClick}>Déconnexion</button>} */}
+                {path !== '/' && <button onClick={handleClick}>Déconnexion</button>}
             </div>  
         </nav>
     )
