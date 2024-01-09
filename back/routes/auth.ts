@@ -4,11 +4,7 @@
 import express from 'express';
 
 // Importation du contrôleur d'authentification
-import { authUser } from '../controllers/auth';
-
-import { deconnexionUser } from '../controllers/auth';
-import { isAdmin } from '../middlewares/permissions';
-import { createUser, deleteUser, getUserById, getUsers, updateUser } from '../controllers/users';
+import { authUser, deconnexionUser } from '../controllers/auth';
 
 
 // Création d'un objet Router d'Express
@@ -16,9 +12,7 @@ const router = express.Router();
 
 // Toutes les routes auth commence par : auth/connexion
 
-// Route POST pour créer un utilisateur
-router.post('/users',  authUser, isAdmin, createUser)
-
+// Definition de la route post pour la connexion
 router.post('/connexion', authUser)
 
 // Définition de la route GET '/deconnexion' avec le contrôleur deconnexionUser
