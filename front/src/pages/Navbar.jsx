@@ -7,8 +7,7 @@ export const NavBar=()=>{
 
     const navigate = useNavigate();
 
-    const location = useLocation();
-    const path = location.pathname;
+    const { pathname }  = useLocation();
 
     const handleClick = () => {
         fetch('http://localhost:3000/auth/deconnexion', {
@@ -26,28 +25,21 @@ export const NavBar=()=>{
             // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
         });
     };    
-    
-    // Fonction pour obtenir le texte en fonction de l'URL
-    const getNavbarText = () => {
-        if (path.endsWith('/accueilAdmin')) {
-            return 'Admin';
-        } else if (path.endsWith('/accueilUser')) {
-            return 'Entreprise***';
-        }
-        // Si l'URL ne se termine par aucune des valeurs attendues, retournez une chaîne vide ou un texte par défaut
-        return '';
-    };
 
     return(
-        <nav>
-            <div id="left-content">
-                <img src="/imagefront/Nouveauprojet1.png" alt="logo projet"/>
-            </div>
+        <>        
+            {pathname === '/' ? null : (
+                <nav>
+                    <div id="left-content">
+                        <img src="/imagefront/Nouveauprojet1.png" alt="logo projet"/>
+                    </div>
 
-            <div id='right-content'>
-                <span>{getNavbarText()}</span>
-                {path !== '/' && <button onClick={handleClick}>Déconnexion</button>}
-            </div>  
-        </nav>
+                    <div id='right-content'>
+                        {pathname === '/accueilAdmin'? <span>Admin</span>: <spam>Entreprise***</spam>}
+                        <button onClick={handleClick}>Déconnexion</button>
+                    </div>  
+            </nav>
+            )}
+        </>
     )
 }
