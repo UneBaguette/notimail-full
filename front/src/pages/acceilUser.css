@@ -1,0 +1,15 @@
+:root {
+    --background-blue-green: #008787;
+    --background-blue: #025892;
+    --background-gray: #E3E3E3;
+    --background-red: #FF3535;
+}
+
+#cercle{
+    width : 50px;
+    height : 50px;
+    background : green;
+    -moz-border-radius : 25px;
+    -webkit-border-radius : 25px;
+    border-radius : 25px;  /* ou 50% */
+  }
