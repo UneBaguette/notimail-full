@@ -48,9 +48,9 @@ export const Connexion = () => {
         console.log("Authentification réussie", user);
 
         if (user.user.is_admin === true) {
-          navigate("/accueilAdmin");
+          navigate(`/accueilAdmin/${user.userid}`);
         } else {
-          navigate("/accueilUser");
+          navigate(`/accueilUser/${user.userid}`);
         }
       } else {
         console.error("Authentification échouée");
@@ -90,11 +90,13 @@ export const Connexion = () => {
           </select>
             {/* SPAN TIRET SEPARATION */}
           <span />
+          <button id="entrepriseToggle"  tabIndex="0">
           <img
           className="iconbas"
             src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
             alt="icon fleche bas"
           />
+          </button>
         </label>
 
         <br />

@@ -28,17 +28,25 @@ label {
 }
 
 
-.cadenas,
-.iconbas {
+.cadenas {
     height: 30px;
     background: var(--background-blue);
     border-radius: 30px;
     position: absolute;
     right: 5px;
+    cursor: pointer;
 }
 
-.iconbas {
+#entrepriseToggle {
     background: none !important;
+    border: none;
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+}
+
+#entrepriseToggle:active + option {
+    display: block;
 }
 
 select,
@@ -72,7 +80,7 @@ select {
 
     select,
     input {
-        width: 15vw;
+        width: 30vw;
     }
 
 
