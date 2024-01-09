@@ -14,6 +14,8 @@ nav {
     background-color: var(--background-gray);
     width: 100%;
     position: fixed;
+    height: 80px;
+    padding: 20px;
     top: 0;
 }
 
@@ -33,13 +35,13 @@ nav {
 #right-content {
     flex-direction: column;
     text-align: center;
-    margin-right: 5vw;
+    margin-right: 50px;
 }
 
 /* Défini la taille maximun de l'image */
 nav img {
-    max-width: 5vw;
-    max-height: 5vw;
+    max-width: 10vw;
+    max-height: 10vw;
 }
 
 /* determine la couleur de font du bouton déconnexion*/
