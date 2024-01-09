@@ -91,27 +91,3 @@ export const deconnexionUser = (req: Request, res: Response): void => {
 };
 
 
-
-
-// Middleware pour ajouter les informations de l'utilisateur à la requête
-export const addUserInfoToRequest = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-      const { token } = req.cookies;
-
-      if (token) {
-          const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
-          const userRepository = connectDB.getRepository(User);
-          const user = await userRepository.findOne({ id } );
-
-          if (user) {
-              req.body.user = user;
-          }
-      }
-
-      next();
-
-  } catch (error) {
-      console.error('Erreur lors de l\'ajout d\'informations utilisateur à la requête :', error);
-      next();
-  }
-};
