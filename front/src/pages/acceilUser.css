@@ -6,28 +6,32 @@
 }
 
 
+/* Style pour le conteneur principal */
 .conteneur {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
+    position: absolute;  /* Position absolue par rapport au premier élément parent positionné (non statique) */
+    top: 20%;  /* Distance par rapport au haut de la page (20% de la hauteur de la fenêtre) */
+    left: 50%;  /* Positionné au centre horizontalement (50% de la largeur de la fenêtre) */
+    transform: translateX(-50%);  /* Décalage horizontal de -50% de la propre largeur du conteneur pour le recentrer correctement */
+    width: 200px;  /* Largeur fixe du conteneur */
+    height: 200px;  /* Hauteur fixe du conteneur */
 }
 
+/* Style pour les images à l'intérieur du conteneur */
 .conteneur img {
-    width: 200px;
-    height: 200px;
+    width: 200px;  /* Largeur fixe de l'image égale à la largeur du conteneur */
+    height: 200px;  /* Hauteur fixe de l'image égale à la hauteur du conteneur */
 }
 
+/* Style pour le petit cercle rouge */
 .petit-cercle {
-    position: absolute; 
-    width: 35px;
-    height: 35px;
-    background: red; 
-    border-radius: 50%;
-    top: 30px;
-    right: 10px;
+    position: absolute;  /* Position absolue par rapport au premier élément parent positionné (non statique) */
+    width: 35px;  /* Largeur fixe du cercle rouge */
+    height: 35px;  /* Hauteur fixe du cercle rouge */
+    background: red;  /* Couleur de fond rouge */
+    border-radius: 50%;  /* Bordure arrondie pour créer un cercle */
+    top: 30px;  /* Distance par rapport au haut du conteneur */
+    right: 10px;  /* Distance par rapport à la droite du conteneur */
 }
+
 
 
