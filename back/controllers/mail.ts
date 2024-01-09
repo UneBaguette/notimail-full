@@ -1,5 +1,6 @@
 // controllers/MailController.ts
 
+import nodemailer from 'nodemailer'; // Import nodemailer
 import connectDB from '../datasource'; // Importation de l'instance de connexion à la base de données
 import { Request, Response } from 'express';
 import { User } from '../models/users';
@@ -24,7 +25,23 @@ export const receivedMail = async (req: Request, res: Response) => {
         
         await userRepository.save(user);      
 
-        // Envoi de notifications par email et SMS (ajoutez votre logique ici)
+        // Envoi de notifications par email
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASSWORD,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.MAIL_USER,
+            to: user.email,
+            subject: 'Un nouveau courrier est disponible au 40 !',
+            text: `Bonjour ${user.first_name} ${user.last_name}, \n Vous avez un nouveau courrier à récupérer au Bureau Le 40 ! \n Le courrier a été reçu le ${user.last_received_mail} `,
+        };
+
+        await transporter.sendMail(mailOptions);
 
         res.status(200).send({ message: 'Réception du courrier validée avec succès' });
     } catch (error) {
