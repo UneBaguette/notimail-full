@@ -20,20 +20,17 @@ export const AccueilAdmin=()=>{
     }, [])
 
     return(
-        <div className="accueil-container-outside">
-            <NavBar />
-            <div className="content-container-inside">
-                <h2>Liste des Utilisateurs</h2>
-                <div className="contact">
-                    {users.map((user) => (
-                        <div key={user.id}>
-                            <p>{user.last_name}</p>
-                            <p>{user.first_name}</p>
-                            <p>{user.email}</p>
-                            <p>{user.phone_number}</p>
-                        </div>
-                    ))}
-                </div>
+        <div className="content-container">
+            <h2>Liste des Utilisateurs</h2>
+            <div className="contact">
+                {users.map((user) => (
+                    <div key={user.id}>
+                        <p>{user.last_name}</p>
+                        <p>{user.first_name}</p>
+                        <p>{user.email}</p>
+                        <p>{user.phone_number}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
