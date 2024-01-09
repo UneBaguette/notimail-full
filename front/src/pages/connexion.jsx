@@ -48,9 +48,9 @@ export const Connexion = () => {
         console.log("Authentification réussie", user);
 
         if (user.user.is_admin === true) {
-          navigate(`/accueilAdmin/${user.userid}`);
+          navigate(`/accueilAdmin/${user.user.id}`);
         } else {
-          navigate(`/accueilUser/${user.userid}`);
+          navigate(`/accueilUser/${user.user.id}`);
         }
       } else {
         console.error("Authentification échouée");
