@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './connexion.css';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./connexion.css";
 
 export const Connexion = () => {
   const navigate = useNavigate();
 
-  const [password, setPassword] = useState('');
-  const [selectedEntreprise, setSelectedEntreprise] = useState('');
+  const [password, setPassword] = useState("");
+  const [selectedEntreprise, setSelectedEntreprise] = useState("");
   const [entreprise, setEntreprise] = useState([]);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:3000/user/users`)
@@ -31,12 +31,12 @@ export const Connexion = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3000/auth/connexion', {
-        method: 'POST',
+      const response = await fetch("http://localhost:3000/auth/connexion", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        credentials: 'include',
+        credentials: "include",
         body: JSON.stringify({
           firm_name: selectedEntreprise,
           password: password,
@@ -45,16 +45,16 @@ export const Connexion = () => {
 
       if (response.ok) {
         const user = await response.json(); // Récupérer les informations de l'utilisateur depuis la réponse
-        console.log('Authentification réussie', user);
+        console.log("Authentification réussie", user);
 
         if (user.user.is_admin === true) {
-          navigate('/accueilAdmin');
+          navigate("/accueilAdmin");
         } else {
-          navigate('/accueilUser');
+          navigate("/accueilUser");
         }
       } else {
-        console.error('Authentification échouée');
-        setError('Identifiants incorrects');
+        console.error("Authentification échouée");
+        setError("Identifiants incorrects");
       }
     } catch (error) {
       console.error("Erreur lors de l'authentification:", error);
@@ -64,22 +64,34 @@ export const Connexion = () => {
 
   return (
     <div className="container">
-      {/* ICON NOTIMAIL */}
-      <img className='logonotimail' src="/imagefront/Nouveauprojet1.png" alt="Icon Notimail" />
+      {/* LOGO NOTIMAIL */}
+      <img
+        className="logonotimail"
+        src="/imagefront/Nouveauprojet1.png"
+        alt="Icon Notimail"
+      />
       {/* MESSAGE D'ERREUR SI ID OU MP INCORECT */}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       {/* FORMAULAIRE DE CONNEXION */}
       <form onSubmit={handleSubmit}>
         {/* CHOIX ENTREPRISE */}
-        <label className='Entreprise'>
-          <select name="entreprise" value={selectedEntreprise} onChange={handleEntrepriseSelection}>
-            <option value="">Sélectionnez une entreprise</option>
+        <label className="Entreprise">
+          <select
+            name="entreprise"
+            value={selectedEntreprise}
+            onChange={handleEntrepriseSelection}
+          >
+            <option value="">Entreprise</option>
             {entreprise.map((entreprise) => (
               <option key={entreprise.id} value={entreprise.firm_name}>
                 {entreprise.firm_name}
               </option>
             ))}
           </select>
+
+          {/* SPAN TIRET SEPARATION */}
+          <span></span>
+
           {/* ICON FLECHE BAS */}
           <img
             className="image-container"
@@ -87,18 +99,27 @@ export const Connexion = () => {
             alt="Icon flêche bas"
           />
         </label>
-    
+
         <br />
 
         {/* LABEL PASSWORD */}
         <label>
           {/* INPUT POUR ENTRER LE PASSWORD */}
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          {/* SPAN TIRET SEPARATION */}
+          <span></span>
+
           {/* ICON CADENA */}
-          <img 
-              className='cadenas' 
-              src="/imagefront/pngtree-black-padlock-png-image_37293241.png" 
-              alt="description de l'image" /> 
+          <img
+            className="cadenas"
+            src="/imagefront/pngtree-black-padlock-png-image_37293241.png"
+            alt="description de l'image"
+          />
         </label>
       </form>
     </div>
