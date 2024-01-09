@@ -4,31 +4,31 @@ import './acceilUser.css';
 import { useParams } from "react-router-dom"
 export const AccueilUser = () => {
   
-  const { userId } = useParams()
-console.log(userId)
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-          const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${userId}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-            }),
-          });
-    
-          if (response.ok) {
-    
-          } else {
-            console.error('Récupération échouée');
-          }
-        } catch (error) {
-          console.error("Erreur lors de la réception:", error);
-          setError("Erreur lors de la reception");
+  const { id } = useParams()
+  console.log(id)
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+          }),
+        });
+  
+        if (response.ok) {
+  
+        } else {
+          console.error('Récupération échouée');
         }
-      };
+      } catch (error) {
+        console.error("Erreur lors de la réception:", error);
+        setError("Erreur lors de la reception");
+      }
+    };
     return (
         <>
             <div className='conteneur'>
