@@ -1,7 +1,7 @@
 
 ### request_mail.rest
 
-POST http://localhost:3000/mail/reception-mail/30
+POST http://localhost:3000/mail/reception-mail/14
 Content-Type: application/json
 
 {}

@@ -4,6 +4,7 @@
 import express from 'express';
 import { createUser, getUsers, getUserById, updateUser, deleteUser } from '../controllers/users';
 import { isAdmin } from '../middlewares/permissions';
+import { validateUserId } from '../middlewares/user';
 
 // Crée un routeur Express
 const router = express.Router();
@@ -14,7 +15,7 @@ const router = express.Router();
 router.post('/users', createUser, isAdmin);
 
 // Route GET par ID pour récupérer un utilisateur spécifique
-router.get('/users/:id', getUserById, isAdmin)
+router.get('/users/:id', validateUserId, getUserById, isAdmin)
 
 // Définition de la route GET pour récupérer tous les utilisateurs
 router.get('/users', getUsers);

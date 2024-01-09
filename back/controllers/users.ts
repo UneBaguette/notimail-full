@@ -65,11 +65,7 @@ export const getUserById = async (req: Request, res: Response) => {
         // Récupération de l'ID utilisateur depuis les paramètres de la requête
         const userId = parseInt(req.params.id, 10);
 
-        // Vérification de la validité de l'ID
-        if (isNaN(userId)) {
-            res.status(400).json({ error: 'ID utilisateur invalide' });
-            return;
-        }
+
 
         // Recherche de l'utilisateur dans la base de données par ID
         const user = await userRepository.findOne({
