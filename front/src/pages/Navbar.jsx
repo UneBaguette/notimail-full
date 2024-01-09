@@ -42,8 +42,8 @@ export const NavBar=()=>{
     
     const getCompanyName = () => {
         // Assurez-vous que la structure des données correspond à ce à quoi vous vous attendez
-        if (users.length > 0 && users[0].companyName) {
-            return users[0].companyName;
+        if (users.length > 0 && users[0].firm_name) {
+            return users[0].firm_name;
         }
         return "Entreprise***";
     }
