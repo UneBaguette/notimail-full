@@ -40,12 +40,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     const token = jwt.sign(
       {
         userId: user.id,
-        firm_name: user.firm_name,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
         is_admin: user.is_admin,
-        has_mail: user.has_mail,
       },
       `${process.env.SESSION_SECRET}`,
       { expiresIn: '3m' }
@@ -67,8 +62,12 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
 
 
 // Contrôleur pour récupérer les informations de l'utilisateur connecté
-export const getInfoUserConnected = (req: Request, res: Response): void => {
+export const getInfoUserConnected = async (req: Request, res: Response): Promise<void> => {
   try {
+
+    // Récupération du dépôt User à partir de la connexion à la base de données
+    const userRepository = connectDB.getRepository(User);
+
     // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
     const { token } = req.cookies;
 
@@ -81,8 +80,11 @@ export const getInfoUserConnected = (req: Request, res: Response): void => {
     // Décoder le token pour obtenir les informations de l'utilisateur
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 
+    // Recherche de l'utilisateur dans la base de données par nom d'entreprise
+    const userConnected = await userRepository.findOne({ where: { id: decodedToken.userId } });
+
     // Répondre avec les informations de l'utilisateur
-    res.status(200).json({ decodedToken });
+    res.status(200).json({ userConnected });
   } catch (error) {
     // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
     console.error('Erreur lors de la récupération des informations de l\'utilisateur :', error);

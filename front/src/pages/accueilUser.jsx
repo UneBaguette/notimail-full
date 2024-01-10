@@ -26,7 +26,7 @@ export const AccueilUser = () => {
   // Au clic sur le bouton confirmer, on POST la récup du mail, et on ferme la modal
   const handleConfirm = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${user.decodedToken.userId}`, {
+      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${user?.userConnected?.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export const AccueilUser = () => {
 
   return (
     <>
-      {user.decodedToken && user.decodedToken.has_mail !== true ? (
+      {user?.userConnected && user?.userConnected?.has_mail !== true ? (
         <div className='conteneur'>
           {/* Image enveloppe */}
           <img src='/imagefront/44849e8b90ebf9de43ed123e14a739b0.png' alt='enveloppe' />
