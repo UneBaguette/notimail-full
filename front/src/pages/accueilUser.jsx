@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './acceilUser.css';
-import { useParams } from 'react-router-dom';
 
 export const AccueilUser = () => {
   const navigate = useNavigate();
-  const { id } = useParams();
-  console.log(id);
 
   const [user, setUser] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/users/${id}`)
+    fetch(`http://localhost:3000/auth/connecteduser`)
       .then((result) => result.json())
       .then((data) => {
         console.log(data);
@@ -25,7 +22,7 @@ export const AccueilUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${id}`, {
+      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${user.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
