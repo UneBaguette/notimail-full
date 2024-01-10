@@ -61,9 +61,8 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-
-// Contrôleur pour gérer la déconnexion des utilisateurs et renvoyer le token
-export const deconnexionUser = (req: Request, res: Response): void => {
+// Contrôleur pour récupérer les informations de l'utilisateur connecté
+export const getInfoUserConnected = (req: Request, res: Response): void => {
   try {
     // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
     const { token } = req.cookies;
@@ -74,6 +73,32 @@ export const deconnexionUser = (req: Request, res: Response): void => {
       return;
     }
 
+    // Décoder le token pour obtenir les informations de l'utilisateur
+    const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
+
+    // Répondre avec les informations de l'utilisateur
+    res.status(200).json({ decodedToken });
+  } catch (error) {
+    // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
+    console.error('Erreur lors de la récupération des informations de l\'utilisateur :', error);
+    res.status(500).json({ message: 'Erreur lors de la récupération des informations de l\'utilisateur.' });
+  }
+};
+
+
+// Contrôleur pour gérer la déconnexion des utilisateurs et renvoyer le token
+export const deconnexionUser = (req: Request, res: Response): void => {
+  try {
+
+    // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
+    const { token } = req.cookies;
+
+    // Vérifier si le token existe
+    if (!token) {
+      res.status(401).json({ message: "Token non trouvé. L'utilisateur n'est probablement pas connecté." });
+      return;
+    }
+    
     // Décoder le token pour obtenir les informations de l'utilisateur
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 

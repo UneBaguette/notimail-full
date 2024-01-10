@@ -3,6 +3,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 export const validateUserId = (req: Request, res: Response, next: NextFunction): void => {
+
   const userId = parseInt(req.params.id, 10);
 
   // Vérification de la validité de l'ID
