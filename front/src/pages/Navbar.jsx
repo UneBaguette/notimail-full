@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './NavBar.css'
 
 export const NavBar=()=>{
 
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
+    const { id } = useParams()
 
     const { pathname }  = useLocation();
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
-        fetch(`http://localhost:3000/user/users`)
+        fetch(`http://localhost:3000/user/users/${id}`)
             .then(result => result.json())
             .then(data => {
                 console.log(data);;
@@ -49,7 +50,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === '/accueilUser'? <span>Entreprise ****</span>: <span>Admin</span>}
+                        {pathname === `/accueilUser/${id}`? <span>Entreprise ****</span>: <span>Admin</span>}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
