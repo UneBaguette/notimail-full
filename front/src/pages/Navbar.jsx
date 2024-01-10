@@ -57,8 +57,8 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === '/accueilUser/:userId'? <span>{getCompanyName()}</span>: <span>Admin</span>}
-                        {/* {pathname === '/accueilUser'? <span>Entreprise</span>: <span>Admin</span>} */}
+                        {/* {pathname === '/accueilUser'? <span>{getCompanyName()}</span>: <span>Admin</span>} */}
+                        {pathname === '/accueilUser'? <span>Entreprise ****</span>: <span>Admin</span>}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
