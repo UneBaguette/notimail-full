@@ -21,8 +21,8 @@ const App = () => {
       <NavBar/>
       <Routes>
         <Route path="/" element={<Connexion />} />
-        <Route path="/accueilUser/:id" element={<AccueilUser />} />
-        <Route path="/accueilAdmin/:id" element={<AccueilAdmin />} />
+        <Route path="/accueilUser/:userId" element={<AccueilUser />} />
+        <Route path="/accueilAdmin" element={<AccueilAdmin />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/mail" element={<Mail />} />
         <Route path="/user" element={<User />} />
