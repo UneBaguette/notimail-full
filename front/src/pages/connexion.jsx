@@ -11,7 +11,7 @@ export const Connexion = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/user/users`)
+    fetch(`http://localhost:3000/auth/firm_names`)
       .then((result) => result.json())
       .then((data) => {
         console.log(data);
@@ -81,21 +81,24 @@ export const Connexion = () => {
             value={selectedEntreprise}
             onChange={handleEntrepriseSelection}
           >
-            <option value="">Entreprise</option>
+            <option key="" value="">
+              Entreprise
+            </option>
             {entreprise.map((entreprise) => (
-              <option key={entreprise.id} value={entreprise.firm_name}>
-                {entreprise.firm_name}
+              <option key={entreprise} value={entreprise}>
+                {entreprise}
               </option>
             ))}
           </select>
-            {/* SPAN TIRET SEPARATION */}
+
+          {/* SPAN TIRET SEPARATION */}
           <span />
-          <button id="entrepriseToggle"  tabIndex="0">
-          <img
-          className="iconbas"
-            src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
-            alt="icon fleche bas"
-          />
+          <button id="entrepriseToggle" tabIndex="0">
+            <img
+              className="iconbas"
+              src="/imagefront/pngtree-vector-down-arrow-icon-png-image_41849011.png"
+              alt="icon fleche bas"
+            />
           </button>
         </label>
 
