@@ -82,14 +82,14 @@ POST http://localhost:3000/user/users
 Content-Type: application/json
 
 {
-    "firm_name": "Solacroup",
+    "firm_name": "Institut Solacroup",
     "first_name": "Alex",
     "last_name": "Zicbel",
-    "email": "marvin.morin@institutsolacroup.com",
+    "email": "alexandre.b@institutsolacroup.com",
     "phone_number": "123456789",
     "password": "1234",
     "has_mail": false,
-    "is_admin": true
+    "is_admin": false
 }
 
 ###
@@ -98,7 +98,7 @@ GET http://localhost:3000/user/users
 
 ###
 # Récupérer un utilisateur par ID
-GET http://localhost:3000/user/users/21
+GET http://localhost:3000/user/users/32
 
 ###
 # Mettre à jour un utilisateur par ID
