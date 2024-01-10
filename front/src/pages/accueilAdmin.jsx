@@ -24,10 +24,20 @@ export const AccueilAdmin=()=>{
             <div className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
-                        <p>{user.last_name}</p>
-                        <p>{user.first_name}</p>
-                        <p>{user.email}</p>
-                        <p>{user.phone_number}</p>
+                        <div className="nohide">
+                            <h3>{user.firm_name}</h3>
+                            <p>Nom Contact</p>
+                            {/* Formatage de la date */}
+                            <div className="align_items">
+                                <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                                <img src="../../imagefront/888_edit.png" alt="edit"/>
+                            </div>
+                        </div>
+                        <div className="hidedetail">  
+                            <p>Email: {user.email}</p>
+                            <p>Téléphone: {user.phone_number}</p>
+                            <p>Indentifiant: {user.id}</p>
+                        </div>
                     </div>
                 ))}
             </div>
