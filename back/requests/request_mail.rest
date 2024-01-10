@@ -1,15 +1,14 @@
 
 ### request_mail.rest
 
-# POST pour que l'utilisateur informe de la récupération de son courrier
-POST http://localhost:3000/mail/received-mail/22
+POST http://localhost:3000/mail/reception-mail/14
 Content-Type: application/json
 
 {}
 
 ###
-# POST pour que l'entreprise indique qu'il a réceptionné un courrier
-POST http://localhost:3000/mail/picked-up-mail/22
+
+POST http://localhost:3000/mail/picked-up-mail/30
 Content-Type: application/json
 
 {}

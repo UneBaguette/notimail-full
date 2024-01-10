@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './NavBar.css'
 
 export const NavBar=()=>{
 
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
+    const { id } = useParams()
 
     const { pathname }  = useLocation();
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
-        fetch(`http://localhost:3000/user/users`)
+        fetch(`http://localhost:3000/user/users/${id}`)
             .then(result => result.json())
             .then(data => {
                 console.log(data);;
@@ -39,14 +40,6 @@ export const NavBar=()=>{
             // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
         });
     };
-    
-    const getCompanyName = () => {
-        // Assurez-vous que la structure des données correspond à ce à quoi vous vous attendez
-        if (users.length > 0 && users[0].firm_name) {
-            return users[0].firm_name;
-        }
-        return "Entreprise***";
-    }
 
     return(
         <>        
@@ -57,7 +50,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === '/accueilUser'? <span>{getCompanyName()}</span>: <span>Admin</span>}
+                        {pathname === `/accueilUser/${id}`? <span>Entreprise ****</span>: <span>Admin</span>}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
