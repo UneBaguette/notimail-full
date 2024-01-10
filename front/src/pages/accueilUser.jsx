@@ -21,12 +21,12 @@ export const AccueilUser = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [setShowModal, showModal]);
 
-  // Au clic sur le bouton confirmer, on passe le modal en visible (true)
-  const handleConfirm = () => {
+  // Au clic sur le bouton confirmer, on POST la récup du mail, et on ferme la modal
+  const handleConfirm = async () => {
     try {
-      const response = fetch(`http://localhost:3000/mail/picked-up-mail/${user.id}`, {
+      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${user.decodedToken.userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const AccueilUser = () => {
 
       if (response.ok) {
         console.log('Récupération Confirmée');
-        window.location.reload();
+        setShowModal(false);
       } else {
         console.error('Récupération échouée');
       }
@@ -47,11 +47,12 @@ export const AccueilUser = () => {
     }
   };
 
-  // Au clic sur le bouton cancel du pop-up confirmation, on repasse le pop-up en invisible
+  // Au clic sur le bouton annulé du Modal confirmation, on repasse le Modal en invisible
   const handleCancel = () => {
     setShowModal(false);
   };
 
+  // Au clic sur le bouton Réceptionné on ouvre le Modal pour confirmer
   const handleSubmit = () => {
     setShowModal(true);
   };
