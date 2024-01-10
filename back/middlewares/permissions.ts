@@ -18,9 +18,16 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
 // Middleware pour vérifier si l'utilisateur est authentifié
 export const isAuthenticated = (req: Request, res: Response, next: NextFunction) => {
     
-    const user = req.body.user as User;
+    // Récupérer le token depuis les cookies (assurez-vous que le nom du cookie est correct)
+    const { token } = req.cookies;
 
-    if (user) {
+    // Vérifier si le token existe
+    if (!token) {
+        res.status(401).json({ message: "Token non trouvé. L'utilisateur n'est probablement pas connecté." });
+        return;
+    }
+
+    if (token) {
         next();
     } else {
         res.status(401).json({ error: 'Non autorisé. Vous devez être connecté.' });

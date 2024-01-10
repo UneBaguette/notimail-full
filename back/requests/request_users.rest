@@ -98,7 +98,7 @@ GET http://localhost:3000/user/users
 
 ###
 # Récupérer un utilisateur par ID
-GET http://localhost:3000/user/users/14
+GET http://localhost:3000/user/users/21
 
 ###
 # Mettre à jour un utilisateur par ID

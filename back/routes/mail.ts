@@ -2,14 +2,13 @@
 
 import express from 'express';
 import { receivedMail, pickUpMail } from '../controllers/mail';
-import { isAdmin, isAuthenticated } from '../middlewares/permissions';
 
 const router = express.Router();
 
 // Route POST pour indiquer la réception d'un courrier par l'admin a récuperer par le user
-router.post('/received-mail/:userId', receivedMail, isAdmin);
+router.post('/received-mail/:userId', receivedMail);
 
 // Route POST pour indiquer la récupération d'un courrier par l'user
-router.post('/picked-up-mail/:userId', pickUpMail, isAuthenticated);
+router.post('/picked-up-mail/:userId', pickUpMail);
 
 export default router;
