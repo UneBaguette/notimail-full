@@ -51,7 +51,7 @@ export const receivedMail = async (req: Request, res: Response) => {
         await transporter.sendMail(mailOptions);
 
         // Répond avec un statut 200 et un message indiquant que la réception du courrier a été validée avec succès
-        res.status(200).send({ message: 'Réception du courrier validée avec succès' });
+        res.status(200).send({ message: 'Réception du courrier validée avec succès. Le client doit maintenant venir le récuperer' });
     } catch (error) {
         // En cas d'erreur, répond avec un statut 500 et un message d'erreur
         res.status(500).send({ error: 'Une erreur est survenue lors de la validation de la réception du courrier' });
@@ -76,7 +76,7 @@ export const pickUpMail = async (req: Request, res: Response) => {
     
         await userRepository.save(user);
     
-        res.status(200).send({ message: 'Courrier récupéré avec succès' });
+        res.status(200).send({ message: 'Courrier récupéré par le client avec succès' });
     } catch (error) {
         res.status(500).send({ error: 'Une erreur est survenue lors de la récupération du courrier' });
     }
