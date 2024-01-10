@@ -23,7 +23,7 @@ export const NavBar=()=>{
             .catch(Error => {
                 console.log(Error);
             })
-    }, [])
+    }, [pathname])
 
     const handleClick = () => {
         fetch('http://localhost:3000/auth/deconnexion', {
@@ -51,7 +51,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === `/accueilUser`? (<span>Entreprise {users.firm_name}</span>):(<span>Admin</span>)}
+                        {pathname === `/accueilUser`? (<span>Entreprise {users?.decodedToken?.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>

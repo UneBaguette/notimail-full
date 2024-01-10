@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './acceilUser.css';
 
 export const AccueilUser = () => {
-  const navigate = useNavigate();
 
   const [user, setUser] = useState('');
 
   useEffect(() => {
-    fetch(`http://localhost:3000/auth/connecteduser`)
+    fetch(`http://localhost:3000/auth/connecteduser`, {
+      credentials: 'include',
+    })
       .then((result) => result.json())
       .then((data) => {
         console.log(data);
@@ -33,7 +34,7 @@ export const AccueilUser = () => {
 
       if (response.ok) {
         console.log('Récupération Confirmée');
-        navigate(`/confirmer-reception`);
+        window.location.reload();
       } else {
         console.error('Récupération échouée');
       }
@@ -45,29 +46,37 @@ export const AccueilUser = () => {
 
   return (
     <>
-      {user && user.has_mail !== true ? (
+      {user.decodedToken && user.decodedToken.has_mail !== true ? (
+
         <div className='conteneur'>
           {/* Image enveloppe */}
+
           <img src='/imagefront/44849e8b90ebf9de43ed123e14a739b0.png' alt='enveloppe' />
+
           <div className='texte'>
             <h3>Vous n'avez pas de courrier en attente</h3>
           </div>
+
         </div>
-      ) : user && user.has_mail === true ? (
+      ) : (
+        
         <div className='conteneur'>
-          {/* Image enveloppe */}
+
+          {/* Image enveloppe */}          
           <img src='/imagefront/44849e8b90ebf9de43ed123e14a739b0.png' alt='enveloppe' />
+          
           <span className='petit-cercle' />
+          
           <div className='texte'>
             <h3>Vous avez du courrier en attente</h3>
           </div>
-          <Link to='/confirmer-reception'>
-            <button className='bouton-bleu' onClick={handleSubmit}>
-              Réceptionner
-            </button>
-          </Link>
+          
+          <button className='bouton-bleu' onClick={handleSubmit}>
+            Réceptionner
+          </button>
+          
         </div>
-      ) : null}
+      ) }
     </>
   );
 };
