@@ -1,13 +1,13 @@
 
 ### request_mail.rest
-
-POST http://localhost:3000/mail/reception-mail/8
+# Méthode POST pour informer l'utilisateur qu'on a reçu du courrier au Bureau
+POST http://localhost:3000/mail/received-mail/8
 Content-Type: application/json
 
 {}
 
 ###
-
+# Méthode POST pour que l'utilisateur informe avoir récuperé son courrier
 POST http://localhost:3000/mail/picked-up-mail/8
 Content-Type: application/json
 

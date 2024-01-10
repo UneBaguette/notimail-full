@@ -10,9 +10,11 @@ export const NavBar=()=>{
 
     const { pathname }  = useLocation();
 
-    // Effectue une requête GET pour récupérer la liste des catégories
+    // Effectue une requête GET pour récupérer les infos sur l'utilisateur connecté
     useEffect(() => {
-        fetch(`http://localhost:3000/auth/connecteduser`)
+        fetch(`http://localhost:3000/auth/connecteduser`, {
+            credentials: 'include', // Inclure les cookies
+        })
             .then(result => result.json())
             .then(data => {
                 console.log(data);;
@@ -49,7 +51,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === `/accueilUser`? (<span>{users.firm_name}</span>):(<span>Admin</span>)}
+                        {pathname === `/accueilUser`? (<span>Entreprise {users.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
