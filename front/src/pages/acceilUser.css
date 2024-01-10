@@ -22,6 +22,7 @@
     text-align: center;
     font-family: 'Kanit', sans-serif; /* Remplacez 'VotrePolice' par le nom de la police de votre choix */
     /* Vous pouvez également spécifier plusieurs polices de secours après la virgule, par exemple : font-family: 'VotrePolice', Arial, sans-serif; */
+    width: 200px; /* Vous pouvez ajuster la largeur selon vos préférences */
     font-size: 18px; /* Ajustez la taille de la police selon votre préférence */
     font-weight: normal; /* Vous pouvez spécifier 'bold' pour une police en gras */
         /* Ajoutez d'autres propriétés de typographie au besoin */
@@ -60,6 +61,39 @@
 .textes h5 {
     font-size: 25px; /* Vous pouvez ajuster la valeur de font-size selon votre préférence */
 }
+
+
+
+.bouton-bleu {
+    cursor: pointer;
+    background-color: blue; /* Vous pouvez ajuster la couleur selon vos préférences */
+    color: white; /* Vous pouvez ajuster la couleur du texte selon vos préférences */
+    height: 40px; /* Vous pouvez ajuster la hauteur selon vos préférences */
+    width: 250px; /* Vous pouvez ajuster la largeur selon vos préférences */
+    font-size: 20px; /* Vous pouvez ajuster la taille de la police selon vos préférences */
+    /* Ajoutez d'autres styles au besoin */
+  }
+  
+  /* ... Vos styles existants ... */
+
+.confirmation-reception-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.confirmation-reception-container h1 {
+    font-size: 24px;
+    color: #008787; /* Vous pouvez ajuster la couleur selon vos préférences */
+    font-family: 'Kanit', sans-serif; /* Remplacez 'VotrePolice' par le nom de la police de votre choix */
+    /* Ajoutez d'autres styles au besoin */
+}
+
+  
+  
+  
 
 
 
