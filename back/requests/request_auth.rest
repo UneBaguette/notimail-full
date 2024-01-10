@@ -24,3 +24,7 @@ GET http://localhost:3000/auth/connecteduser
 GET http://localhost:3000/auth/deconnexion
 
 
+
+### FIRMNAME
+GET http://localhost:3000/auth/firm_names
+

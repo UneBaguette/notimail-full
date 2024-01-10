@@ -4,7 +4,7 @@
 import express from 'express';
 
 // Importation du contrôleur d'authentification
-import { authUser, deconnexionUser, getInfoUserConnected } from '../controllers/auth';
+import { authUser, deconnexionUser, getFirmnames, getInfoUserConnected } from '../controllers/auth';
 import { isAuthenticated } from '../middlewares/permissions';
 
 
@@ -15,6 +15,9 @@ const router = express.Router();
 
 // Definition de la route POST '/connexion' avec le contrôleur authUser
 router.post('/connexion', authUser)
+
+// Définition de la route GET firm_name pour récupérer uniquement les firm_name des entreprise lors du login
+router.get('/firm_names', getFirmnames)
 
 // Définition de la route GET '/deconnexion' avec le contrôleur deconnexionUser
 router.get('/deconnexion', isAuthenticated, deconnexionUser);

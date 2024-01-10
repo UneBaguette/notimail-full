@@ -5,6 +5,8 @@ import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
+import { IsNull, Not, getConnection } from 'typeorm';
+
 
 
 // Contrôleur pour gérer l'authentification des utilisateurs
@@ -62,6 +64,8 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+
+
 // Contrôleur pour récupérer les informations de l'utilisateur connecté
 export const getInfoUserConnected = (req: Request, res: Response): void => {
   try {
@@ -99,7 +103,7 @@ export const deconnexionUser = (req: Request, res: Response): void => {
       res.status(401).json({ message: "Token non trouvé. L'utilisateur n'est probablement pas connecté." });
       return;
     }
-    
+
     // Décoder le token pour obtenir les informations de l'utilisateur
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 
@@ -109,7 +113,7 @@ export const deconnexionUser = (req: Request, res: Response): void => {
     // Répondre avec un message de déconnexion réussie et les informations de l'utilisateur extraites du token
     res.status(200).json({ message: 'Déconnexion réussie.', user: decodedToken });
     console.log(decodedToken);
-    
+
   } catch (error) {
     // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
     console.error('Erreur lors de la déconnexion :', error);
@@ -118,3 +122,28 @@ export const deconnexionUser = (req: Request, res: Response): void => {
 };
 
 
+export const getFirmnames = async (req: Request, res: Response): Promise<void> => {
+
+  try {
+    // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
+    const userRepository = connectDB.getRepository(User);
+
+    // Utilisation de la méthode find avec l'option select pour récupérer les firm_names distincts
+    const distinctFirmNames = await userRepository.find({
+      select: ['firm_name'],
+      where: {
+        firm_name: Not(IsNull()), // Assure que le firm_name n'est pas null
+      },
+    });
+
+    // Extraction des noms d'entreprise de l'objet User
+    const firmNames = distinctFirmNames.map((user) => user.firm_name);
+
+    // Réponse au client avec un code HTTP 200 (OK) et les firm_names récupérés
+    res.status(200).json(firmNames);
+  } catch (err) {
+    console.error('Erreur lors de la récupération des noms d\'entreprise :', err);
+    res.status(500).json({ error: 'Erreur serveur lors de la récupération des noms d\'entreprise' });
+  }
+
+};
