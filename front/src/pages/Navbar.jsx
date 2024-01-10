@@ -39,14 +39,6 @@ export const NavBar=()=>{
             // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
         });
     };
-    
-    const getCompanyName = () => {
-        // Assurez-vous que la structure des données correspond à ce à quoi vous vous attendez
-        if (users.length > 0 && users[0].firm_name) {
-            return users[0].firm_name;
-        }
-        return "Entreprise***";
-    }
 
     return(
         <>        
@@ -57,7 +49,6 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {/* {pathname === '/accueilUser'? <span>{getCompanyName()}</span>: <span>Admin</span>} */}
                         {pathname === '/accueilUser'? <span>Entreprise ****</span>: <span>Admin</span>}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
