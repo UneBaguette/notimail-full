@@ -8,8 +8,11 @@ import { Confirm } from "./pages/confirm";
 import { User } from "./pages/user";
 import { Edit } from "./pages/edit";
 import { NavBar } from "./pages/Navbar";
+import Modal from 'react-modal';
 
 const App = () => {
+  // Initialisation des mon modal qui est lié à la div #root
+  Modal.setAppElement('#root');
 
   return (
     <BrowserRouter>
