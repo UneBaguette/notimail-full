@@ -18,6 +18,8 @@
 .contact{
     padding: 20px;
     border-radius: 10px;
+    justify-content: space-between; /* Espacez les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
 }
 
 /* Ajoutez une marge inférieure à chaque élément utilisateur dans la section de contact */
@@ -27,4 +29,17 @@
     border-radius: 10px;
     padding: 20px;
     color:var(--background-blue);
+}
+
+/* Style pour la classe align_items */
+.align_items {
+    display: flex; /* Utilisez flexbox pour aligner les éléments horizontalement */
+    justify-content: space-between; /* Espacez les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
+    flex-direction: row; /* Dispose les éléments horizontalement */
+}
+
+/* Style pour l'image à l'intérieur de la classe align_items */
+.align_items img {
+    margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
