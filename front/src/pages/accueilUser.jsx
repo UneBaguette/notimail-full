@@ -24,10 +24,9 @@ export const AccueilUser = () => {
   }, []);
 
   // Au clic sur le bouton confirmer, on passe le modal en visible (true)
-  const handleConfirm = async (e) => {
-    e.preventDefault();
+  const handleConfirm = () => {
     try {
-      const response = await fetch(`http://localhost:3000/mail/picked-up-mail/${user.id}`, {
+      const response = fetch(`http://localhost:3000/mail/picked-up-mail/${user.id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,14 +47,13 @@ export const AccueilUser = () => {
     }
   };
 
-// Au clic sur le bouton cancel du pop-up confirmation, on repasse le pop-up en invisible
-const handleCancel = () => {
+  // Au clic sur le bouton cancel du pop-up confirmation, on repasse le pop-up en invisible
+  const handleCancel = () => {
     setShowModal(false);
-};
+  };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = () => {
     setShowModal(true);
-   
   };
 
   return (
