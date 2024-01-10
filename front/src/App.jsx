@@ -10,19 +10,14 @@ import { Edit } from "./pages/edit";
 import { NavBar } from "./pages/Navbar";
 
 const App = () => {
-  useEffect(() => {
-    document.title = "Notimail";
-  }, []);
-
-  const [userData, setUserData] = useState(null);
 
   return (
     <BrowserRouter>
       <NavBar/>
       <Routes>
         <Route path="/" element={<Connexion />} />
-        <Route path="/accueilUser/:id" element={<AccueilUser />} />
-        <Route path="/accueilAdmin/:id" element={<AccueilAdmin />} />
+        <Route path="/accueilUser" element={<AccueilUser />} />
+        <Route path="/accueilAdmin" element={<AccueilAdmin />} />
         <Route path="/confirm" element={<Confirm />} />
         <Route path="/mail" element={<Mail />} />
         <Route path="/user" element={<User />} />

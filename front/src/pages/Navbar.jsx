@@ -7,13 +7,12 @@ export const NavBar=()=>{
 
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
-    const { id } = useParams()
 
     const { pathname }  = useLocation();
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
-        fetch(`http://localhost:3000/user/users/${id}`)
+        fetch(`http://localhost:3000/auth/connecteduser`)
             .then(result => result.json())
             .then(data => {
                 console.log(data);;
@@ -50,7 +49,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === `/accueilUser/${id}`? <span>Entreprise ****</span>: <span>Admin</span>}
+                        {pathname === `/accueilUser`? (<span>{users.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
