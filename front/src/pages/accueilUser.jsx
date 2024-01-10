@@ -1,7 +1,7 @@
 // Importez useState et useEffect si ce n'est pas déjà fait
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './acceilUser.css';
+import './accueilUser.css';
 import Modal from 'react-modal';
 
 
