@@ -18,12 +18,12 @@ POST http://localhost:3000/user/users
 Content-Type: application/json
 
 {
-    "firm_name": "Entreprise 1",
-    "first_name": "Prénom",
-    "last_name": "Nom",
-    "email": "utilisateur1@example.com",
-    "phone_number": "123456789",
-    "password": "1234",
+    "firm_name": "Entreprise Morin",
+    "first_name": "Marvin",
+    "last_name": "Morin",
+    "email": "marvin.morin@institutsolacroup.com",
+    "phone_number": "0612980932",
+    "password": "2486",
     "has_mail": true,
     "is_admin": false
 }
@@ -102,20 +102,20 @@ GET http://localhost:3000/user/users/21
 
 ###
 # Mettre à jour un utilisateur par ID
-PUT http://localhost:3000/user/users/21
+PUT http://localhost:3000/user/users/14
 Content-Type: application/json
 
 {
-    "firm_name": "Nouveau nom d'entreprise",
-    "first_name": "Nouveau prénom",
-    "last_name": "Nouveau nom",
-    "email": "nouvel_utilisateur@example.com",
-    "phone_number": "987654321",
-    "password": "5678",
+    "firm_name": "Morin",
+    "first_name": "Marvin",
+    "last_name": "Morin",
+    "email": "marvin.morin@institutsolacroup.com",
+    "phone_number": "0612980932",
+    "password": "2486",
     "has_mail": false,
     "is_admin": false
 }
 
 ###
 # Supprimer un utilisateur par ID
-DELETE http://localhost:3000/user/users/28
+DELETE http://localhost:3000/user/users/14
