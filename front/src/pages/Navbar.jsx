@@ -51,7 +51,7 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === `/accueilUser`? (<span>Entreprise {users?.decodedToken?.firm_name}</span>):(<span>Admin</span>)}
+                        {pathname === `/accueilUser`? (<span>{users?.decodedToken?.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
