@@ -2,10 +2,28 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './acceilUser.css';
 import { useParams } from "react-router-dom"
+
 export const AccueilUser = () => {
   
+  const navigate = useNavigate();
+
   const { id } = useParams()
   console.log(id)
+
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/user/users/${id}`)
+      .then((result) => result.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   const handleSubmit = async (e) => {
       e.preventDefault();
       try {
@@ -20,7 +38,8 @@ export const AccueilUser = () => {
         });
   
         if (response.ok) {
-  
+          console.log('Récupération Confirmée')
+          navigate(`/accueilUser/${id}`);
         } else {
           console.error('Récupération échouée');
         }
@@ -31,18 +50,26 @@ export const AccueilUser = () => {
     };
     return (
         <>
-            <div className='conteneur'>
-                {/* Image enveloppe */}
-                <img src="/imagefront/44849e8b90ebf9de43ed123e14a739b0.png" alt="enveloppe" />
-                <span className='petit-cercle' />
-                <div className='texte'>
+          {user.has_mail != true ? 
+            (<div className='conteneur'>
+              {/* Image enveloppe */}
+              <img src="/imagefront/44849e8b90ebf9de43ed123e14a739b0.png" alt="enveloppe" />
+              <div className='texte'>
+                <h3>Vous n'avez pas de courrier en attente</h3>
+              </div>
+            </div>) 
+            : 
+            ( <div className='conteneur'>
+              {/* Image enveloppe */}
+              <img src="/imagefront/44849e8b90ebf9de43ed123e14a739b0.png" alt="enveloppe" />
+              <span className='petit-cercle' />
+              <div className='texte'>
                 <h3>Vous avez du courrier en attente</h3>
-                </div>
+              </div>
 
-                <div className='textes'>
-                  <button onSubmit={handleSubmit}>Réceptionner</button>  
-                </div>
+              <button onClick={handleSubmit}>Réceptionner</button>  
             </div>
+          )}
         </>
     )
 }

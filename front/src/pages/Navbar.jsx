@@ -6,8 +6,22 @@ import './NavBar.css'
 export const NavBar=()=>{
 
     const navigate = useNavigate();
+    const [users, setUsers] = useState([]);
 
     const { pathname }  = useLocation();
+
+    // Effectue une requête GET pour récupérer la liste des catégories
+    useEffect(() => {
+        fetch(`http://localhost:3000/user/users`)
+            .then(result => result.json())
+            .then(data => {
+                console.log(data);;
+                setUsers(data);
+            })
+            .catch(Error => {
+                console.log(Error);
+            })
+    }, [])
 
     const handleClick = () => {
         fetch('http://localhost:3000/auth/deconnexion', {
@@ -24,7 +38,15 @@ export const NavBar=()=>{
             console.error('Erreur lors de la déconnexion :', error.message);
             // Gérer l'erreur, par exemple, afficher un message à l'utilisateur
         });
-    };    
+    };
+    
+    const getCompanyName = () => {
+        // Assurez-vous que la structure des données correspond à ce à quoi vous vous attendez
+        if (users.length > 0 && users[0].firm_name) {
+            return users[0].firm_name;
+        }
+        return "Entreprise***";
+    }
 
     return(
         <>        
@@ -35,7 +57,8 @@ export const NavBar=()=>{
                     </div>
 
                     <div id='right-content'>
-                        {pathname === '/accueilAdmin'? <span>Admin</span>: <spam>Entreprise***</spam>}
+                        {/* {pathname === '/accueilUser'? <span>{getCompanyName()}</span>: <span>Admin</span>} */}
+                        {pathname === '/accueilUser'? <span>Entreprise</span>: <span>Admin</span>}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
             </nav>
