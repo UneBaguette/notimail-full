@@ -39,15 +39,14 @@
 }
 
 /* Apparaitre le rectangle*/
-.rectangle {
+.rectangle{
     display: block;
     height: 24px;
     width: 49px;
     background-color: #ccbcbc;
 }
 
-/* Apparaitre le rond*/
-.rond {
+.rond{
     display: flex;
     border-radius: 12px;
     align-items: flex-end;
