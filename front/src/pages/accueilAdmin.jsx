@@ -3,6 +3,7 @@ import './accueilAdmin.css';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
+    const [selectedUser, setSelectedUser] = useState(null);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -18,6 +19,14 @@ export const AccueilAdmin=()=>{
             })
     }, [])
 
+    const handleUserClick = (user) => {
+        if (selectedUser === user.id) {
+            setSelectedUser(null);
+        } else {
+            setSelectedUser(user.id);
+        }
+    };
+
     return(
         <div className="content-container">
             <h2>Liste des Utilisateurs</h2>
@@ -25,15 +34,25 @@ export const AccueilAdmin=()=>{
                 {users.map((user) => (
                     <div key={user.id}>
                         <div className="nohide">
-                            <h3>{user.firm_name}</h3>
-                            <p>Nom Contact</p>
+                            <div className="align_items">
+                                <h3>{user.firm_name}</h3>
+                                <div 
+                                    className={`rectangle ${selectedUser === user.id ? 'selected-rectangle' : ''}`}
+                                    onClick={() => handleUserClick(user)}
+                                >
+                                    <div className="rond"/>
+                                </div>
+                            </div>
                             {/* Formatage de la date */}
                             <div className="align_items">
-                                <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                                <div className="colomun_items">
+                                    <p>Nom Contact</p>
+                                    <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                                </div>    
                                 <img src="../../imagefront/888_edit.png" alt="edit"/>
                             </div>
                         </div>
-                        <div className="hidedetail">  
+                        <div className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>  
                             <p>Email: {user.email}</p>
                             <p>Téléphone: {user.phone_number}</p>
                             <p>Indentifiant: {user.id}</p>
