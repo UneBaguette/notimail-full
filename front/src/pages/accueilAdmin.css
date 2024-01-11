@@ -70,3 +70,15 @@
 .align_items img {
     margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
+
+/* Hidedetail - cache par défaut */
+/* .hidedetail {
+    display: none;
+    transition: all 0.3s ease-in-out;
+} */
+
+/* Affiche hidedetail lorsqu'il est sélectionné */
+.selected-rond ~ .hidedetail {
+    display: block;
+    height: 150px;
+}
