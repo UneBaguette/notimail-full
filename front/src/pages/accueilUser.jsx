@@ -8,7 +8,6 @@ import Modal from 'react-modal';
 export const AccueilUser = () => {
   const [user, setUser] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:3000/auth/connecteduser`, {
@@ -89,8 +88,8 @@ export const AccueilUser = () => {
             <h3>Confirmer la Réception</h3>
             <p>Voulez-vous vraiment confirmer la réception de votre courrier ? Cette action est irréversible.</p>
             <div className="">
-              <button onClick={handleCancel}><img className='croisrouge' src="/imagefront/def54c9845eaeb6c1436c961ee578878.png" alt="Anuler" /></button>
-              <button onClick={handleConfirm}><img className='boutonbleue' src="/imagefront/b26453a42cefa881913585877925b0fa.png" alt="Valider" /></button>
+              <img className='croisrouge' src="/imagefront/def54c9845eaeb6c1436c961ee578878.png" onClick={handleCancel} alt="Anuler" />
+              <img className='boutonbleue' src="/imagefront/b26453a42cefa881913585877925b0fa.png" onClick={handleConfirm} alt="Valider" />
             </div>
           </div>
         </div>

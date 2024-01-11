@@ -110,6 +110,7 @@
   }
   
   .croisrouge {
+    cursor: pointer;
     background-color: #FF6464;
     width: 21px;
     height: 21px;
@@ -117,6 +118,7 @@
   }
 
   .boutonbleue {
+    cursor: pointer;
     background-color: #006C92;
     width: 21px;
     height: 21px;
