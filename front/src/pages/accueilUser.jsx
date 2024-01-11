@@ -86,7 +86,7 @@ export const AccueilUser = () => {
         <div className='modal-overlay'>
           <div className='modal'>
             <h3>Confirmer la Réception</h3>
-            <p>Voulez-vous vraiment confirmer la réception de votre courrier ? Cette action est irréversible.</p>
+            <p>Confirmer la réception du courrier :</p>
             <div className="">
               <button onClick={handleCancel}>Annuler</button>
               <button onClick={handleConfirm}>Valider</button>
