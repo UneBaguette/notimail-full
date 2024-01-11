@@ -36,11 +36,21 @@ export const AccueilAdmin=()=>{
                         <div className="nohide">
                             <div className="align_items">
                                 <h3>{user.firm_name}</h3>
-                                <div 
-                                    className={`rectangle ${selectedUser === user.id ? 'selected-rectangle' : ''}`}
+                                <div
+                                    className={`rectangle ${
+                                        selectedUser === user.id
+                                            ? 'selected-rectangle'
+                                            : ''
+                                    }`}
                                     onClick={() => handleUserClick(user)}
                                 >
-                                    <div className="rond"/>
+                                    <div
+                                        className={`rond ${
+                                            selectedUser === user.id
+                                                ? 'selected-rond'
+                                                : ''
+                                        }`}
+                                    />
                                 </div>
                             </div>
                             {/* Formatage de la date */}

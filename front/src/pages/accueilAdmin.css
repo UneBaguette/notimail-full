@@ -33,24 +33,37 @@
 /* Style pour la classe align_items */
 .align_items {
     display: flex; /* Utilisez flexbox pour aligner les éléments horizontalement */
-    justify-content: space-between; /* Espacez les éléments horizontalement */
+    justify-content: space-around; /* Espacez les éléments horizontalement */
     align-items: center; /* Centre les éléments verticalement */
     flex-direction: row; /* Dispose les éléments horizontalement */
 }
 
 /* Apparaitre le rectangle*/
-.rectangle{
-    display: block;
-    height: 24px;
-    width: 49px;
-    background-color: #ccbcbc;
+.rectangle {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 1px !important; /* Ajustez la hauteur selon vos besoins */
+    width: 80px !important; /* Ajustez la largeur selon vos besoins */
+    background-color: #ccbcbc !important;
+    border-radius: 20px !important; /* Ajustez le border-radius pour rendre les coins du rectangle identiques à ceux du cercle */
 }
 
-.rond{
-    display: flex;
-    border-radius: 12px;
-    align-items: flex-end;
-    background-color: var(--background-red);
+/* Apparaitre le rond */
+.rond {
+    display: flex !important;
+    border-radius: 50% !important; /* Utilisez 50% pour créer une forme plus ronde */
+    align-items: flex-end !important; /* Ajustez si nécessaire */
+    justify-content: center !important; /* Ajustez si nécessaire */
+    background-color: var(--background-red) !important;
+    width: 1px !important; /* Ajustez la largeur selon vos besoins */
+    height: 1px !important; /* Ajustez la hauteur selon vos besoins */
+}
+
+/* Ajoutez un style pour le rond lorsqu'il est sélectionné */
+.rond.selected-rond {
+    background-color: var(--background-blue)!important; /* Remplacez par la couleur bleue que vous souhaitez */
+    align-items: flex-start !important;/* mettre à gauche */
 }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
