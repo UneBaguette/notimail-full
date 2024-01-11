@@ -5,7 +5,7 @@ import connectDB from '../datasource';
 import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
-import { IsNull, Not, getConnection } from 'typeorm';
+import { IsNull, Not } from 'typeorm';
 
 
 
