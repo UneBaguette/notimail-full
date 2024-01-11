@@ -18,7 +18,7 @@ router.post('/users', createUser);
 router.get('/users/:id', validateUserId, getUserById)
 
 // Définition de la route GET pour récupérer tous les utilisateurs
-router.get('/users', getUsers);
+router.get('/users', getUsers, isAdmin);
 
 // Route PUT pour mettre à jour un utilisateur par ID
 router.put('users/:id', validateUserId, updateUser)

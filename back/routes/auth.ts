@@ -5,7 +5,7 @@ import express from 'express';
 
 // Importation du contrôleur d'authentification
 import { authUser, deconnexionUser, getFirmnames, getInfoUserConnected } from '../controllers/auth';
-import { isAuthenticated } from '../middlewares/permissions';
+import { checkAuth } from '../middlewares/auth';
 
 
 // Création d'un objet Router d'Express
@@ -20,10 +20,10 @@ router.post('/connexion', authUser)
 router.get('/firm_names', getFirmnames)
 
 // Définition de la route GET '/deconnexion' avec le contrôleur deconnexionUser
-router.get('/deconnexion', isAuthenticated, deconnexionUser);
+router.get('/deconnexion', checkAuth, deconnexionUser);
 
 // Définition de la route GET '/connecteduser' avec le contrôleur getUserInfo
-router.get('/connecteduser', isAuthenticated, getInfoUserConnected);
+router.get('/connecteduser', checkAuth, getInfoUserConnected);
 
 // Exportation du routeur pour qu'il puisse être utilisé ailleurs dans l'application
 export default router;
