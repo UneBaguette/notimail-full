@@ -109,7 +109,18 @@
     text-align: center;
   }
   
-  /* Ajoutez d'autres styles au besoin */
+  .croisrouge {
+    background-color: #FF6464;
+    width: 21px;
+    height: 21px;
+    border-radius: 30px; /* Ajustez la valeur de border-radius en fonction de la courbure que vous souhaitez */
+  }
+
+  .boutonbleue {
+    background-color: #006C92;
+    width: 21px;
+    height: 21px;
+  }
   
 
   
