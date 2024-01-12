@@ -14,7 +14,7 @@ export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
     // Vérifier si le token existe
     if (!token) {
         // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-        res.redirect('/connexion');
+        res.redirect('/');
         return;
     }
 
