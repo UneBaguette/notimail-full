@@ -38,34 +38,6 @@
     flex-direction: row; /* Dispose les éléments horizontalement */
 }
 
-/* Apparaitre le rectangle*/
-/* .rectangle {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    height: 1px !important;
-    width: 80px !important;
-    background-color: #ccbcbc !important;
-    border-radius: 20px !important; /
-} */
-
-/* Apparaitre le rond */
-/* .rond {
-    display: flex !important;
-    border-radius: 50% !important; 
-    align-items: flex-end !important; 
-    justify-content: center !important; 
-    background-color: var(--background-red) !important;
-    width: 1px !important; 
-    height: 1px !important; 
-} */
-
-/* Ajoutez un style pour le rond lorsqu'il est sélectionné */
-/* .rond.selected-rond {
-    background-color: var(--background-blue)!important; 
-    align-items: flex-start !important;
-} */
-
 /* .slideOne */
 .slideOne {
     width: 50px;
@@ -74,42 +46,56 @@
     margin: 20px auto;
     position: relative;
     border-radius: 50px;
-    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
-    label {
-      display: block;
-      width: 16px;
-      height: 16px;
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      cursor: pointer;
-      background: #fcfff4;
-      background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      border-radius: 50px;
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
-      transition: all 0.4s ease;
-    }
-    input[type=checkbox] {
-      visibility: hidden;
-      &:checked + label {
-        left: 37px;
-      }  
-    }
-  }
+    cursor: pointer;
+}
+
+.slideOne label {
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    cursor: pointer;
+    background: #fcfff4;
+    background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    border-radius: 50px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.slideOne input[type=checkbox] {
+    visibility: hidden;
+}
+
+/* Ajout de styles pour le curseur lorsqu'il est sélectionné */
+.slideOneChecked label {
+    left: 37px;
+    background: var(--background-blue);
+}
+
+/* Hidedetail - cache par défaut */
+.hidedetail {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Affiche hidedetail lorsqu'il est sélectionné */
+.slideOneChecked ~ .hidedetail {
+    display: block;
+}
+
+/* Style pour l'image à l'intérieur de la classe align_items */
+.align_items img {
+    margin-left: 10px;
+}
+
+/* Ajout d'un style pour le curseur lorsqu'il n'est pas sélectionné */
+.slideOne:not(.slideOneChecked) label {
+    background: var(--background-red);
+}
 
 /* Style pour l'image à l'intérieur de la classe align_items */
 .align_items img {
     margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
-
-/* Hidedetail - cache par défaut */
-/* .hidedetail {
-    display: none;
-    transition: all 0.3s ease-in-out;
-} */
-
-/* Affiche hidedetail lorsqu'il est sélectionné */
-/* .selected-rond ~ .hidedetail {
-    display: block;
-    height: 150px;
-} */

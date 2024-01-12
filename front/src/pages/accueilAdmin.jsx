@@ -33,40 +33,23 @@ export const AccueilAdmin=()=>{
             <div className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
-                        <div className="nohide">
-                            <div className="align_items">
-                                <h3>{user.firm_name}</h3>
-                                {/* <div
-                                    className={`rectangle ${
-                                        selectedUser === user.id
-                                            ? 'selected-rectangle'
-                                            : ''
-                                    }`}
-                                    onClick={() => handleUserClick(user)}
-                                >
-                                    <div
-                                        className={`rond ${
-                                            selectedUser === user.id
-                                                ? 'selected-rond'
-                                                : ''
-                                        }`}
-                                    />
-                                </div> */}
-                                {/* <section title=".slideOne"> */}
-                                    <div class="slideOne">  
-                                        <input type="checkbox" value="None" id="slideOne" name="check" checked />
-                                        <label for="slideOne"></label>
-                                    </div>
-                                {/* </section> */}
+                        <div className="align_items">
+                            <h3>{user.firm_name}</h3>
+                            <div 
+                                className={`slideOne ${selectedUser === user.id ? 'slideOneChecked' : ''} ${selectedUser ? 'selected' : ''}`} 
+                                onClick={() => handleUserClick(user)}
+                            >
+                                <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
+                                <label htmlFor={`slideOne_${user.id}`}></label>
                             </div>
-                            <div className="align_items">
-                                <div className="colomun_items">
-                                    <p>Nom Contact</p>
-                                    {/* Formatage de la date */}
-                                    <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
-                                </div>    
-                                <img src="../../imagefront/888_edit.png" alt="edit"/>
-                            </div>
+                        </div>
+                        <div className="align_items">
+                            <div className="colomun_items">
+                                <p>Nom Contact</p>
+                                {/* Formatage de la date */}
+                                <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                            </div>    
+                            <img src="../../imagefront/888_edit.png" alt="edit"/>
                         </div>
                         <div className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>  
                             <p>Email: {user.email}</p>
