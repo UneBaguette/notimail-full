@@ -2,7 +2,6 @@
 
 import express from 'express';
 import { receivedMail, pickUpMail } from '../controllers/mail';
-import { validateUserId } from '../middlewares/user';
 
 const router = express.Router();
 
