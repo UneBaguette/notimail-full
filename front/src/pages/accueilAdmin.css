@@ -39,32 +39,63 @@
 }
 
 /* Apparaitre le rectangle*/
-.rectangle {
+/* .rectangle {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    height: 1px !important; /* Ajustez la hauteur selon vos besoins */
-    width: 80px !important; /* Ajustez la largeur selon vos besoins */
+    height: 1px !important;
+    width: 80px !important;
     background-color: #ccbcbc !important;
-    border-radius: 20px !important; /* Ajustez le border-radius pour rendre les coins du rectangle identiques à ceux du cercle */
-}
+    border-radius: 20px !important; /
+} */
 
 /* Apparaitre le rond */
-.rond {
+/* .rond {
     display: flex !important;
-    border-radius: 50% !important; /* Utilisez 50% pour créer une forme plus ronde */
-    align-items: flex-end !important; /* Ajustez si nécessaire */
-    justify-content: center !important; /* Ajustez si nécessaire */
+    border-radius: 50% !important; 
+    align-items: flex-end !important; 
+    justify-content: center !important; 
     background-color: var(--background-red) !important;
-    width: 1px !important; /* Ajustez la largeur selon vos besoins */
-    height: 1px !important; /* Ajustez la hauteur selon vos besoins */
-}
+    width: 1px !important; 
+    height: 1px !important; 
+} */
 
 /* Ajoutez un style pour le rond lorsqu'il est sélectionné */
-.rond.selected-rond {
-    background-color: var(--background-blue)!important; /* Remplacez par la couleur bleue que vous souhaitez */
-    align-items: flex-start !important;/* mettre à gauche */
-}
+/* .rond.selected-rond {
+    background-color: var(--background-blue)!important; 
+    align-items: flex-start !important;
+} */
+
+/* .slideOne */
+.slideOne {
+    width: 50px;
+    height: 10px;
+    background: #333;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50px;
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2);
+    label {
+      display: block;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      cursor: pointer;
+      background: #fcfff4;
+      background: linear-gradient(to bottom, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      border-radius: 50px;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+    input[type=checkbox] {
+      visibility: hidden;
+      &:checked + label {
+        left: 37px;
+      }  
+    }
+  }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
 .align_items img {
@@ -78,7 +109,7 @@
 } */
 
 /* Affiche hidedetail lorsqu'il est sélectionné */
-.selected-rond ~ .hidedetail {
+/* .selected-rond ~ .hidedetail {
     display: block;
     height: 150px;
-}
+} */
