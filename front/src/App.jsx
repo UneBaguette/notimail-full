@@ -8,6 +8,7 @@ import { Confirm } from "./pages/confirm";
 import { User } from "./pages/user";
 import { Edit } from "./pages/edit";
 import { NavBar } from "./pages/Navbar";
+import { AjoutEntreprise } from "./pages/ajoutEntreprise";
 import Modal from 'react-modal';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/mail" element={<Mail />} />
         <Route path="/user" element={<User />} />
         <Route path="/edit" element={<Edit />} />
+        <Route path="/ajoutEntreprise" element={<AjoutEntreprise />} />
       </Routes>
     </BrowserRouter>
   );
