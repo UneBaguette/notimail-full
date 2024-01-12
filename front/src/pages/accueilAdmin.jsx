@@ -7,7 +7,7 @@ export const AccueilAdmin=()=>{
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
-        fetch(`http://localhost:3000/user/users`)
+        fetch(`http://localhost:3000/user/users`,{credentials:'include'})
             .then(result => result.json())
             .then(data => {
                 console.log(data);

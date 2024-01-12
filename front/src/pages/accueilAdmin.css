@@ -81,7 +81,7 @@
 }
 
 /* Affiche hidedetail lorsqu'il est sélectionné */
-.slideOneChecked ~ .hidedetail {
+.slideOne.selected .slideOneChecked ~ .hidedetail {
     display: block;
 }
 
