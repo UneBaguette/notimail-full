@@ -51,6 +51,33 @@ export const AccueilUser = () => {
     return null; // ou affichez un composant pour un utilisateur non connecté
   }
 
+  // Au clic sur le bouton confirmer, on POST la récup du mail, et on ferme la modal
+  const handleConfirm = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/mail/picked-up-mail/${user?.userConnected?.id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify({}),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Récupération Confirmée");
+        setShowModal(false);
+      } else {
+        console.error("Récupération échouée");
+      }
+    } catch (error) {
+      console.error("Erreur lors de la réception:", error);
+      setError("Erreur lors de la reception");
+    }
+  };
+
   // Au clic sur le bouton annulé du Modal confirmation, on repasse le Modal en invisible
   const handleCancel = () => {
     setShowModal(false);
