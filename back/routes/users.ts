@@ -12,13 +12,13 @@ const router = express.Router();
 // Toutes les routes users commence par : user/users
 
 // Route POST pour créer un utilisateur
-router.post('/users', createUser);
+router.post('/users', validateUserId, createUser);
 
 // Route GET par ID pour récupérer un utilisateur spécifique
 router.get('/users/:id', validateUserId, getUserById)
 
 // Définition de la route GET pour récupérer tous les utilisateurs
-router.get('/users', getUsers, isAdmin);
+router.get('/users', getUsers);
 
 // Route PUT pour mettre à jour un utilisateur par ID
 router.put('users/:id', validateUserId, updateUser)
