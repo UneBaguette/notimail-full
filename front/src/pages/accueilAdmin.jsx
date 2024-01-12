@@ -34,25 +34,31 @@ export const AccueilAdmin=()=>{
                 {users.map((user) => (
                     <div key={user.id}>
                         <div className="nohide">
-                        <div className="align_items">
-                            <h3>{user.firm_name}</h3>
-                            <div
-                                className={`rectangle ${
-                                    selectedUser === user.id
-                                        ? 'selected-rectangle'
-                                        : ''
-                                }`}
-                                onClick={() => handleUserClick(user)}
-                            >
-                                <div
-                                    className={`rond ${
+                            <div className="align_items">
+                                <h3>{user.firm_name}</h3>
+                                {/* <div
+                                    className={`rectangle ${
                                         selectedUser === user.id
-                                            ? 'selected-rond'
+                                            ? 'selected-rectangle'
                                             : ''
                                     }`}
-                                />
+                                    onClick={() => handleUserClick(user)}
+                                >
+                                    <div
+                                        className={`rond ${
+                                            selectedUser === user.id
+                                                ? 'selected-rond'
+                                                : ''
+                                        }`}
+                                    />
+                                </div> */}
+                                {/* <section title=".slideOne"> */}
+                                    <div class="slideOne">  
+                                        <input type="checkbox" value="None" id="slideOne" name="check" checked />
+                                        <label for="slideOne"></label>
+                                    </div>
+                                {/* </section> */}
                             </div>
-                        </div>
                             <div className="align_items">
                                 <div className="colomun_items">
                                     <p>Nom Contact</p>
