@@ -36,6 +36,20 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
+    // Exclure le champ du mot de passe de la réponse JSON
+    const userWithoutPassword = {
+      id: user.id,
+      firm_name: user.firm_name,
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      phone_number: user.phone_number,
+      last_received_mail: user.last_received_mail,
+      last_picked_up: user.last_picked_up,
+      has_mail: user.has_mail,
+      is_admin: user.is_admin,
+    };
+
     // Création du token JWT
     const token = jwt.sign(
       {
@@ -51,7 +65,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     console.log('Token créé :', token, user.id);
 
     // Authentification réussie, renvoie un message de succès et les détails de l'utilisateur
-    res.status(200).json({ message: 'Authentification réussie.', user });
+    res.status(200).json({ message: 'Authentification réussie.', user: userWithoutPassword});
   } catch (error) {
     // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
     console.error('Erreur lors de l\'authentification :', error);
@@ -81,7 +95,10 @@ export const getInfoUserConnected = async (req: Request, res: Response): Promise
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 
     // Recherche de l'utilisateur dans la base de données par nom d'entreprise
-    const userConnected = await userRepository.findOne({ where: { id: decodedToken.userId } });
+    const userConnected = await userRepository.findOne({ 
+      where: { id: decodedToken.userId },
+      select: ['id', 'firm_name', 'first_name', 'last_name', 'email', 'phone_number', 'last_received_mail', 'last_picked_up', 'has_mail', 'is_admin'],
+    });
 
     // Répondre avec les informations de l'utilisateur
     res.status(200).json({ userConnected });

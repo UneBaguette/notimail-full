@@ -119,3 +119,6 @@ Content-Type: application/json
 ###
 # Supprimer un utilisateur par ID
 DELETE http://localhost:3000/user/users/14
+###
+GET http://localhost:3000/user/users
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNzA1MDU0NzU3LCJleHAiOjE3MDUwNTQ5Mzd9.iYOuR3hfWmd16IYzkQIvPEN711uGiGSkn6VJk5O8IW8; Max-Age=180; Path=/; Expires=Fri, 12 Jan 2024 10:22:17 GMT; HttpOnly
