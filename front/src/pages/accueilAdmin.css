@@ -76,13 +76,16 @@
 
 /* Hidedetail - cache par défaut */
 .hidedetail {
-    display: none;
-    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
 }
 
-/* Affiche hidedetail lorsqu'il est sélectionné */
-.slideOne.selected .slideOneChecked ~ .hidedetail {
-    display: block;
+/* Affiche les détails lorsque la classe 'show' est présente */
+.hidedetail.show {
+    opacity: 1;
+    height: auto;
 }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
