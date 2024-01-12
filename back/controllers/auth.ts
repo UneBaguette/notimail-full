@@ -81,7 +81,10 @@ export const getInfoUserConnected = async (req: Request, res: Response): Promise
     const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
 
     // Recherche de l'utilisateur dans la base de données par nom d'entreprise
-    const userConnected = await userRepository.findOne({ where: { id: decodedToken.userId } });
+    const userConnected = await userRepository.findOne({ 
+      where: { id: decodedToken.userId },
+      select: ['id', 'firm_name', 'first_name', 'last_name', 'email', 'phone_number', 'last_received_mail', 'last_picked_up', 'has_mail', 'is_admin'],
+    });
 
     // Répondre avec les informations de l'utilisateur
     res.status(200).json({ userConnected });

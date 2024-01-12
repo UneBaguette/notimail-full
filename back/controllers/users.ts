@@ -42,8 +42,10 @@ export const getUsers = async (req: Request, res: Response) => {
         // Récupération du référentiel (repository) d'utilisateurs depuis la base de données
         const userRepository = connectDB.getRepository(User);
 
-        // Récupération de tous les utilisateurs depuis la base de données
-        const users = await userRepository.find();
+        // Récupération de tous les utilisateurs depuis la base de données en enlevant le Password
+        const users = await userRepository.find({
+            select: ['id', 'firm_name', 'first_name', 'last_name', 'email', 'phone_number', 'last_received_mail', 'last_picked_up', 'has_mail', 'is_admin'],
+        });
 
         // Réponse au client avec un code HTTP 200 (OK) et les données des utilisateurs récupérés
         res.status(200).json(users);
@@ -68,6 +70,7 @@ export const getUserById = async (req: Request, res: Response) => {
         // Recherche de l'utilisateur dans la base de données par ID
         const user = await userRepository.findOne({
             where: { id: userId },
+            select: ['id', 'firm_name', 'first_name', 'last_name', 'email', 'phone_number', 'last_received_mail', 'last_picked_up', 'has_mail', 'is_admin'],
         });
 
         // Vérification de l'existence de l'utilisateur
