@@ -74,6 +74,17 @@
     background: var(--background-blue);
 }
 
+/* Ajoutez une propriété cursor pour indiquer que l'élément est cliquable */
+.nohide {
+    cursor: pointer;
+}
+
+/* Affiche les détails lorsque la classe 'show' est présente sur .nohide */
+.nohide.show ~ .hidedetail {
+    opacity: 1;
+    height: auto;
+}
+
 /* Hidedetail - cache par défaut */
 .hidedetail {
     opacity: 0;
@@ -83,10 +94,10 @@
 }
 
 /* Affiche les détails lorsque la classe 'show' est présente */
-.hidedetail.show {
+/* .hidedetail.show {
     opacity: 1;
     height: auto;
-}
+} */
 
 /* Style pour l'image à l'intérieur de la classe align_items */
 .align_items img {

@@ -4,6 +4,7 @@ import './accueilAdmin.css';
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedUserSelect, setSelectedUserSelect] = useState(null);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -17,11 +18,36 @@ export const AccueilAdmin=()=>{
             .catch(Error => {
                 console.log(Error);
             })
-    }, [])
+    }, [])    
+    
+    const handleUserClick = (user, event) => {
+        console.log('handleUserClick called');
+        console.log('Event target classes:', event.target.classList);
+    
+        if (event.target.classList.contains('nohide')) {
+            console.log('Clicked on .nohide element');
+            setSelectedUser((prevSelectedUser) => {
+                return prevSelectedUser === user.id ? null : user.id;
+            });
+        }
+    
+        // Ajoute ou retire la classe .show de l'élément .hidedetail
+        const hidedetailElement = event.target.nextSibling;
+        console.log('Hidedetail element:', hidedetailElement);
+        if (hidedetailElement && hidedetailElement.classList.contains('hidedetail')) {
+            hidedetailElement.classList.toggle('show');
+        }
+    };    
+    
+    // const handleUserClick = (user) => {
+    //     setSelectedUser((prevSelectedUser) => {
+    //         return prevSelectedUser === user.id ? null : user.id;
+    //     });
+    // };
 
-    const handleUserClick = (user) => {
-        setSelectedUser((prevSelectedUser) => {
-            return prevSelectedUser === user.id ? null : user.id;
+    const handleUserClickSelect = (user) => {
+        setSelectedUserSelect((prevSelectedUserSelect) => {
+            return prevSelectedUserSelect === user.id ? null : user.id;
         });
     };
 
@@ -31,12 +57,24 @@ export const AccueilAdmin=()=>{
             <section className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
-                        <section className="nohide">
+                    {/* <div key={user.id} className={`nohide ${selectedUser === user.id ? 'show' : ''}`} onClick={(event) => handleUserClick(user, event)}> */}
+                        {/* <section className="nohide"> */}
                             <div className="align_items">
-                                <h3>{user.firm_name}</h3>
-                                <div 
+                                {/* <div className="nohide"> */}
+                                <div
+                                    className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
+                                    onClick={(event) => handleUserClick(user, event)}
+                                >
+                                    <h3>{user.firm_name}</h3>
+                                </div>
+                                {/* </div> */}
+                                {/* <div 
                                     className={`slideOne ${selectedUser === user.id ? 'slideOneChecked' : ''} ${selectedUser ? 'selected' : ''}`} 
                                     onClick={() => handleUserClick(user)}
+                                > */}
+                                <div 
+                                    className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
+                                    onClick={() => handleUserClickSelect(user)}
                                 >
                                     <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
                                     <label htmlFor={`slideOne_${user.id}`}></label>
@@ -50,8 +88,13 @@ export const AccueilAdmin=()=>{
                                 </div>    
                                 <img src="../../imagefront/888_edit.png" alt="edit"/>
                             </div>
-                        </section>
-                        <section className={`hidedetail ${selectedUser ? 'show' : ''}`}>  
+                        {/* </section> */}
+                        {/* <section className={`hidedetail ${selectedUser ? 'show' : ''}`}>  
+                            <p>Email: {user.email}</p>
+                            <p>Téléphone: {user.phone_number}</p>
+                            <p>Indentifiant: {user.id}</p>
+                        </section> */}
+                        <section className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>
                             <p>Email: {user.email}</p>
                             <p>Téléphone: {user.phone_number}</p>
                             <p>Indentifiant: {user.id}</p>
