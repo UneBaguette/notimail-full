@@ -3,8 +3,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
 
-
-
 // Middleware pour vérifier si l'utilisateur est connecté
 export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
     

@@ -43,4 +43,14 @@ export class User {
         this.last_received_mail = new Date();
         this.last_picked_up = new Date();
     }
+
+    // Getter pour obtenir la date de réception du courrier au format local (français)
+    get formattedLastReceivedMail(): string {
+        return this.last_received_mail?.toLocaleString('fr-FR') || '';
+    }
+
+    // Getter pour obtenir la date de la dernière récupération au format local (français)
+    get formattedLastPickedUp(): string {
+        return this.last_picked_up?.toLocaleString('fr-FR') || '';
+    }
 }

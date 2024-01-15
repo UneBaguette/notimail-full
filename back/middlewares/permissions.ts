@@ -1,11 +1,7 @@
 // middlewares/permissions.ts
 
 import { Request, Response, NextFunction } from 'express';
-import { User } from '../models/users';
 import * as jwt from 'jsonwebtoken';
-
-
-
 
 
 // Middleware pour vérifier si l'utilisateur est administrateur
