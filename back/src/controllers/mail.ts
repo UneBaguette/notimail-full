@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer'; // Import nodemailer
 import connectDB from '../datasource'; // Importation de l'instance de connexion à la base de données
 import { Request, Response } from 'express';
 import { User } from '../models/users';
-import request from 'request';
+import axios from 'axios';
 
 export const receivedMail = async (req: Request, res: Response) => {
     try {
@@ -73,38 +73,36 @@ export const receivedMail = async (req: Request, res: Response) => {
             },
 
             // Corps de la requête, contenant les options du SMS définies précédemment
-            body: smsOptions,
+            data: smsOptions,
 
             // Indique que le corps de la requête est au format JSON
-            json: true,
+            //json: true,
         };
 
         // Affiche les options de la requête dans la console (peut être utile pour le débogage)
         console.log(requestOptions);
 
         // Envoie la requête HTTP pour envoyer le SMS via l'API AllMySMS
-        request(requestOptions, (error: any, response: any, body: any) => {
-            if (error) {
-                // En cas d'erreur lors de l'envoi du SMS, affiche l'erreur dans la console
-                console.error('Erreur lors de l\'envoi du SMS:', error);
-
-                // Répond avec un statut 500 et un message d'erreur indiquant le problème
-                res.status(500).send({ error: 'Une erreur est survenue lors de l\'envoi du SMS' });
+        try {
+            const response = await axios(requestOptions);
+        
+            // Vérifiez la réponse d'AllmySMS et ajustez votre gestion d'erreur si nécessaire
+            if (response.status === 201 && response.data.code === 100) {
+                console.log('SMS envoyé avec succès');
             } else {
-                // Si la requête a été traitée avec succès par AllMySMS, vérifie la réponse
-                if (response.statusCode === 201 && body.code === 100) {
-                    // Affiche dans la console que le SMS a été envoyé avec succès
-                    console.log('SMS envoyé avec succès');
-                } else {
-                    // En cas d'erreur dans la réponse d'AllMySMS, affiche les détails de l'erreur dans la console
-                    console.error('Erreur lors de l\'envoi du SMS:', body.code, body.description);
-                }
-
-                // Répond avec un statut 200 et un message indiquant que la réception du courrier a été validée avec succès
-                res.status(200).send({ message: 'Réception du courrier validée avec succès. Le client doit maintenant venir le récupérer' });
+                console.error('Erreur lors de l\'envoi du SMS:', response.data.code, response.data.description);
             }
-        });
-
+        
+            // Répond avec un statut 200 et un message indiquant que la réception du courrier a été validée avec succès
+            res.status(200).send({ message: 'Réception du courrier validée avec succès. Le client doit maintenant venir le récupérer' });
+        } catch (error) {
+            // En cas d'erreur lors de l'envoi du SMS, affiche l'erreur dans la console
+            console.error('Erreur lors de l\'envoi du SMS:', error);
+        
+            // Répond avec un statut 500 et un message d'erreur indiquant le problème
+            res.status(500).send({ error: 'Une erreur est survenue lors de l\'envoi du SMS' });
+        }
+        
     } catch (error) {
         // En cas d'erreur, répond avec un statut 500 et un message d'erreur
         res.status(500).send({ error: 'Une erreur est survenue lors de la validation de la réception du courrier' });

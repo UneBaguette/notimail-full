@@ -21,13 +21,13 @@ Après avoir cloné le projet, exécutez la commande suivante dans le terminal p
 - bcrypt: Une bibliothèque pour le hachage sécurisé des mots de passe.
 - nodemailer: Une bibliothèque pour l'envoi d'e-mails depuis Node.js.
 - reflect-metadata: Une bibliothèque pour les annotations et la réflexion en TypeScript.
-- request: Une bibliothèque pour effectuer et gérer des requêtes HTTP dans Node.js.
+- axios: Une bibliothèque pour effectuer et gérer des requêtes HTTP dans Node.js.
 - ts-node: Un outil qui permet d'exécuter des fichiers TypeScript directement sans nécessiter de conversion en JavaScript.
 - typescript: Le langage de programmation qui permet d'écrire du code TypeScript.
 - @types/express: Les types TypeScript pour Express.
 - @types/jsonwebtoken: Les types TypeScript pour jsonwebtoken.
 - @types/bcrypt: Les types TypeScript pour bcrypt.
-- @types/request: Les types TypeScript pour request.
+- @types/axios: Les types TypeScript pour axios.
 - @types/node: Les types TypeScript pour Node.js.
 
 ## Configuration de la Base de Données
