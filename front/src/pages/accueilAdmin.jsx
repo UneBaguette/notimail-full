@@ -40,12 +40,6 @@ export const AccueilAdmin=()=>{
             hidedetailElement.classList.toggle('show');
         }
     };    
-    
-    // const handleUserClick = (user) => {
-    //     setSelectedUser((prevSelectedUser) => {
-    //         return prevSelectedUser === user.id ? null : user.id;
-    //     });
-    // };
 
     const handleUserClickSelect = (user) => {
         setSelectedUserSelect((prevSelectedUserSelect) => {
@@ -59,43 +53,29 @@ export const AccueilAdmin=()=>{
             <section className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
-                    {/* <div key={user.id} className={`nohide ${selectedUser === user.id ? 'show' : ''}`} onClick={(event) => handleUserClick(user, event)}> */}
-                        {/* <section className="nohide"> */}
-                            <div className="align_items">
-                                {/* <div className="nohide"> */}
-                                <div
-                                    className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
-                                    onClick={(event) => handleUserClick(user, event)}
-                                >
-                                    <h3>{user.firm_name}</h3>
-                                </div>
-                                {/* </div> */}
-                                {/* <div 
-                                    className={`slideOne ${selectedUser === user.id ? 'slideOneChecked' : ''} ${selectedUser ? 'selected' : ''}`} 
-                                    onClick={() => handleUserClick(user)}
-                                > */}
-                                <div 
-                                    className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
-                                    onClick={() => handleUserClickSelect(user)}
-                                >
-                                    <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
-                                    <label htmlFor={`slideOne_${user.id}`}></label>
-                                </div>
+                        <div className="align_items">
+                            <h3
+                                className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
+                                onClick={(event) => handleUserClick(user, event)}
+                            >
+                                {user.firm_name}
+                            </h3>
+                            <div 
+                                className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
+                                onClick={() => handleUserClickSelect(user)}
+                            >
+                                <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
+                                <label htmlFor={`slideOne_${user.id}`}></label>
                             </div>
-                            <div className="align_items">
-                                <div className="colomun_items">
-                                    <p>Nom Contact</p>
-                                    {/* Formatage de la date */}
-                                    <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
-                                </div>    
-                                <img src="../../imagefront/888_edit.png" alt="edit"/>
-                            </div>
-                        {/* </section> */}
-                        {/* <section className={`hidedetail ${selectedUser ? 'show' : ''}`}>  
-                            <p>Email: {user.email}</p>
-                            <p>Téléphone: {user.phone_number}</p>
-                            <p>Indentifiant: {user.id}</p>
-                        </section> */}
+                        </div>
+                        <div className="align_items">
+                            <div className="colomun_items">
+                                <p>Nom Contact</p>
+                                {/* Formatage de la date */}
+                                <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                            </div>    
+                            <img src="../../imagefront/888_edit.png" alt="edit"/>
+                        </div>
                         <section className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>
                             <p>Email: {user.email}</p>
                             <p>Téléphone: {user.phone_number}</p>
