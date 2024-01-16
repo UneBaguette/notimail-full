@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './accueilAdmin.css';
+import { FaPlus } from "react-icons/fa6";
+import { RiMailSendLine } from "react-icons/ri";
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -101,6 +103,14 @@ export const AccueilAdmin=()=>{
                         </section>
                     </div>
                 ))}
+            </section>
+            <section class="ajoutUser">
+                <a href="/ajoutEntreprise" className="blue-background">
+                    <FaPlus />
+                </a>
+                <a href="#" className="blue-background">
+                    <RiMailSendLine />
+                </a>
             </section>
         </div>
     )

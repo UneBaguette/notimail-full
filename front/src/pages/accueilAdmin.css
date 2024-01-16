@@ -113,3 +113,23 @@
 .align_items img {
     margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
+
+/* Positionner en bas de la page */
+.ajoutUser{
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+}
+
+.blue-background {
+    background-color: var(--background-blue);
+    border-radius: 50%;
+    padding: 10px;
+    color: var(--background-gray);
+    text-decoration: none;
+    margin-right: 10px;
+}
