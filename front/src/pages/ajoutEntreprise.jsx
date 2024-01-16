@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ajoutEntreprise.css';
 
 export const AjoutEntreprise = ({ onSubmit }) => {
   const [entreprise, setEntreprise] = useState("");
@@ -43,14 +44,15 @@ export const AjoutEntreprise = ({ onSubmit }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {/* Ajout de l'image centrée en haut avec arrière-plan bleu */}
-        <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '20%' }} />
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', justifyContent: 'center', width: '50%' }}>
+        <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '10%' }} />
         <center>
-          <p>Entreprise</p> {/* Texte "Entreprise" au-dessus de l'image */}
-          <div style={{ backgroundColor: 'blue', padding: '20px', borderRadius: '10px', marginBottom: '20px', width: '20%'  }}>
-          <img src="/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" />
-          </div>
-        </center>
+  <div style={{ display: 'flex', alignItems: 'center' }}>
+    <img className='fleche' src="/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" style={{ width: '20%' }} />
+    <p className='texte'>Entreprise</p>
+  </div>
+</center>
+
+      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', justifyContent: 'center', width: '50%' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
           <label htmlFor="entreprise">Nom de l'entreprise :</label>
           <input
@@ -101,41 +103,43 @@ export const AjoutEntreprise = ({ onSubmit }) => {
             style={{ width: '50%', height: '30px' }}
           />
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-          <label htmlFor="identifiant">Identifiant :</label>
-          <input
-            type="text"
-            id="identifiant"
-            value={maskText(identifiant)}
-            onChange={(e) => setIdentifiant(e.target.value)}
-            style={{ width: '50%', height: '30px' }}
-          />
-        </div>
+
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+  <label htmlFor="identifiant">Identifiant :</label>
+  <input
+    type="text"
+    id="identifiant"
+    value={maskText(identifiant)}
+    onChange={(e) => setIdentifiant(e.target.value)}
+    style={{ width: '50%', height: '30px' }}
+  />
+</div>
+<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
+  <label htmlFor="isAdmin" style={{ marginRight: '5px' }}>Admin :</label>
+  <input
+    type="checkbox"
+    id="isAdmin"
+    checked={isAdmin}
+    onChange={() => setIsAdmin(!isAdmin)}
+    style={{ marginTop: '5px' }}
+  />
+</div>
 
 
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
-          <div style={{ textAlign: 'right' }}>
-            <label htmlFor="isAdmin">Admin :</label>
-            <input
-              type="checkbox"
-              id="isAdmin"
-              checked={isAdmin}
-              onChange={() => setIsAdmin(!isAdmin)}
-              style={{ marginTop: '5px' }}
-            />
-          </div>
-          <div style={{ display: 'flex', gap: '5px' }}>
-            <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
-              Supprimer
-            </button>
-            {/* Ajout de la séparation */}
-            <div style={{ width: '5px' }}></div>
-            <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
-              Terminer
-            </button>
-          </div>
-        </div>
-      </form>
+
+<div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%' }}>
+  <div style={{ display: 'flex', gap: '5px' }}>
+    <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
+      Supprimer
+    </button>
+    {/* Ajout de la séparation */}
+    <div style={{ width: '5px' }}></div>
+    <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
+      Terminer
+    </button>
+  </div>
+</div>
+</form>
     </div>
   );
 };
