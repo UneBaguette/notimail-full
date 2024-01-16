@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './accueilAdmin.css';
 import { FaPlus } from "react-icons/fa6";
 import { RiMailSendLine } from "react-icons/ri";
+import { SearchUser } from './searchUser';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -50,6 +51,7 @@ export const AccueilAdmin=()=>{
     return(
         <div className="content-container">
             <h2>Liste des Utilisateurs</h2>
+            {/* <SearchUser /> */}
             <section className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
