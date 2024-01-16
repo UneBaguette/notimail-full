@@ -42,7 +42,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#E3E3E3', padding: '20px' }}>
       {/* Ajout de l'image centrée en haut avec arrière-plan bleu */}
       <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '10%' }} />
       <center>
@@ -127,16 +127,16 @@ export const AjoutEntreprise = ({ onSubmit }) => {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
-  <div style={{ display: 'flex', gap: '5px' }}>
-    <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
-      Supprimer
-    </button>
-    <div style={{ width: '100px' }}></div> {/* Espace entre les boutons */}
-    <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
-      Terminer
-    </button>
-  </div>
-</div>
+          <div style={{ display: 'flex', gap: '5px' }}>
+            <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
+              Supprimer
+            </button>
+            <div style={{ width: '100px' }}></div> {/* Espace entre les boutons */}
+            <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
+              Terminer
+            </button>
+          </div>
+        </div>
 
       </form>
     </div>
