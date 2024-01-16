@@ -7,7 +7,7 @@ import { Connexion } from "./pages/connexion";
 import { Confirm } from "./pages/confirm";
 import { User } from "./pages/user";
 import { Edit } from "./pages/edit";
-//import { NavBar } from "./pages/Navbar";//
+import { NavBar } from "./pages/Navbar";
 import { AjoutEntreprise } from "./pages/ajoutEntreprise";
 import Modal from 'react-modal';
 
@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {/* <NavBar/> */}
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Connexion />} />
         <Route path="/accueilUser" element={<AccueilUser />} />
