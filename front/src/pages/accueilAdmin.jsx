@@ -76,8 +76,10 @@ export const AccueilAdmin=()=>{
                                 <p>Nom Contact</p>
                                 {/* Formatage de la date */}
                                 <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
-                            </div>    
-                            <img src="../../imagefront/888_edit.png" alt="edit"/>
+                            </div>
+                            <a href="/ajoutEntreprise">   
+                                <img src="../../imagefront/888_edit.png" alt="edit"/>
+                            </a> 
                         </div>
                         </section>
                         <section className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>
