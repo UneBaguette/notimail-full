@@ -27,7 +27,6 @@ Après avoir cloné le projet, exécutez la commande suivante dans le terminal p
 - @types/express: Les types TypeScript pour Express.
 - @types/jsonwebtoken: Les types TypeScript pour jsonwebtoken.
 - @types/bcrypt: Les types TypeScript pour bcrypt.
-- @types/axios: Les types TypeScript pour axios.
 - @types/node: Les types TypeScript pour Node.js.
 
 ## Configuration de la Base de Données
