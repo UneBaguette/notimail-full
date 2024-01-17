@@ -42,7 +42,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: '#E3E3E3', padding: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
       {/* Ajout de l'image centrée en haut avec arrière-plan bleu */}
       <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '10%' }} />
       <center>
@@ -52,10 +52,12 @@ export const AjoutEntreprise = ({ onSubmit }) => {
         </div>
       </center>
 
-      <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', justifyContent: 'center', width: '50%', textAlign: 'center' }}>
+      <div style={{ width: '50%', border: '1px solid #ccc', borderRadius: '52px', padding: '20px', marginTop: '20px', backgroundColor: '#E3E3E3;' }}>
+        <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="entreprise" style={{ textAlign: 'right' }}>Nom de l'entreprise :</label>
+        <label htmlFor="entreprise" style={{ textAlign: 'right', color: '#006C92' }}>entreprise :</label>
           <input
+          color='#006C92'
             type="text"
             id="entreprise"
             value={maskText(entreprise)}
@@ -64,7 +66,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="nom" style={{ textAlign: 'right' }}>Nom du contact :</label>
+          <label htmlFor="nom" style={{ textAlign: 'right', color: '#006C92' }}>Nom du contact :</label>
           <input
             type="text"
             id="nom"
@@ -74,7 +76,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="prenom" style={{ textAlign: 'right' }}>Prénom du contact :</label>
+          <label htmlFor="prenom" style={{ textAlign: 'right', color: '#006C92' }}>Prénom du contact :</label>
           <input
             type="text"
             id="prenom"
@@ -84,7 +86,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="telephone" style={{ textAlign: 'right' }}>Numéro de téléphone :</label>
+          <label htmlFor="telephone" style={{ textAlign: 'right', color: '#006C92' }}>Numéro de téléphone :</label>
           <input
             type="tel"
             id="telephone"
@@ -94,7 +96,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
           />
         </div>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="email" style={{ textAlign: 'right' }}>Email :</label>
+          <label htmlFor="email" style={{ textAlign: 'right', color: '#006C92' }}>Email :</label>
           <input
             type="email"
             id="email"
@@ -105,7 +107,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <label htmlFor="identifiant" style={{ textAlign: 'right' }}>Identifiant :</label>
+          <label htmlFor="identifiant" style={{ textAlign: 'right', color: '#006C92' }}>Identifiant :</label>
           <input
             type="text"
             id="identifiant"
@@ -116,7 +118,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center' }}>
-          <label htmlFor="isAdmin" style={{ marginRight: '5px', textAlign: 'right' }}>Admin :</label>
+          <label htmlFor="isAdmin" style={{ marginRight: '5px', textAlign: 'right' , color: '#006C92' }}>Admin :</label>
           <input
             type="checkbox"
             id="isAdmin"
@@ -125,20 +127,22 @@ export const AjoutEntreprise = ({ onSubmit }) => {
             style={{ marginTop: '5px' }}
           />
         </div>
+  
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '50%' }}>
+  <div style={{ display: 'flex', gap: '5px' }}>
+    <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
+      Supprimer
+    </button>
+    <div style={{ width: '20px' }}></div> {/* Espace entre les boutons */}
+    <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
+      Terminer
+    </button>
+  </div>
+</div>
 
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
-          <div style={{ display: 'flex', gap: '5px' }}>
-            <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
-              Supprimer
-            </button>
-            <div style={{ width: '100px' }}></div> {/* Espace entre les boutons */}
-            <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
-              Terminer
-            </button>
-          </div>
-        </div>
 
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
