@@ -6,29 +6,32 @@ export const SearchUser=({setOpen})=>{
 
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        fetch(`http://localhost:3000/user/users/${user.id}`)
-        .then((reponse)=>reponse.json())
-        .then((data)=>{
-            console.log(data);
-            setResultat(data);
-        })
-    },[])
+    // useEffect(()=>{
+    //     fetch(`http://localhost:3000/user/users/${user.id}`)
+    //     .then((reponse)=>reponse.json())
+    //     .then((data)=>{
+    //         console.log(data);
+    //         setResultat(data);
+    //     })
+    // },[])
 
-    const handlechange = e =>{
-        setSearchText(e.target.value)
-    }
+    // const handlechange = e =>{
+    //     setSearchText(e.target.value)
+    // }
 
-    const handleSubmit = e =>{
-        e.preventDefault()
-        setOpen && setOpen(false)
-        navigate('/result', {state:searchText}) 
-    }
+    // const handleSubmit = e =>{
+    //     e.preventDefault()
+    //     setOpen && setOpen(false)
+    //     navigate('/result', {state:searchText}) 
+    // }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <input type="text" value={searchText} onChange={handlechange}/>
+        <>        
+        {/* <form onSubmit={handleSubmit}> */}
+            {/* <input type="text" value={searchText} onChange={handlechange}/> */}
             <button type="submit"><IoIosSearch /></button>
-        </form> 
+        {/* </form>  */}
+        </>
+
     )
 }
