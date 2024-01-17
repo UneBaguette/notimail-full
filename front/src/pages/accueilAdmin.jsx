@@ -56,31 +56,31 @@ export const AccueilAdmin=()=>{
                 {users.map((user) => (
                     <div key={user.id}>
                         <section className="top">
-                        <div className="align_items">
-                            <h3
-                                className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
-                                onClick={(event) => handleUserClick(user, event)}
-                            >
-                                {user.firm_name}
-                            </h3>
-                            <div 
-                                className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
-                                onClick={() => handleUserClickSelect(user)}
-                            >
-                                <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
-                                <label htmlFor={`slideOne_${user.id}`}></label>
+                            <div className="align_items">
+                                <h3
+                                    className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
+                                    onClick={(event) => handleUserClick(user, event)}
+                                >
+                                    {user.firm_name}
+                                </h3>
+                                <div 
+                                    className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
+                                    onClick={() => handleUserClickSelect(user)}
+                                >
+                                    <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
+                                    <label htmlFor={`slideOne_${user.id}`}></label>
+                                </div>
                             </div>
-                        </div>
-                        <div className="align_items">
-                            <div className="colomun_items">
-                                <p>Nom Contact</p>
-                                {/* Formatage de la date */}
-                                <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                            <div className="align_items">
+                                <div className="colomun_items">
+                                    <p>Nom Contact</p>
+                                    {/* Formatage de la date */}
+                                    <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
+                                </div>
+                                <a href="/ajoutEntreprise">   
+                                    <img src="../../imagefront/888_edit.png" alt="edit"/>
+                                </a> 
                             </div>
-                            <a href="/ajoutEntreprise">   
-                                <img src="../../imagefront/888_edit.png" alt="edit"/>
-                            </a> 
-                        </div>
                         </section>
                         <section className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>
                             <p>Email: {user.email}</p>
