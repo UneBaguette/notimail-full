@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './accueilAdmin.css';
-import { FaPlus } from "react-icons/fa6";
-import { RiMailSendLine } from "react-icons/ri";
+import { IoAddCircleOutline } from "react-icons/io5";
+import { BiMailSend } from "react-icons/bi";
 import { SearchUser } from './searchUser';
 
 export const AccueilAdmin=()=>{
@@ -50,11 +50,12 @@ export const AccueilAdmin=()=>{
 
     return(
         <div className="content-container">
-            <h2>Liste des Utilisateurs</h2>
-            {/* <SearchUser /> */}
+            {/* <h2>Liste des Utilisateurs</h2> */}
+            <SearchUser />
             <section className="contact">
                 {users.map((user) => (
                     <div key={user.id}>
+                        <section className="top">
                         <div className="align_items">
                             <h3
                                 className={`nohide ${selectedUser === user.id ? 'show' : ''}`}
@@ -75,9 +76,12 @@ export const AccueilAdmin=()=>{
                                 <p>Nom Contact</p>
                                 {/* Formatage de la date */}
                                 <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
-                            </div>    
-                            <img src="../../imagefront/888_edit.png" alt="edit"/>
+                            </div>
+                            <a href="/ajoutEntreprise">   
+                                <img src="../../imagefront/888_edit.png" alt="edit"/>
+                            </a> 
                         </div>
+                        </section>
                         <section className={`hidedetail ${selectedUser === user.id ? 'show' : ''}`}>
                             <p>Email: {user.email}</p>
                             <p>Téléphone: {user.phone_number}</p>
@@ -88,10 +92,10 @@ export const AccueilAdmin=()=>{
             </section>
             <section class="ajoutUser">
                 <a href="/ajoutEntreprise" className="blue-background">
-                    <FaPlus />
+                    <IoAddCircleOutline />
                 </a>
                 <a href="#" className="blue-background">
-                    <RiMailSendLine />
+                    <BiMailSend />
                 </a>
             </section>
         </div>
