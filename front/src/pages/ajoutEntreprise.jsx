@@ -127,18 +127,19 @@ export const AjoutEntreprise = ({ onSubmit }) => {
             style={{ marginTop: '5px' }}
           />
         </div>
-
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '50%' }}>
+  
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', width: '50%' }}>
   <div style={{ display: 'flex', gap: '5px' }}>
     <button type="button" style={{ backgroundColor: 'red', color: 'white' }} onClick={handleDelete}>
       Supprimer
     </button>
-    <div style={{ width: '100px' }}></div> {/* Espace entre les boutons */}
+    <div style={{ width: '20px' }}></div> {/* Espace entre les boutons */}
     <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
       Terminer
     </button>
   </div>
 </div>
+
 
         </form>
       </div>
