@@ -63,7 +63,7 @@
 }
 
 /* Style pour la classe align_items img */
-.align_items img {
+.align_items a {
     margin-left: 5px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
 
