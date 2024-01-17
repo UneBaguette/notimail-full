@@ -63,7 +63,7 @@ export const receivedMail = async (req: Request, res: Response) => {
         // Définition des options de la requête HTTP pour envoyer le SMS via l'API d'AllMySMS
         const requestOptions = {
             method: 'POST', // Méthode HTTP utilisée pour l'envoi du SMS (POST dans ce cas)
-            url: 'https://api.allmysms.com/sms/send', // URL de l'API AllMySMS pour l'envoi de SMS
+            url: process.env.SMS_URL, // URL de l'API AllMySMS pour l'envoi de SMS, stocké dans les variables d'environnement
 
             // En-têtes de la requête HTTP, spécifiant les détails de la requête
             headers: {
