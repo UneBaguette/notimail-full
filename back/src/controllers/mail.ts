@@ -74,15 +74,12 @@ export const receivedMail = async (req: Request, res: Response) => {
 
             // Corps de la requête, contenant les options du SMS définies précédemment
             data: smsOptions,
-
-            // Indique que le corps de la requête est au format JSON
-            //json: true,
         };
 
         // Affiche les options de la requête dans la console (peut être utile pour le débogage)
         //console.log(requestOptions);
 
-        // Envoie la requête HTTP pour envoyer le SMS via l'API AllMySMS
+        // Envoie la requête HTTP pour envoyer le SMS via l'API AllMySMS en utilisant Axios
         try {
             const response = await axios(requestOptions);
         
