@@ -18,9 +18,6 @@ import connectDB from './datasource';
 // Importation du module CORS
 const cors = require('cors');
 
-// Middleware express.json pour traiter les données au format JSON
-app.use(express.json());
-
 // Middleware CORS pour gérer les politiques CORS
 app.use(cors({
     origin: process.env.FRONT_URL,

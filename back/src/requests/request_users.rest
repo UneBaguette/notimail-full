@@ -1,5 +1,6 @@
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 {
     "firm_name": "Entreprise Admin",
@@ -16,6 +17,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 {
     "firm_name": "Entreprise Morin",
@@ -32,6 +34,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 {
     "firm_name": "Entreprise 2",
@@ -48,6 +51,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 {
     "firm_name": "Entreprise 3",
@@ -64,6 +68,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 {
     "firm_name": "Entreprise 4",
@@ -80,6 +85,7 @@ Content-Type: application/json
 
 POST http://localhost:3000/user/users
 Content-Type: application/json
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMzE5LCJleHAiOjE3MDU1MDI0OTl9.17_xiEbqLY9b_pHKoMbXeUovjlrq4vTwyzYAH2QA0Yo; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:41:39 GMT; HttpOnly
 
 {
     "firm_name": "Institut Solacroup",
@@ -95,16 +101,18 @@ Content-Type: application/json
 ###
 # Récupérer tous les utilisateurs
 GET http://localhost:3000/user/users
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 ###
 # Récupérer un utilisateur par ID
-GET http://localhost:3000/user/users/32
+GET http://localhost:3000/user/users/22
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 
 ###
 # Mettre à jour un utilisateur par ID
 PUT http://localhost:3000/user/users/14
 Content-Type: application/json
-
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
 {
     "firm_name": "Morin",
     "first_name": "Marvin",
@@ -119,6 +127,5 @@ Content-Type: application/json
 ###
 # Supprimer un utilisateur par ID
 DELETE http://localhost:3000/user/users/14
-###
-GET http://localhost:3000/user/users
-Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjgsImlzX2FkbWluIjpmYWxzZSwiaWF0IjoxNzA1MDU0NzU3LCJleHAiOjE3MDUwNTQ5Mzd9.iYOuR3hfWmd16IYzkQIvPEN711uGiGSkn6VJk5O8IW8; Max-Age=180; Path=/; Expires=Fri, 12 Jan 2024 10:22:17 GMT; HttpOnly
+Set-Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpc19hZG1pbiI6dHJ1ZSwiaWF0IjoxNzA1NTAyMTAzLCJleHAiOjE3MDU1MDIyODN9.8aaPflg_zSGso246EDTz11DBZllv2uyBY9Jd4Qcf8Gs; Max-Age=180; Path=/; Expires=Wed, 17 Jan 2024 14:38:03 GMT; HttpOnly
+
