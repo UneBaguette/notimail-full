@@ -82,7 +82,7 @@ export const receivedMail = async (req: Request, res: Response) => {
         // Affiche les options de la requête dans la console (peut être utile pour le débogage)
         //console.log(requestOptions);
 
-        // Envoie la requête HTTP pour envoyer le SMS via l'API AllMySMS
+        // Envoie la requête HTTP pour envoyer le SMS via l'API AllMySMS en utilisant Axios
         try {
             const response = await axios(requestOptions);
         
