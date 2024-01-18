@@ -31,8 +31,13 @@ export const AccueilAdmin=()=>{
     
         if (event.target.classList.contains('nohide')) {
             console.log('Clicked on .nohide element');
-            setSelectedUsers((prevSelectedUser) => {
-                return prevSelectedUser === user.id ? null : user.id;
+            setUsers((prevUsers) => {
+                return prevUsers.map((prevUser) => {
+                    if (prevUser.id === user.id) {
+                        return { ...prevUser, show: !prevUser.show };
+                    }
+                    return prevUser;
+                });
             });
         }
     
@@ -70,7 +75,7 @@ export const AccueilAdmin=()=>{
                                         className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
                                         onClick={() => handleUserClickSelect(user)}
                                     >
-                                        <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked />
+                                        <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked={selectedUsers.includes(user)} readOnly />
                                         <label htmlFor={`slideOne_${user.id}`}></label>
                                     </div>
                                 </div>
@@ -97,7 +102,7 @@ export const AccueilAdmin=()=>{
                     <a href="/ajoutEntreprise" className="blue-background">
                         <IoAddCircleOutline />
                     </a>
-                    <a href="#" className="blue-background">
+                    <a href="#" className="blue-background" onClick={() => setShowModal(true)}>
                         <BiMailSend />
                     </a>
                 </section>
