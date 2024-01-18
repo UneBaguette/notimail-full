@@ -17,7 +17,7 @@ export const AccueilAdmin=()=>{
             .then(result => result.json())
             .then(data => {
                 console.log(data);
-                const filteredUsers = data.filter(user => user.username !== 'admin');
+                const filteredUsers = data.filter(user => user.username !== 'Entrepise admin');
                 setUsers(filteredUsers);
             })
             .catch(Error => {
@@ -112,16 +112,18 @@ export const AccueilAdmin=()=>{
             <Modal isOpen={showModal}>
                 <div className='modal-overlay'>
                     <div className='modal'>
-                    <h3>Liste des utilisateurs sélectionnés</h3>
+                    <h3>Vous vous apprêtez à notifier :</h3>
                     {/* Affichez ici la liste des utilisateurs sélectionnés */}
-                    {selectedUsers.map((user) => (
-                        <div key={user.id}>{user.firm_name}</div>
-                    ))}
+                    <div className='listeEntrepriseSelect'>
+                        {selectedUsers.map((user) => (
+                            <div key={user.id}>{user.firm_name}</div>
+                        ))}                        
+                    </div>
                     <button onClick={() => setShowModal(false)}>Fermer</button>
+                    <button>Envoyer</button>
                     </div>
                 </div>
             </Modal>
-
         </>
     )
 }
