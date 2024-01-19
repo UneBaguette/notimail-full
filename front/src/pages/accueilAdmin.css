@@ -135,7 +135,9 @@
 .hidedetail.show {
     opacity: 1;
     height: auto;
-    margin-top: 0;
+    margin-top: 10px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
 }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
@@ -190,4 +192,8 @@
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+}
+
+.listeEntrepriseSelect{
+    background: #C0C0C0;
 }

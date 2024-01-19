@@ -4,12 +4,14 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { BiMailSend } from "react-icons/bi";
 import { SearchUser } from './searchUser';
 import Modal from 'react-modal';
+import { AjoutEntreprise } from './AjoutEntreprise';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
-    const [selectedUserSelect, setSelectedUserSelect] = useState(null);
+    const [entrepriseData, setEntrepriseData] = useState(null);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -28,31 +30,42 @@ export const AccueilAdmin=()=>{
     const handleUserClick = (user, event) => {
         console.log('handleUserClick called');
         console.log('Event target classes:', event.target.classList);
-    
+
+        // Si la balise cliquée est .nohide
         if (event.target.classList.contains('nohide')) {
             console.log('Clicked on .nohide element');
-            setUsers((prevUsers) => {
-                return prevUsers.map((prevUser) => {
-                    if (prevUser.id === user.id) {
-                        return { ...prevUser, show: !prevUser.show };
-                    }
-                    return prevUser;
-                });
-            });
+
+            // Si detailUser est déjà égal à l'ID de l'utilisateur, masquer les détails
+            if (detailUser === user.id) {
+                setDetailUser(null);
+            } else {
+                // Sinon, afficher les détails en mettant à jour avec l'ID de l'utilisateur
+                setDetailUser(user.id);
+            }
         }
     
-        // Ajoute ou retire la classe .show de l'élément .hidedetail
-        const hidedetailElement = event.target.nextSibling;
+        // Récupérer l'élément hidedetail correspondant à cet utilisateur
+        const hidedetailElement = event.target.parentElement.parentElement.querySelector('.hidedetail');
         console.log('Hidedetail element:', hidedetailElement);
         if (hidedetailElement && hidedetailElement.classList.contains('hidedetail')) {
             hidedetailElement.classList.toggle('show');
         }
-    };    
-
+    };
+    
     const handleUserClickSelect = (user) => {
-        setSelectedUserSelect((prevSelectedUserSelect) => {
-            return prevSelectedUserSelect === user.id ? null : user.id;
+        setSelectedUsers((prevSelectedUsers) => {
+            return prevSelectedUsers.includes(user.id) 
+                ? prevSelectedUsers.filter((userId) => userId !== user.id)
+                : [...prevSelectedUsers, user.id];
         });
+    };
+    
+    const handleAjoutEntrepriseSubmit = (formData) => {
+        // Vous pouvez traiter les données du formulaire ici
+        console.log("Données du formulaire :", formData);
+    
+        // Vous pouvez également les stocker dans l'état si nécessaire
+        setEntrepriseData(formData);
     };
 
     return(
@@ -66,41 +79,45 @@ export const AccueilAdmin=()=>{
                             <section className="top">
                                 <div className="align_items">
                                     <h3
-                                        className={`nohide ${selectedUsers === user.id ? 'show' : ''}`}
+                                        className={`nohide ${detailUser === user.id ? 'show' : ''}`}
                                         onClick={(event) => handleUserClick(user, event)}
                                     >
                                         {user.firm_name}
                                     </h3>
                                     <div 
-                                        className={`slideOne ${selectedUserSelect === user.id ? 'slideOneChecked' : ''} ${selectedUserSelect ? 'selected' : ''}`} 
+                                        className={`slideOne ${selectedUsers.includes(user.id) ? 'slideOneChecked' : ''} ${selectedUsers.length > 0 ? 'selected' : ''}`} 
                                         onClick={() => handleUserClickSelect(user)}
                                     >
-                                        <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked={selectedUsers.includes(user)} readOnly />
+                                        <input type="checkbox" value="None" id={`slideOne_${user.id}`} name="check" checked={selectedUsers && selectedUsers.includes(user.id)} readOnly />
                                         <label htmlFor={`slideOne_${user.id}`}></label>
                                     </div>
-                                </div>
+                                </div>    
                                 <div className="align_items">
                                     <div className="colomun_items">
                                         <p>Nom Contact</p>
                                         {/* Formatage de la date */}
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
-                                    <a href="/ajoutEntreprise">   
+                                    <a href="/ajoutEntreprise">
+                                    {/* <AjoutEntreprise onSubmit={handleAjoutEntrepriseSubmit}>    */}
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
+                                    {/* </AjoutEntreprise> */}
                                     </a> 
                                 </div>
                             </section>
-                            <section className={`hidedetail ${selectedUsers === user.id ? 'show' : ''}`}>
+                            <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
                                 <p>Email: {user.email}</p>
                                 <p>Téléphone: {user.phone_number}</p>
-                                <p>Indentifiant: {user.id}</p>
+                                <p>Identifiant: {user.id}</p>
                             </section>
                         </div>
                     ))}
                 </section>
                 <section class="ajoutUser">
                     <a href="/ajoutEntreprise" className="blue-background">
+                    {/* <AjoutEntreprise onSubmit={handleAjoutEntrepriseSubmit} className="blue-background"> */}
                         <IoAddCircleOutline />
+                    {/* </AjoutEntreprise> */}
                     </a>
                     <a href="#" className="blue-background" onClick={() => setShowModal(true)}>
                         <BiMailSend />
@@ -115,9 +132,10 @@ export const AccueilAdmin=()=>{
                     <h3>Vous vous apprêtez à notifier :</h3>
                     {/* Affichez ici la liste des utilisateurs sélectionnés */}
                     <div className='listeEntrepriseSelect'>
-                        {selectedUsers.map((user) => (
-                            <div key={user.id}>{user.firm_name}</div>
-                        ))}                        
+                    {selectedUsers.map(userId => {
+                        const selectedUser = users.find(user => user.id === userId);
+                        return <div key={selectedUser.id}>{selectedUser.firm_name}</div>;
+                    })}                    
                     </div>
                     <button onClick={() => setShowModal(false)}>Fermer</button>
                     <button>Envoyer</button>
