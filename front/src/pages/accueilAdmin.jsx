@@ -10,7 +10,7 @@ export const AccueilAdmin=()=>{
     const [showModal, setShowModal] = useState(false);
     const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
-    const [entrepriseData, setEntrepriseData] = useState(null);
+    const [mailSent, setMailSent] = useState(false);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -59,6 +59,29 @@ export const AccueilAdmin=()=>{
         });
     };
 
+    const handleMailSend = () => {
+        // Votre code pour envoyer le courrier ici
+        fetch('http://localhost:3000/mail/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                selectedUsers: selectedUsers,
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Mail sent successfully:', data);
+            setMailSent(true);
+            // Réinitialisez la liste des utilisateurs sélectionnés si nécessaire
+            setSelectedUsers([]);
+        })
+        .catch(error => {
+            console.error('Error sending mail:', error);
+        });
+    };
+    
     return(
         <>
             <div className="content-container">
@@ -116,16 +139,29 @@ export const AccueilAdmin=()=>{
             <Modal isOpen={showModal}>
                 <div className='modal-overlay'>
                     <div className='modal'>
-                    <h3>Vous vous apprêtez à notifier :</h3>
-                    {/* Affichez ici la liste des utilisateurs sélectionnés */}
-                    <div className='listeEntrepriseSelect'>
-                    {selectedUsers.map(userId => {
-                        const selectedUser = users.find(user => user.id === userId);
-                        return <div key={selectedUser.id}>{selectedUser.firm_name}</div>;
-                    })}                    
-                    </div>
-                    <button onClick={() => setShowModal(false)}>Fermer</button>
-                    <button>Envoyer</button>
+                        {mailSent ? (
+                            <>
+                                <h3>Courrier envoyé avec succès !</h3>
+                                <button onClick={() => setShowModal(false)}>Fermer</button>
+                            </>
+                        ) : (
+                            <>
+                                <h3>Vous vous apprêtez à notifier :</h3>
+                                <div className='listeEntrepriseSelect'>
+                                    {selectedUsers.map(userId => {
+                                        const selectedUser = users.find(user => user.id === userId);
+                                        return <div key={selectedUser.id}>{selectedUser.firm_name}</div>;
+                                    })}
+                                </div>
+                                <button onClick={() => setShowModal(false)}>Fermer</button>
+                                <button
+                                    className={mailSent ? "blue-background sent" : "blue-background send-button"}
+                                    onClick={handleMailSend}
+                                >
+                                    Envoyer
+                                </button>
+                            </>
+                        )}
                     </div>
                 </div>
             </Modal>

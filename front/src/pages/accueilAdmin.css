@@ -197,3 +197,13 @@
 .listeEntrepriseSelect{
     background: #C0C0C0;
 }
+
+/* Ajoutez une règle pour le bouton Envoyer dans le modal */
+.send-button {
+    background-color: var(--background-blue);
+    border-radius: 10px; /* Modifiez la valeur selon votre préférence pour des coins plus ou moins arrondis */
+    padding: 10px;
+    color: var(--background-gray);
+    text-decoration: none;
+    margin-right: 10px;
+}
