@@ -4,7 +4,6 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { BiMailSend } from "react-icons/bi";
 import { SearchUser } from './searchUser';
 import Modal from 'react-modal';
-import { AjoutEntreprise } from './AjoutEntreprise';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -59,14 +58,6 @@ export const AccueilAdmin=()=>{
                 : [...prevSelectedUsers, user.id];
         });
     };
-    
-    const handleAjoutEntrepriseSubmit = (formData) => {
-        // Vous pouvez traiter les données du formulaire ici
-        console.log("Données du formulaire :", formData);
-    
-        // Vous pouvez également les stocker dans l'état si nécessaire
-        setEntrepriseData(formData);
-    };
 
     return(
         <>
@@ -99,9 +90,7 @@ export const AccueilAdmin=()=>{
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
                                     <a href="/ajoutEntreprise">
-                                    {/* <AjoutEntreprise onSubmit={handleAjoutEntrepriseSubmit}>    */}
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
-                                    {/* </AjoutEntreprise> */}
                                     </a> 
                                 </div>
                             </section>
@@ -115,9 +104,7 @@ export const AccueilAdmin=()=>{
                 </section>
                 <section class="ajoutUser">
                     <a href="/ajoutEntreprise" className="blue-background">
-                    {/* <AjoutEntreprise onSubmit={handleAjoutEntrepriseSubmit} className="blue-background"> */}
                         <IoAddCircleOutline />
-                    {/* </AjoutEntreprise> */}
                     </a>
                     <a href="#" className="blue-background" onClick={() => setShowModal(true)}>
                         <BiMailSend />
