@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
   const [entreprise, setEntreprise] = useState("");
@@ -8,78 +9,53 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
   const [email, setEmail] = useState("");
   const [identifiant, setIdentifiant] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isNomFocused, setIsNomFocused] = useState(false);
-  const [isPrenomFocused, setIsPrenomFocused] = useState(false);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = {
-      entreprise,
-      nom,
-      prenom,
-      telephone,
-      email,
-      identifiant,
-      isAdmin,
+    const userData = {
+      firm_name: entreprise,
+      first_name: prenom,
+      last_name: nom,
+      phone_number: telephone,
+      email: email,
+      password: "",  // Note: You should handle password securely on the server side
+      has_mail: true,
+      is_admin: isAdmin
     };
 
-    // Appeler la fonction de soumission du formulaire parent
-    onSubmit(formData);
-    setIsFormSubmitted(true);
+    try {
+      const response = await fetch('http://localhost:3000/user/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: "include",
+        body: JSON.stringify(userData),
+      });
+
+      if (response.ok) {
+        // La requête a réussi
+        const data = await response.json();
+        console.log(data);  // Afficher la réponse du serveur
+        navigate('/accueilAdmin');
+      } else {
+        // La requête a échoué
+        console.error('Erreur lors de la requête POST');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la requête POST', error);
+    }
   };
 
   const handleDelete = () => {
     // Logique de suppression ici
     console.log("Supprimer");
-    onCancel(); // Appeler la fonction d'annulation pour revenir à la page d'accueil
+    navigate('/accueilAdmin'); // Appeler la fonction d'annulation pour revenir à la page d'accueil
   };
 
-  const handleFinish = () => {
-    const formData = {
-      entreprise,
-      nom,
-      prenom,
-      telephone,
-      email,
-      identifiant,
-      isAdmin,
-    };
-
-    // Appeler la fonction de soumission du formulaire parent
-    onSubmit(formData);
-    console.log("Terminer");
-    setIsFormSubmitted(true);
-  };
-
-  const handleNomFocus = () => {
-    setIsNomFocused(true);
-    if (nom === "Nom") {
-      setNom("");
-    }
-  };
-
-  const handleNomBlur = () => {
-    setIsNomFocused(false);
-    if (nom === "") {
-      setNom("Nom");
-    }
-  };
-
-  const handlePrenomFocus = () => {
-    setIsPrenomFocused(true);
-    if (prenom === "Prénom") {
-      setPrenom("");
-    }
-  };
-
-  const handlePrenomBlur = () => {
-    setIsPrenomFocused(false);
-    if (prenom === "") {
-      setPrenom("Prénom");
-    }
-  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
@@ -116,8 +92,6 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
                     id="nom"
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
-                    onFocus={handleNomFocus}
-                    onBlur={handleNomBlur}
                     style={{ width: '100%', height: '30px' }}
                   />
                 </div>
@@ -128,8 +102,6 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
                     id="prenom"
                     value={prenom}
                     onChange={(e) => setPrenom(e.target.value)}
-                    onFocus={handlePrenomFocus}
-                    onBlur={handlePrenomBlur}
                     style={{ width: '100%', height: '30px' }}
                   />
                 </div>
@@ -187,7 +159,7 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
                 Supprimer
               </button>
               <div style={{ width: '40px' }}></div> {/* Espace entre les boutons */}
-              <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleFinish}>
+              <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleSubmit}>
                 Terminer
               </button>
             </div>
