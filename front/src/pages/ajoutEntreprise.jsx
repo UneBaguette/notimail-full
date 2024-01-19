@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import './ajoutEntreprise.css';
 
-export const AjoutEntreprise = ({ onSubmit }) => {
+export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
   const [entreprise, setEntreprise] = useState("");
   const [nom, setNom] = useState("Nom");
   const [prenom, setPrenom] = useState("Prénom");
@@ -11,6 +10,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isNomFocused, setIsNomFocused] = useState(false);
   const [isPrenomFocused, setIsPrenomFocused] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,16 +27,30 @@ export const AjoutEntreprise = ({ onSubmit }) => {
 
     // Appeler la fonction de soumission du formulaire parent
     onSubmit(formData);
+    setIsFormSubmitted(true);
   };
 
   const handleDelete = () => {
     // Logique de suppression ici
     console.log("Supprimer");
+    onCancel(); // Appeler la fonction d'annulation pour revenir à la page d'accueil
   };
 
   const handleFinish = () => {
-    // Logique de terminaison ici
+    const formData = {
+      entreprise,
+      nom,
+      prenom,
+      telephone,
+      email,
+      identifiant,
+      isAdmin,
+    };
+
+    // Appeler la fonction de soumission du formulaire parent
+    onSubmit(formData);
     console.log("Terminer");
+    setIsFormSubmitted(true);
   };
 
   const handleNomFocus = () => {
@@ -73,7 +87,7 @@ export const AjoutEntreprise = ({ onSubmit }) => {
       <center>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <img className='fleche' src="/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" style={{ width: '20%' }} />
-          <p className='texte'>Entreprise</p>
+          <p className='texte' style={{ /* Styles pour le texte */ }}>Entreprise</p>
         </div>
       </center>
 
