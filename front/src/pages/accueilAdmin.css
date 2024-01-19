@@ -112,7 +112,6 @@
 /* Ajout de styles pour le curseur lorsqu'il est sélectionné */
 .slideOneChecked label {
     left: 37px;
-    /* background: var(--background-blue); */
     background: var(--background-red);
 }
 
@@ -148,7 +147,6 @@
 
 /* Ajout d'un style pour le curseur lorsqu'il n'est pas sélectionné */
 .slideOne:not(.slideOneChecked) label {
-    /* background: var(--background-red); */
     background: var(--background-blue);
 }
 
