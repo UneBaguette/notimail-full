@@ -14,7 +14,7 @@ export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
 
         const decodedToken: any = jwt.verify(token, process.env.SESSION_SECRET || '');
         
-        if (token && decodedToken.is_admin) {
+        if (token && decodedToken.is_admin === true) {
             // Si l'utilisateur est administrateur, passer à la route suivante
             next();
         } else {
