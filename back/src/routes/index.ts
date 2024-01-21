@@ -13,7 +13,7 @@ router.use('/auth', authRoutes); // Utilisation des routes d'authentification
 router.use('/mail', mailRoutes); // Utilisation des routes des mails
 
 router.get("/", (req, res) => {
-    res.status(200).json({ message: "Bienvenue sur la page d'accueil!" })
+    res.status(200).json({ message: "Bienvenue sur la page d'accueil!" });
 });
 
 export default router;

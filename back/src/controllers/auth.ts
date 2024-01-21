@@ -65,7 +65,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
     console.log('Token créé :', token, user.id);
 
     // Authentification réussie, renvoie un message de succès et les détails de l'utilisateur
-    res.status(200).json({ message: 'Authentification réussie.', user: userWithoutPassword});
+    res.status(200).json({ message: 'Authentification réussie.', user: userWithoutPassword, token});
   } catch (error) {
     // Gestion des erreurs : affichage en console et renvoi d'une réponse d'erreur au client
     console.error('Erreur lors de l\'authentification :', error);

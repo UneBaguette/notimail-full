@@ -6,7 +6,6 @@ import express from 'express';
 // Importation du contrôleur d'authentification
 import { authUser, deconnexionUser, getFirmnames, getInfoUserConnected } from '../controllers/auth';
 import { checkAuth } from '../middlewares/auth';
-import { validateUserId } from '../middlewares/user';
 
 
 // Création d'un objet Router d'Express

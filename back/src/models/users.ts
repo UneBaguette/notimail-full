@@ -4,6 +4,12 @@ import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BaseEntity } from
 
 @Entity()
 export class User extends BaseEntity {
+
+    constructor(params?: Partial<User>) {
+        super()
+        Object.assign(this, params)
+    }
+
     @PrimaryGeneratedColumn()
     id!: number; 
 
@@ -32,16 +38,15 @@ export class User extends BaseEntity {
     last_picked_up: Date | null = null;
 
     @Column({ default: false })
-    has_mail: boolean = false;
+    has_mail!: boolean;
 
     @Column({ default: false })
-    is_admin: boolean = false;
+    is_admin!: boolean;
 
     // Avant l'insertion, initialise les dates à la date d'inscription
     @BeforeInsert()
     setDefaultDates() {
-        this.last_received_mail = new Date();
-        this.last_picked_up = new Date();
+        this.last_received_mail = this.last_picked_up = new Date();
     }
 
     // Getter pour obtenir la date de réception du courrier au format local (français)

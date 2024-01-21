@@ -1,5 +1,3 @@
-// database_info.ts
-
 // Importation du module DataSource depuis TypeORM
 import { DataSource } from "typeorm";
 
@@ -27,12 +25,6 @@ const connectDB = new DataSource({
     // Liste des entités à utiliser avec TypeORM (dans ce cas, uniquement l'entité User)
     entities: [User],
 
-    // Configuration supplémentaire, telle que la gestion du SSL
-    extra: {
-        ssl: {
-            rejectUnauthorized: false // Désactive la vérification du certificat SSL (utile pour les connexions locales ou non sécurisées)
-        }
-    }
 });
 
 // Exportation de l'instance de DataSource pour être utilisée dans d'autres parties du code

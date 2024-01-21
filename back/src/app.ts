@@ -27,7 +27,7 @@ app.use(cors({
     credentials: true,
 }));
 
-console.log('Clé secrète de session:', process.env.SESSION_SECRET !);
+console.log('Clé secrète de la session:', process.env.SESSION_SECRET !);
 
 // Utilise express-session pour gérer les sessions
 app.use(session({
@@ -38,9 +38,6 @@ app.use(session({
 
 // Utilise l'instance de DataSource initialisée
 connectDB.initialize()
-    .then(() => {
-        console.log(`L'accès à la BDD a été initialisée avec succès`);
-    })
     .catch((err) => {
         console.error(`Erreur lors de l'initialisation de l'accès à la BDD`, err);
     });
