@@ -54,6 +54,7 @@
     align-items: center; /* Centre les éléments verticalement */
     flex-direction: row; /* Dispose les éléments horizontalement */
     margin-bottom: 0;
+    flex:1;
 }
 
 /* Style pour la classe align_items */
@@ -62,8 +63,13 @@
 }
 
 /* Style pour la classe align_items img */
-.align_items img {
-    margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
+.align_items a {
+    margin-left: 5px; /* Ajoute une marge à gauche de l'image pour l'espace */
+}
+
+/* Style pour la classe align_items .nohide */
+.align_items .nohide {
+    margin-right: 5px; /* Ajoute une marge à droite de l'élément .nohide */
 }
 
 /* reduire l'interligne */
@@ -106,7 +112,7 @@
 /* Ajout de styles pour le curseur lorsqu'il est sélectionné */
 .slideOneChecked label {
     left: 37px;
-    background: var(--background-blue);
+    background: var(--background-red);
 }
 
 /* Ajoutez une propriété cursor pour indiquer que l'élément est cliquable */
@@ -129,7 +135,9 @@
 .hidedetail.show {
     opacity: 1;
     height: auto;
-    margin-top: 0;
+    margin-top: 10px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
 }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
@@ -139,7 +147,7 @@
 
 /* Ajout d'un style pour le curseur lorsqu'il n'est pas sélectionné */
 .slideOne:not(.slideOneChecked) label {
-    background: var(--background-red);
+    background: var(--background-blue);
 }
 
 /* Style pour l'image à l'intérieur de la classe align_items */
@@ -161,6 +169,39 @@
 .blue-background {
     background-color: var(--background-blue);
     border-radius: 50%;
+    padding: 10px;
+    color: var(--background-gray);
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.listeEntrepriseSelect{
+    background: #C0C0C0;
+}
+
+/* Ajoutez une règle pour le bouton Envoyer dans le modal */
+.send-button {
+    background-color: var(--background-blue);
+    border-radius: 10px; /* Modifiez la valeur selon votre préférence pour des coins plus ou moins arrondis */
     padding: 10px;
     color: var(--background-gray);
     text-decoration: none;

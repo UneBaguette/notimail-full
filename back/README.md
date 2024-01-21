@@ -9,6 +9,8 @@ Node.js et npm: Téléchargez et installez Node.js depuis https://nodejs.org/.
 TypeScript: Installez TypeScript en utilisant la commande suivante : npm install -g typescript
 
 Laragon (Base de données MySQL): Laragon est le logiciel recommandé pour gérer la base de données MySQL. Téléchargez-le depuis https://laragon.org/download/ et installez-le sur votre machine.
+Vous devez ensuite créer une Base de Données en mySQL via l'interface graphique. 
+Le nom de cette base doit être notimail.
 
 Visual Studio Code: Il est recommandé d'utiliser Visual Studio Code comme éditeur de code. Téléchargez-le depuis https://code.visualstudio.com/.
 
