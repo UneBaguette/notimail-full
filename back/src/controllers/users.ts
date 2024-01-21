@@ -167,7 +167,7 @@ export const deleteUser = async (req: Request, res: Response) => {
         await userRepository.remove(user);
 
         // Réponse au client avec un code HTTP 200 (OK) et un message indiquant que l'utilisateur a été supprimé
-        res.status(200).send('Utilisateur supprimé');
+        res.status(200).json({message: 'Utilisateur supprimé'});
     } catch (error) {
         // Gestion des erreurs : Affichage de l'erreur dans la console
         console.error('Erreur lors de la suppression de l\'utilisateur par ID :', error);

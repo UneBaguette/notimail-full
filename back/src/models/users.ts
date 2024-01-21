@@ -1,11 +1,17 @@
 // models/users.ts
 
 // Importe les décorateurs et les classes nécessaires de TypeORM
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, BaseEntity } from 'typeorm';
 
 // Définit une entité User qui sera mappée sur une table dans la base de données
 @Entity()
-export class User {
+export class User extends BaseEntity {
+
+    constructor(params?: Partial<User>) {
+        super()
+        Object.assign(this, params)
+    }
+
     // Définit une colonne pour l'identifiant, qui est généré automatiquement
     @PrimaryGeneratedColumn()
     id!: number;
@@ -44,17 +50,16 @@ export class User {
 
     // Définit une colonne pour indiquer si l'utilisateur a du courrier (par défaut, false)
     @Column({ default: false })
-    has_mail: boolean = false;
+    has_mail!: boolean;
 
     // Définit une colonne pour indiquer si l'utilisateur est administrateur (par défaut, false)
     @Column({ default: false })
-    is_admin: boolean = false;
+    is_admin!: boolean;
 
     // Avant l'insertion dans la base de données, cette fonction est appelée pour initialiser les dates
     @BeforeInsert()
     setDefaultDates() {
-        this.last_received_mail = new Date();
-        this.last_picked_up = new Date();
+        this.last_received_mail = this.last_picked_up = new Date();
     }
 
     // Getter pour obtenir la date de réception du courrier au format local (français)

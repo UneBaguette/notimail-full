@@ -1,5 +1,3 @@
-// database_info.ts
-
 // Importation du module DataSource depuis TypeORM
 import { DataSource } from "typeorm";
 
@@ -13,7 +11,7 @@ const connectDB = new DataSource({
 
     // Récupération des informations d'environnement pour la connexion à la base de données
     host: process.env.DB_HOST,          // Adresse de l'hôte de la base de données
-    port: process.env.DB_PORT as unknown as number,  // Numéro de port de la base de données (converti en nombre)
+    port: +process.env.DB_PORT!,  // Numéro de port de la base de données (converti en nombre)
     username: process.env.DB_USERNAME,  // Nom d'utilisateur pour la connexion
     password: process.env.DB_PASSWORD,  // Mot de passe pour la connexion
     database: process.env.DB_NAME,      // Nom de la base de données
@@ -28,11 +26,10 @@ const connectDB = new DataSource({
     entities: [User],
 
     // Configuration supplémentaire, telle que la gestion du SSL
-    extra: {
-        ssl: {
-            rejectUnauthorized: false // Désactive la vérification du certificat SSL (utile pour les connexions locales ou non sécurisées)
-        }
+    ssl: {
+        rejectUnauthorized: false // Désactive la vérification du certificat SSL (utile pour les connexions locales ou non sécurisées)
     }
+    
 });
 
 // Exportation de l'instance de DataSource pour être utilisée dans d'autres parties du code
