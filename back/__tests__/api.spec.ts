@@ -30,8 +30,8 @@ export const getAdminTokenTest = async (): Promise<string> => {
   
       return token;
     } catch (error) {
-      console.error('Erreur lors de l\'obtention du token administrateur pour les tests :', error);
-      throw new Error('Erreur lors de l\'obtention du token administrateur pour les tests.');
+      console.error('Erreur lors de l\'obtention du token :', error);
+      throw new Error('Erreur lors de l\'obtention du token.');
     }
 };
 

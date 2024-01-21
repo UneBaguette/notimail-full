@@ -26,11 +26,10 @@ const connectDB = new DataSource({
     entities: [User],
 
     // Configuration supplémentaire, telle que la gestion du SSL
-    extra: {
-        ssl: {
-            rejectUnauthorized: false // Désactive la vérification du certificat SSL (utile pour les connexions locales ou non sécurisées)
-        }
+    ssl: {
+        rejectUnauthorized: false // Désactive la vérification du certificat SSL (utile pour les connexions locales ou non sécurisées)
     }
+    
 });
 
 // Exportation de l'instance de DataSource pour être utilisée dans d'autres parties du code
