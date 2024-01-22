@@ -81,8 +81,8 @@ export const Connexion = () => {
             value={selectedEntreprise}
             onChange={handleEntrepriseSelection}
           >
-            <option key="" value="">
-              Selectionnez votre Entreprise
+            <option className="entreprise" key="" value="">
+              Entreprise
             </option>
             {entreprise.map((entreprise) => (
               <option key={entreprise} value={entreprise}>
