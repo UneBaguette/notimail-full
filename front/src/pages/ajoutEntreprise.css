@@ -6,7 +6,7 @@
 }
 
 .fleche {
-    background-color: #006C92;
+    background-color: blue;
     border-radius: 35px;
     transform: scaleX(-1);
     width: 133px;

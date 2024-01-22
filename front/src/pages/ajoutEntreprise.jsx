@@ -62,7 +62,7 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
       <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '10%' }} />
       <center>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img className='fleche' src="/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" style={{ width: '20%' }} />
+          <img className='fleche' src="/front/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" style={{ width: '20%' }} />
           <p className='texte' style={{ /* Styles pour le texte */ }}>Entreprise</p>
         </div>
       </center>
