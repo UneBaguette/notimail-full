@@ -1,0 +1,34 @@
+/* défini les couleurs */
+:root {
+    --background-blue-green: #008787;
+    --background-blue: #025892;
+    --background-gray: #E3E3E3;
+    --background-red: #FF3535;
+}
+
+/* style pour la recherche */
+form {
+    display: flex; /* Met les éléments sur la même ligne */
+    align-items: center; /* Aligne verticalement les éléments */
+    background-color: var(--background-gray); /* Couleur de fond grise */
+    padding: 5px; /* Ajuster la marge intérieure pour le contenu */
+    border-radius: 20px; /* Ajouter une bordure arrondie */
+}
+
+form button {
+    background-color: var(--background-gray); /* Couleur de fond grise */
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    color: #ffffff; /* Couleur du texte */
+}
+
+form input {
+    padding: 5px;
+    border: 1px solid var(--background-gray); /* Bordure grise */
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    margin-left: 5px; /* Espacement entre le bouton et le champ de recherche */
+    color: #fcfbfb; /* Couleur du texte */
+    background-color: var(--background-gray); /* Couleur de fond grise */
+}
