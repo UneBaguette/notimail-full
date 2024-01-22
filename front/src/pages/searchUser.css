@@ -10,16 +10,25 @@
 form {
     display: flex; /* Met les éléments sur la même ligne */
     align-items: center; /* Aligne verticalement les éléments */
+    background-color: var(--background-gray); /* Couleur de fond grise */
+    padding: 5px; /* Ajuster la marge intérieure pour le contenu */
+    border-radius: 20px; /* Ajouter une bordure arrondie */
 }
 
-button {
-    background-color: var(--background-gray); /* Couleur gris définie dans les variables */
+form button {
+    background-color: var(--background-gray); /* Couleur de fond grise */
     border: none;
     padding: 5px;
     cursor: pointer;
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    color: #ffffff; /* Couleur du texte */
 }
 
-input {
+form input {
     padding: 5px;
     border: 1px solid var(--background-gray); /* Bordure grise */
+    border-radius: 5px; /* Ajouter une bordure arrondie */
+    margin-left: 5px; /* Espacement entre le bouton et le champ de recherche */
+    color: #fcfbfb; /* Couleur du texte */
+    background-color: var(--background-gray); /* Couleur de fond grise */
 }
