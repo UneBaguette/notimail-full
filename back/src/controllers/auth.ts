@@ -32,7 +32,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
 
     // Si les mots de passe ne correspondent pas, répond avec un statut 401 (Non autorisé) et un message d'erreur
     if (!passwordMatch) {
-      res.status(401).send('Mot de passe incorrect.');
+      res.status(401).json({ message: 'Mot de passe incorrect.' });
       return;
     }
 
@@ -124,7 +124,7 @@ export const deconnexionUser = (req: Request, res: Response): void => {
     }
 
     // Décoder le token pour obtenir les informations de l'utilisateur
-    const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
+    const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`);
 
     // Suppression du cookie manuellement
     res.clearCookie('token');

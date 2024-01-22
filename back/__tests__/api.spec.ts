@@ -3,7 +3,6 @@ import Test from "supertest/lib/test";
 import app from "../src/app";
 import supertest from "supertest";
 import { User } from "../src/models/users";
-import bcrypt from "bcrypt";
 
 export const close = async (users: User[]): Promise<void> => {
   try {
@@ -18,39 +17,23 @@ export const close = async (users: User[]): Promise<void> => {
   }
 }
 
-export const getAdminTokenTest = async (): Promise<string> => {
-    try {
-
-      const admin = User.create([{
-        firm_name: "admintest",
-        first_name: "admin",
-        last_name: "test",
-        email: "test@test.com",
-        password: await bcrypt.hash("admin", 10),
-        phone_number: "098765453",
-        last_picked_up: new Date(),
-        last_received_mail: new Date(),
-        is_admin: true
-      }]);
-      await User.insert(admin);
-
-      const response = await supertest(app)
+export const getTokenTest = async (firm_name: string, password: string): Promise<string> => {
+  try {
+    const response = await supertest(app)
         .post('/auth/connexion')
         .send({
-            firm_name: 'admintest',
-            password: 'admin',
+          firm_name,
+          password,
         });
 
-      await User.delete({ firm_name: "admintest" });
-  
-      const { token } = response.body;
-  
-      return token;
-    } catch (error) {
-      console.error('Erreur lors de l\'obtention du token :', error);
-      throw new Error('Erreur lors de l\'obtention du token.');
-    }
-};
+      
+      return response.body.token;
+
+  } catch (error) {
+    console.error('Erreur lors de l\'obtention du token :', error);
+    throw new Error('Erreur lors de l\'obtention du token.');
+  }
+}
 
 describe("API", () => {
 
