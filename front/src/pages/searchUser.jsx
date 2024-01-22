@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import "./searchUser.css";
 
 export const SearchUser = ({ setOpen }) => {
   const [searchText, setSearchText] = useState("");
@@ -18,15 +19,15 @@ export const SearchUser = ({ setOpen }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <button type="submit">
+        <IoIosSearch />
+      </button>
       <input
         type="text"
         placeholder="Rechercher"
         value={searchText}
         onChange={handlechange}
       />
-      <button type="submit">
-        <IoIosSearch />
-      </button>
     </form>
   );
 };

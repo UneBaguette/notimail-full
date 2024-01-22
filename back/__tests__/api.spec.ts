@@ -17,23 +17,23 @@ export const close = async (users: User[]): Promise<void> => {
   }
 }
 
-export const getAdminTokenTest = async (): Promise<string> => {
-    try {
-      const response = await supertest(app)
+export const getTokenTest = async (firm_name: string, password: string): Promise<string> => {
+  try {
+    const response = await supertest(app)
         .post('/auth/connexion')
         .send({
-            firm_name: 'admintest',
-            password: 'admin',
+          firm_name,
+          password,
         });
-  
-      const { token } = response.body;
-  
-      return token;
-    } catch (error) {
-      console.error('Erreur lors de l\'obtention du token :', error);
-      throw new Error('Erreur lors de l\'obtention du token.');
-    }
-};
+
+      
+      return response.body.token;
+
+  } catch (error) {
+    console.error('Erreur lors de l\'obtention du token :', error);
+    throw new Error('Erreur lors de l\'obtention du token.');
+  }
+}
 
 describe("API", () => {
 

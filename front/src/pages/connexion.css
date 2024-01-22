@@ -21,7 +21,7 @@
 label {
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Ajustez selon vos besoins pour aligner en haut */
     justify-content: space-around;
     width: 100%;
     border-radius: 10px;
@@ -31,7 +31,7 @@ label {
 .cadenas {
     height: 30px;
     background: var(--background-blue);
-    border-radius: 30px;
+    border-radius: 10px;
     position: absolute;
     right: 5px;
     cursor: pointer;
@@ -51,24 +51,23 @@ label {
 
 select,
 input {
-    width: 60vw;
-    height: 100%;
-    border: none;
+    width: 323px;
     border-radius: 50px;
-    padding: 10px 5px;
+    padding: 10px 15px;
     background-color: rgba(0, 0, 0, 0.452);
     cursor: pointer;
     display: flex;
     justify-content: space-evenly;
+    font-size: 11px;
 }
 
 label span,
 .separator {
     position: absolute;
-    width: 1px;
-    height: 100%;
+    width: 1px; /* Ajustez la largeur selon vos besoins */
+    height: 90%;
     background-color: black;
-    right: 20%;
+    right: 30%;
 }
 
 select {
@@ -86,8 +85,17 @@ select {
 
     label span,
     .separator {
-        right: 20% !important;
+        right: 10% !important;
     }
 
 
+}
+
+.formulaire {
+    flex-direction: column;
+}
+
+.iconbas{
+    height: 30px;
+    width: 50px;
 }

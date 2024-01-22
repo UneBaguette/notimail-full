@@ -4,7 +4,7 @@ import Test from "supertest/lib/test";
 import app from "../src/app";
 import { User } from "../src/models/users";
 import bcrypt, { compareSync } from "bcrypt";
-import { close, getAdminTokenTest } from "./api.spec";
+import { close, getTokenTest } from "./api.spec";
 
 describe("ROUTE /user", () => {
 
@@ -20,6 +20,8 @@ describe("ROUTE /user", () => {
     }
 
     let adminToken: string;
+    
+    let userToken: string;
 
     let server: TestAgent<Test>;
 
@@ -60,7 +62,8 @@ describe("ROUTE /user", () => {
             }
         ]);
         await User.insert(users);
-        adminToken = await getAdminTokenTest();
+        adminToken = await getTokenTest(users[1].firm_name, ":jane:");
+        userToken = await getTokenTest(users[0].firm_name, ":john:");
     });
 
     afterAll(async () => await close(users));
@@ -105,6 +108,18 @@ describe("ROUTE /user", () => {
             });
     });
 
+    it("should not proceed if user is not admin when trying to fetch users", (done) => {
+        server
+            .get("/user/users")
+            .set("Cookie", [`token=${userToken}`])
+            .expect(403)
+            .end((err, res) => {
+                if (err) return done(err);
+                expect(res.body).toMatchObject({ error: 'Access forbidden. User is not an admin' });
+                done();
+            });
+    });
+
     it("should not find user by ID", (done) => {
         server
             .get(`/user/users/-999`)
@@ -113,6 +128,18 @@ describe("ROUTE /user", () => {
             .end((err, res) => {
                 if (err) return done(err);
                 expect(res.body).toMatchObject({ error: 'Utilisateur non trouvé' });
+                done();
+            });
+    });
+
+    it("should fail to validate the user ID", (done) => {
+        server
+            .get("/user/users/!!!")
+            .set("Cookie", [`token=${adminToken}`])
+            .expect(400)
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.body).toMatchObject({ error: 'ID utilisateur invalide' });
                 done();
             });
     });

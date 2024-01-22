@@ -1,15 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AccueilAdmin } from "./pages/accueilAdmin";
-import { Mail } from "./pages/mail";
 import { AccueilUser } from "./pages/accueilUser";
 import { Connexion } from "./pages/connexion";
-import { Confirm } from "./pages/confirm";
-import { User } from "./pages/user";
-import { Edit } from "./pages/edit";
 import { NavBar } from "./pages/Navbar";
-import { AjoutEntreprise } from "./pages/ajoutEntreprise";
+import { AjoutEntreprise } from "./pages/AjoutEntreprise";
 import Modal from 'react-modal';
+import { ModifierEntreprise } from "./pages/modifierEntreprise";
 
 const App = () => {
   // Initialisation des mon modal qui est lié à la div #root
@@ -22,11 +19,8 @@ const App = () => {
         <Route path="/" element={<Connexion />} />
         <Route path="/accueilUser" element={<AccueilUser />} />
         <Route path="/accueilAdmin" element={<AccueilAdmin />} />
-        <Route path="/confirm" element={<Confirm />} />
-        <Route path="/mail" element={<Mail />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/edit" element={<Edit />} />
-        <Route path="/ajoutEntreprise" element={<AjoutEntreprise />} /> 
+        <Route path="/ajoutEntreprise" element={<AjoutEntreprise />} />
+        <Route path="/modifierEntreprise/:id" element={<ModifierEntreprise/>} />
       </Routes>
     </BrowserRouter>
   );

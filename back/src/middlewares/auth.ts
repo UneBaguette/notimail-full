@@ -9,13 +9,6 @@ export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
     // Récupérer le token d'authentification depuis les cookies de la requête
     const { token } = req.cookies;
 
-    // Vérifier si le token existe
-    if (!token) {
-        // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-        res.redirect('/');
-        return;
-    }
-
     try {
         // Décoder le token pour obtenir les informations de l'utilisateur
         const decodedToken = jwt.verify(token, `${process.env.SESSION_SECRET}`) as any;
@@ -25,12 +18,6 @@ export const checkAuth = (req: Request, res: Response, next: NextFunction) => {
 
         // La constante isUserConnected devrait être un booléen indiquant si l'utilisateur est connecté
         const isUserConnected = true; // ou utilisez une logique appropriée basée sur les informations de l'utilisateur
-
-        // Si l'utilisateur n'est pas connecté, rediriger vers la page de connexion
-        if (!isUserConnected) {
-            res.redirect('/connexion');
-            return;
-        }
 
         next(); // Passer à la prochaine fonction de middleware ou route
     } catch (error) {
