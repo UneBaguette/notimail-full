@@ -11,6 +11,7 @@ export const AccueilAdmin=()=>{
     const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [mailSent, setMailSent] = useState(false);
+    const [updateUser, setUpdateUser] = useState([]);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -103,6 +104,26 @@ export const AccueilAdmin=()=>{
         });
     };
     
+    const handleUpdateUser = (userId) =>{
+        const updateUser = users.find(user => user.id === user);
+        fetch(`http://localhost:3000/user/users/${updateUser.id}`,{
+            method: 'GET',
+            header: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                updateUser: [updateUser.id],
+            })
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)}
+            )
+            .catch(error=>{
+                console.error(`cette utilisateur n'existe pas`, error);
+            })
+        })
+    }
+
     return(
         <>
             <div className="content-container">
@@ -132,7 +153,8 @@ export const AccueilAdmin=()=>{
                                         {/* Formatage de la date */}
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
-                                    <a href="/ajoutEntreprise">
+                                    {/* <a href="/ajoutEntreprise"> */}
+                                    <a href="/modifierEntreprise/${user.id}" onClick={() => handleUpdateUser(user.id)}>
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
                                     </a> 
                                 </div>

@@ -1,0 +1,25 @@
+:root {
+    --background-blue-green: #008787;
+    --background-blue: #025892;
+    --background-gray: #E3E3E3;
+    --background-red: #FF3535;
+}
+
+.fleche {
+    background-color: blue;
+    border-radius: 35px;
+    transform: scaleX(-1);
+    width: 133px;
+    height: 52px;
+    flex-shrink: 0;
+}
+
+.texte {
+    color: #006C92;
+font-family: Kanit;
+font-size: 32px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
