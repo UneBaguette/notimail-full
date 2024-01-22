@@ -4,7 +4,7 @@ import { AccueilAdmin } from "./pages/accueilAdmin";
 import { AccueilUser } from "./pages/accueilUser";
 import { Connexion } from "./pages/connexion";
 import { NavBar } from "./pages/Navbar";
-import { AjoutEntreprise } from "./pages/ajoutEntreprise";
+import { AjoutEntreprise } from "./pages/AjoutEntreprise";
 import Modal from 'react-modal';
 
 const App = () => {
