@@ -103,11 +103,9 @@ export const AccueilAdmin=()=>{
         });
     };
     
-
     return(
         <>
             <div className="content-container">
-                {/* <h2>Liste des Utilisateurs</h2> */}
                 <SearchUser />
                 <section className="contact">
                     {users.map((user) => (
