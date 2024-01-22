@@ -73,7 +73,7 @@ export const Connexion = () => {
       {/* MESSAGE D'ERREUR SI ID OU MP INCORECT */}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {/* FORMAULAIRE DE CONNEXION */}
-      <form onSubmit={handleSubmit}>
+      <form className="formulaire" onSubmit={handleSubmit}>
         {/* CHOIX ENTREPRISE */}
         <label className="Entreprise">
           <select
@@ -102,6 +102,7 @@ export const Connexion = () => {
           </button>
         </label>
 
+        <br />
         <br />
 
         {/* LABEL PASSWORD */}
