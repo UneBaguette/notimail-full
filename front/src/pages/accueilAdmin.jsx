@@ -58,30 +58,52 @@ export const AccueilAdmin=()=>{
                 : [...prevSelectedUsers, user.id];
         });
     };
-
+    
     const handleMailSend = () => {
-        // Votre code pour envoyer le courrier ici
-        fetch('http://localhost:3000/mail/send', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                selectedUsers: selectedUsers,
-            }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Mail sent successfully:', data);
-            setMailSent(true);
-            // Réinitialisez la liste des utilisateurs sélectionnés si nécessaire
-            setSelectedUsers([]);
-        })
-        .catch(error => {
-            console.error('Error sending mail:', error);
+        // Assurez-vous qu'il y a au moins un utilisateur sélectionné
+        if (selectedUsers.length === 0) {
+            console.error('Aucun utilisateur sélectionné pour l\'envoi du courrier');
+            return;
+        }
+    
+        // Itérez sur chaque utilisateur sélectionné
+        selectedUsers.forEach(userId => {
+            const selectedUser = users.find(user => user.id === userId);
+    
+            // Votre code pour envoyer le courrier ici
+            fetch(`http://localhost:3000/mail/received-mail/${selectedUser.id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    selectedUsers: [selectedUser.id],
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(`Mail sent successfully for user ${selectedUser.firm_name}:`, data);
+    
+                // Si c'est la dernière itération, marquez comme envoyé
+                if (userId === selectedUsers[selectedUsers.length - 1]) {
+                    setMailSent(true);
+                    // Réinitialisez la liste des utilisateurs sélectionnés si nécessaire
+                    setSelectedUsers([]);
+                }
+            })
+            .catch(error => {
+                console.error(`Error sending mail for user ${selectedUser.firm_name}:`, error);
+    
+                // Si c'est la dernière itération, marquez comme envoyé
+                if (userId === selectedUsers[selectedUsers.length - 1]) {
+                    // Réinitialisez la liste des utilisateurs sélectionnés si nécessaire
+                    setSelectedUsers([]);
+                }
+            });
         });
     };
     
+
     return(
         <>
             <div className="content-container">
@@ -129,9 +151,9 @@ export const AccueilAdmin=()=>{
                     <a href="/ajoutEntreprise" className="blue-background">
                         <IoAddCircleOutline />
                     </a>
-                    <a href="#" className="blue-background" onClick={() => setShowModal(true)}>
+                    <div className="blue-background" onClick={() => setShowModal(true, users.find(user => user.id === selectedUsers[0]))}>
                         <BiMailSend />
-                    </a>
+                    </div>
                 </section>
             </div>
 
