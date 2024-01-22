@@ -1,0 +1,25 @@
+/* défini les couleurs */
+:root {
+    --background-blue-green: #008787;
+    --background-blue: #025892;
+    --background-gray: #E3E3E3;
+    --background-red: #FF3535;
+}
+
+/* style pour la recherche */
+form {
+    display: flex; /* Met les éléments sur la même ligne */
+    align-items: center; /* Aligne verticalement les éléments */
+}
+
+button {
+    background-color: var(--background-gray); /* Couleur gris définie dans les variables */
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid var(--background-gray); /* Bordure grise */
+}
