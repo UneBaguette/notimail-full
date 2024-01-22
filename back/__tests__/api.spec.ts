@@ -21,26 +21,18 @@ export const close = async (users: User[]): Promise<void> => {
 export const getAdminTokenTest = async (): Promise<string> => {
     try {
 
-      const admin = await User.findOne({ where: { firm_name: "admintest" } });
-
-      if (admin && !admin.is_admin) {
-        await User.delete({firm_name: "admintest"});
-      }
-
-      if (!admin) {
-        const admin = User.create([{
-          firm_name: "admintest",
-          first_name: "admin",
-          last_name: "test",
-          email: "test@test.com",
-          password: await bcrypt.hash("admin", 10),
-          phone_number: "098765453",
-          last_picked_up: new Date(),
-          last_received_mail: new Date(),
-          is_admin: true
-        }]);
-        await User.insert(admin);
-      }
+      const admin = User.create([{
+        firm_name: "admintest",
+        first_name: "admin",
+        last_name: "test",
+        email: "test@test.com",
+        password: await bcrypt.hash("admin", 10),
+        phone_number: "098765453",
+        last_picked_up: new Date(),
+        last_received_mail: new Date(),
+        is_admin: true
+      }]);
+      await User.insert(admin);
 
       const response = await supertest(app)
         .post('/auth/connexion')
@@ -48,6 +40,8 @@ export const getAdminTokenTest = async (): Promise<string> => {
             firm_name: 'admintest',
             password: 'admin',
         });
+
+      await User.delete({ firm_name: "admintest" });
   
       const { token } = response.body;
   
