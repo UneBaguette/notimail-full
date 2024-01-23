@@ -57,7 +57,7 @@ export const authUser = async (req: Request, res: Response): Promise<void> => {
         is_admin: user.is_admin,
       },
       `${process.env.SESSION_SECRET}`,
-      { expiresIn: '3m' }
+      { expiresIn: process.env.SESSION_TIME_DEV }
     );
 
     // Sauvegarde du token dans un cookie
