@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import "./searchUser.css";
+import "./searchUser.module.css";
 
 export const SearchUser = ({ setOpen }) => {
   const [searchText, setSearchText] = useState("");

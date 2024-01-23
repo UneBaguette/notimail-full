@@ -4,6 +4,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { BiMailSend } from "react-icons/bi";
 import { SearchUser } from './searchUser';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -154,9 +155,11 @@ export const AccueilAdmin=()=>{
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
                                     {/* <a href="/ajoutEntreprise"> */}
-                                    <a href="/modifierEntreprise/${user.id}" onClick={() => handleUpdateUser(user.id)}>
+                                    {/* <a href="/modifierEntreprise/${user.id}" onClick={() => handleUpdateUser(user.id)}> */}
+                                    <Link to={`/modifierEntreprise/${user.id}`} onClick={() => handleUpdateUser(user.id)}>
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
-                                    </a> 
+                                    </Link>
+                                    {/* </a> */}
                                 </div>
                             </section>
                             <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
