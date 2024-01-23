@@ -64,7 +64,7 @@ export const AccueilUser = () => {
           {/* Image enveloppe */}
           <img src='/imagefront/44849e8b90ebf9de43ed123e14a739b0.png' alt='enveloppe' />
           <div className='texte'>
-            <h3>Vous n'avez pas de courrier en attente</h3>
+            <h3>Aucun courrier en attente</h3>
           </div>
         </div>
       ) : (

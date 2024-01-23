@@ -3,7 +3,10 @@
     --background-blue: #025892;
     --background-gray: #E3E3E3;
     --background-red: #FF3535;
-    color: black; /* Ligne ajoutée pour la couleur de la police en noir */
+}
+
+body {
+    color: black; /* Définir la couleur du texte pour l'ensemble du document */
 }
 
 .container {
@@ -22,10 +25,11 @@
 label {
     position: relative;
     display: flex;
-    align-items: flex-end; /* Ajustez selon vos besoins pour aligner en haut */
+    align-items: flex-end;
     justify-content: space-around;
     width: 100%;
     border-radius: 10px;
+    color: black; /* Ajout de cette ligne pour définir la couleur du texte pour le label */
 }
 
 .cadenas {
@@ -59,14 +63,15 @@ input {
     display: flex;
     justify-content: space-evenly;
     font-size: 11px;
+    color: black !important; /* Ajout de cette ligne pour définir la couleur du texte pour l'input */
 }
 
 label span,
 .separator {
     position: absolute;
-    width: 1px; /* Ajustez la largeur selon vos besoins */
+    width: 1px;
     height: 90%;
-    background-color: black;
+    background-color: #A6A6A6;
     right: 30%;
 }
 
