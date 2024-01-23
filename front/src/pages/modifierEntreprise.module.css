@@ -9,7 +9,7 @@
     background-color: blue;
     border-radius: 35px;
     transform: scaleX(-1);
-    width: 133px;
+    width: 20%;
     height: 52px;
     flex-shrink: 0;
 }
@@ -23,3 +23,24 @@ font-weight: 400;
 line-height: normal;
 }
 
+.description{
+    width: 10%;
+}
+
+.contact {
+    text-align: right;
+    color: #006C92;
+}
+
+.admin {
+    margin-top: 5px;
+}
+
+.identifiant {
+    text-align: right;
+    color: #006C92;
+}
+
+.antreprise {
+    color: #006C92;
+}

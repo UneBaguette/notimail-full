@@ -50,10 +50,10 @@ export const ModifierEntreprise =()=>{
   
     return (
       <div >
-        <img src="/imagefront/Nouveau-projet-2.png" alt="description de l'image" style={{ width: '10%' }} />
+        <img className='description' src="/imagefront/Nouveau-projet-2.png" alt="description de l'image"/>
         <center>
           <div >
-            <img className='fleche' src="/front/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image" style={{ width: '20%' }} />
+            <img className='fleche' src="/front/imagefront/cb5cab0bfc052025f4cc429df0098483.png" alt="description de l'image"/>
             <p className='texte' >Entreprise</p>
           </div>
         </center>
@@ -61,9 +61,8 @@ export const ModifierEntreprise =()=>{
         <div >
           <form onSubmit={handleSubmit}>
             <div >
-              <label htmlFor="entreprise" >Entreprise :</label>
+              <label className='antreprise' htmlFor="entreprise" >Entreprise :</label>
               <input
-                color='#006C92'
                 type="text"
                 id="entreprise"
                 value={entreprise}
@@ -73,7 +72,7 @@ export const ModifierEntreprise =()=>{
   
             <div>
               <div>
-                <label htmlFor="contact" style={{ textAlign: 'right', color: '#006C92' }}>Contact :</label>
+                <label className='contact' htmlFor="contact" >Contact :</label>
                 <div >
                   <div>
                     <label htmlFor="nom"></label>
@@ -118,7 +117,7 @@ export const ModifierEntreprise =()=>{
             </div>
   
             <div>
-              <label htmlFor="identifiant" style={{ textAlign: 'right', color: '#006C92' }}>Identifiant :</label>
+              <label className='identifiant' htmlFor="identifiant">Identifiant :</label>
               <input
                 type="text"
                 id="identifiant"
@@ -128,13 +127,12 @@ export const ModifierEntreprise =()=>{
             </div>
   
             <div >
-              <label htmlFor="isAdmin" >Admin :</label>
+              <label className='admin' htmlFor="isAdmin" >Admin :</label>
               <input
                 type="checkbox"
                 id="isAdmin"
                 checked={isAdmin}
                 onChange={() => setIsAdmin(!isAdmin)}
-                style={{ marginTop: '5px' }}
               />
             </div>
   
