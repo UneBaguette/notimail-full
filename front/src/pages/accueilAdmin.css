@@ -7,11 +7,12 @@
 }
 
 .content-container {
-    margin-top: 100px;
+    margin-top: 120px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centre les éléments horizontalement dans le conteneur intérieur */
+    gap:10px;
 }
 
 .contact{
@@ -28,7 +29,7 @@
     border-radius: 10px;
     padding: 20px;
     color:var(--background-blue);
-    line-height: 0.8;
+    line-height: 0.5;
 }
 
 /* défini la hauteur maximun */
@@ -54,17 +55,12 @@
     align-items: center; /* Centre les éléments verticalement */
     flex-direction: row; /* Dispose les éléments horizontalement */
     margin-bottom: 0;
-    flex:1;
+    flex:0.5;
 }
 
 /* Style pour la classe align_items */
 .align_items h3 {
     margin-bottom: 0; /* Ajoutez une marge inférieure à la balise h3 */
-}
-
-/* Style pour la classe align_items img */
-.align_items a {
-    margin-left: 5px; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
 
 /* Style pour la classe align_items .nohide */
@@ -122,11 +118,15 @@
 
 /* Hidedetail - cache par défaut */
 .hidedetail {
+    display: flex; /* Utilisez flexbox pour aligner les éléments horizontalement */
+    flex-direction: column; /* Dispose les éléments en colonne */
+    justify-content: space-around; /* Espacez les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
     background-color: #C0C0C0;
     opacity: 0;
     height: 0;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 0;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
 }
@@ -134,15 +134,30 @@
 /* Affiche les détails lorsque la classe 'show' est présente */
 .hidedetail.show {
     opacity: 1;
-    height: auto;
-    margin-top: 10px;
+    height: 150px;
+    margin-top: 0;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
 }
 
-/* Style pour l'image à l'intérieur de la classe align_items */
-.align_items img {
-    margin-left: 10px;
+/* Ajoutez le style pour la classe align_items_hide */
+.align_items_hide {
+    display: flex;
+    flex-direction: row;
+    background-color: #C0C0C0 !important; /* Utilisez la même couleur que align_items_hide */
+    border-radius: 10px;
+    line-height: 0.5;
+}
+
+/* Style pour les éléments à l'intérieur de la classe align_items_hide */
+.align_items_hide p {
+    margin: 0; /* Supprimez la marge par défaut des balises <p> */
+    flex: 1; /* Chaque élément prend autant d'espace que possible */
+}
+
+/* Style pour les éléments à l'intérieur de la classe align_items_hide avec une marge inférieure */
+.align_items_hide p:not(:last-child) {
+    margin-bottom: 5px; /* Ajoutez une marge basse entre les éléments */
 }
 
 /* Ajout d'un style pour le curseur lorsqu'il n'est pas sélectionné */
@@ -152,7 +167,7 @@
 
 /* Style pour l'image à l'intérieur de la classe align_items */
 .align_items img {
-    margin-left: 10px; /* Ajoute une marge à gauche de l'image pour l'espace */
+    margin-left: 0; /* Ajoute une marge à gauche de l'image pour l'espace */
 }
 
 /* Positionner en bas de la page */

@@ -161,9 +161,18 @@ export const AccueilAdmin=()=>{
                                 </div>
                             </section>
                             <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
-                                <p>Email: {user.email}</p>
-                                <p>Téléphone: {user.phone_number}</p>
-                                <p>Identifiant: {user.id}</p>
+                                <div className="align_items_hide">
+                                    <p>Email:</p>
+                                    <p>{user.email}</p>
+                                </div>    
+                                <div className="align_items_hide">
+                                    <p>Téléphone:</p>
+                                    <p>{user.phone_number}</p>
+                                </div>
+                                <div className="align_items_hide">
+                                    <p>Identifiant:</p>
+                                    <p>{user.id}</p>
+                                </div>
                             </section>
                         </div>
                     ))}
