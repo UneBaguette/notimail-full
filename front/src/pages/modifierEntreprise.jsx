@@ -4,37 +4,37 @@ import { useParams } from 'react-router-dom';
 import './modifierEntreprise.module.css';
 
 export const ModifierEntreprise =()=>{
-    const { id } = useParams();
-    const [entreprise, setEntreprise] = useState("");
-    const [nom, setNom] = useState("Nom");
-    const [prenom, setPrenom] = useState("Prénom");
-    const [telephone, setTelephone] = useState("");
-    const [email, setEmail] = useState("");
-    const [identifiant, setIdentifiant] = useState("");
-    const [isAdmin, setIsAdmin] = useState(false);
+  const { id } = useParams();
+  const [entreprise, setEntreprise] = useState("");
+  const [nom, setNom] = useState("Nom");
+  const [prenom, setPrenom] = useState("Prénom");
+  const [telephone, setTelephone] = useState("");
+  const [email, setEmail] = useState("");
+  const [identifiant, setIdentifiant] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      // Utilisez l'ID pour effectuer une requête pour récupérer les données de l'utilisateur
-      fetch(`http://localhost:3000/user/users/${id}`, { credentials: 'include' })
-      .then(result => result.json())
-      .then(data => {
-          // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
-          console.log(data);
-  
-          // Utilisez les données récupérées pour initialiser les états du formulaire
-          setEntreprise(data.firm_name);
-          setNom(data.last_name);
-          setPrenom(data.first_name);
-          setTelephone(data.phone_number);
-          setEmail(data.email);
-          setIdentifiant(data.identifiant);
-          setIsAdmin(data.is_admin);
-      })
-      .catch(Error => {
-          console.log(Error);
-      });
+  useEffect(() => {
+    // Utilisez l'ID pour effectuer une requête pour récupérer les données de l'utilisateur
+    fetch(`http://localhost:3000/user/users/${id}`, { credentials: 'include' })
+    .then(result => result.json())
+    .then(data => {
+      // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
+      console.log(data);
+
+      // Utilisez les données récupérées pour initialiser les états du formulaire
+      setEntreprise(data.firm_name);
+      setNom(data.last_name);
+      setPrenom(data.first_name);
+      setTelephone(data.phone_number);
+      setEmail(data.email);
+      setIdentifiant(data.identifiant);
+      setIsAdmin(data.is_admin);
+    })
+    .catch(Error => {
+      console.error(`Erreur lors de la récupération des détails de l'utilisateur ${id}:`, error);
+    });
   }, [id]);
 
   const handleSubmit = () => {
