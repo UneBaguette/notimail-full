@@ -105,25 +105,26 @@ export const AccueilAdmin=()=>{
         });
     };
     
-    const handleUpdateUser = (userId) =>{
-        const updateUser = users.find(user => user.id === user);
-        fetch(`http://localhost:3000/user/users/${updateUser.id}`,{
+    const handleUpdateUser = (userId) => {
+        const updateUser = users.find(user => user.id === userId);
+        fetch(`http://localhost:3000/user/users/${updateUser.id}`, {
             method: 'GET',
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                updateUser: [updateUser.id],
-            })
-            .then(response => response.json())
-            .then(data =>{
-                console.log(data)}
-            )
-            .catch(error=>{
-                console.error(`cette utilisateur n'existe pas`, error);
-            })
+            // Supprimez la partie body dans une requête GET
         })
-    }
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
+            // Par exemple, vous pouvez stocker ces données dans l'état updateUser
+            setUpdateUser(data);
+        })
+        .catch(error => {
+            console.error(`Erreur lors de la récupération des détails de l'utilisateur ${updateUser.firm_name}:`, error);
+        });
+    }    
 
     return(
         <>
@@ -154,12 +155,9 @@ export const AccueilAdmin=()=>{
                                         {/* Formatage de la date */}
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
-                                    {/* <a href="/ajoutEntreprise"> */}
-                                    {/* <a href="/modifierEntreprise/${user.id}" onClick={() => handleUpdateUser(user.id)}> */}
                                     <Link to={`/modifierEntreprise/${user.id}`} onClick={() => handleUpdateUser(user.id)}>
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
                                     </Link>
-                                    {/* </a> */}
                                 </div>
                             </section>
                             <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
@@ -171,9 +169,11 @@ export const AccueilAdmin=()=>{
                     ))}
                 </section>
                 <section class="ajoutUser">
-                    <a href="/ajoutEntreprise" className="blue-background">
+                    {/* <a href="/ajoutEntreprise" className="blue-background"> */}
+                    <Link to ={'/ajoutEntreprise'}className="blue-background">
                         <IoAddCircleOutline />
-                    </a>
+                    </Link>
+                    {/* </a> */}
                     <div className="blue-background" onClick={() => setShowModal(true, users.find(user => user.id === selectedUsers[0]))}>
                         <BiMailSend />
                     </div>

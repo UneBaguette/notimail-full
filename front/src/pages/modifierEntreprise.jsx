@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
 import './modifierEntreprise.module.css';
@@ -15,65 +15,38 @@ export const ModifierEntreprise =()=>{
   
     const navigate = useNavigate();
 
-    // Assurez-vous que le useEffect a le deuxième paramètre [id] pour qu'il se déclenche lorsque l'ID change.
     useEffect(() => {
-        // Utilisez l'ID pour effectuer une requête pour récupérer les données de l'utilisateur
-        fetch(`http://localhost:3000/user/users/${id}`, { credentials: 'include' })
-        .then(result => result.json())
-        .then(data => {
-            // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
-            console.log(data);
-        })
-        .catch(Error => {
-            console.log(Error);
-        });
-    }, [id]);
+      // Utilisez l'ID pour effectuer une requête pour récupérer les données de l'utilisateur
+      fetch(`http://localhost:3000/user/users/${id}`, { credentials: 'include' })
+      .then(result => result.json())
+      .then(data => {
+          // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
+          console.log(data);
   
+          // Utilisez les données récupérées pour initialiser les états du formulaire
+          setEntreprise(data.firm_name);
+          setNom(data.last_name);
+          setPrenom(data.first_name);
+          setTelephone(data.phone_number);
+          setEmail(data.email);
+          setIdentifiant(data.identifiant);
+          setIsAdmin(data.is_admin);
+      })
+      .catch(Error => {
+          console.log(Error);
+      });
+  }, [id]);
+
+  const handleSubmit = () => {
+    // Ajoutez le code pour gérer la soumission du formulaire ici
+    console.log("Formulaire soumis !");
+  };
   
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-  
-      const userData = {
-        firm_name: entreprise,
-        first_name: prenom,
-        last_name: nom,
-        phone_number: telephone,
-        email: email,
-        password: "",  // Note: You should handle password securely on the server side
-        has_mail: true,
-        is_admin: isAdmin
-      };
-  
-      try {
-        const response = await fetch('http://localhost:3000/user/users', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: "include",
-          body: JSON.stringify(userData),
-        });
-  
-        if (response.ok) {
-          // La requête a réussi
-          const data = await response.json();
-          console.log(data);  // Afficher la réponse du serveur
-          navigate('/accueilAdmin');
-        } else {
-          // La requête a échoué
-          console.error('Erreur lors de la requête POST');
-        }
-      } catch (error) {
-        console.error('Erreur lors de la requête POST', error);
-      }
-    };
-  
-    const handleDelete = () => {
-      // Logique de suppression ici
-      console.log("Supprimer");
-      navigate('/accueilAdmin'); // Appeler la fonction d'annulation pour revenir à la page d'accueil
-    };
-  
+  const handleDelete = () => {
+    // Logique de suppression ici
+    console.log("Supprimer");
+    navigate('/accueilAdmin'); // Appeler la fonction d'annulation pour revenir à la page d'accueil
+  };
   
     return (
       <div >
@@ -171,7 +144,7 @@ export const ModifierEntreprise =()=>{
                   Supprimer
                 </button>
                 <div ></div> {/* Espace entre les boutons */}
-                <button type="button" onClick={handleSubmit}>
+                <button type="submit">
                   Terminer
                 </button>
               </div>
