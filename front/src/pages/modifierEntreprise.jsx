@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useParams } from 'react-router-dom';
-import './modifierEntreprise.module.css';
+import './modifierEntreprise.css';
 
 export const ModifierEntreprise =()=>{
   const { id } = useParams();

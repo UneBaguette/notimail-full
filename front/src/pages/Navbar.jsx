@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router-dom';
-import './NavBar.module.css'
+import './NavBar.css'
 
 export const NavBar=()=>{
 
@@ -54,7 +54,7 @@ export const NavBar=()=>{
                         {pathname === `/accueilUser`? (<span>{users?.userConnected?.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
-            </nav>
+                </nav>
             )}
         </>
     )
