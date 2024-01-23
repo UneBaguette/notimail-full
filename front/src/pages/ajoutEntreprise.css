@@ -9,7 +9,7 @@
     background-color: blue;
     border-radius: 35px;
     transform: scaleX(-1);
-    width: 133px;
+    width: 20%;
     height: 52px;
     flex-shrink: 0;
 }
@@ -21,5 +21,16 @@ font-size: 32px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20%;
+}
+
+.logo {
+    width: 10px;
 }
 
