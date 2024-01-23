@@ -70,9 +70,6 @@ label span,
     right: 30%;
 }
 
-select {
-    -webkit-appearance: none;
-}
 
 @media (min-width: 768px) {
     select,
