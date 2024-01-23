@@ -3,6 +3,7 @@
     --background-blue: #025892;
     --background-gray: #E3E3E3;
     --background-red: #FF3535;
+    color: black; /* Ligne ajoutée pour la couleur de la police en noir */
 }
 
 .container {
@@ -26,7 +27,6 @@ label {
     width: 100%;
     border-radius: 10px;
 }
-
 
 .cadenas {
     height: 30px;
@@ -74,28 +74,23 @@ select {
     -webkit-appearance: none;
 }
 
-
 @media (min-width: 768px) {
-
     select,
     input {
         width: 30vw;
     }
 
-
     label span,
     .separator {
         right: 10% !important;
     }
-
-
 }
 
 .formulaire {
     flex-direction: column;
 }
 
-.iconbas{
+.iconbas {
     height: 30px;
     width: 50px;
 }
