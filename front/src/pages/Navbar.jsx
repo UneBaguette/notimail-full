@@ -44,7 +44,7 @@ export const NavBar=()=>{
 
     return(
         <>        
-            {(pathname === '/' || pathname === '/ajoutEntreprise' || pathname === '/modiferEntreprise') ? null : (
+            {(pathname === '/' || pathname === '/ajoutEntreprise' || pathname === '/modiferEntreprise/:id') ? null : (
                 <nav>
                     <div id="left-content">
                         <img src="/imagefront/Nouveauprojet1.png" alt="logo projet"/>
