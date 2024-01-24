@@ -63,72 +63,72 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
         </div>
       </center>
 
-      <div style={{ width: '50%', border: '1px solid #ccc', borderRadius: '52px', padding: '20px', marginTop: '20px', backgroundColor: '#E3E3E3' }}>
+      <div style={{ width: '50%', borderRadius: '52px', padding: '20px', marginTop: '20px', backgroundColor: '#E3E3E3' }}>
         <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '10px', justifyContent: 'center', textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
             <label htmlFor="entreprise" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Entreprise :</label>
             <input
               type="text"
               id="entreprise"
               value={entreprise}
               onChange={(e) => setEntreprise(e.target.value)}
-              style={{ width: '70%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+              style={{ width: '70%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
             />
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', marginTop: '10px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
               <label htmlFor="nom" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Nom :</label>
               <input
                 type="text"
                 id="nom"
                 value={nom}
                 onChange={(e) => setNom(e.target.value)}
-                style={{ width: '100%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+                style={{ width: '100%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
               />
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', marginTop: '5px', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
               <label htmlFor="prenom" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Prénom :</label>
               <input
                 type="text"
                 id="prenom"
                 value={prenom}
                 onChange={(e) => setPrenom(e.target.value)}
-                style={{ width: '100%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+                style={{ width: '100%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
               />
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
             <label htmlFor="telephone" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Numéro de téléphone :</label>
             <input
               type="tel"
               id="telephone"
               value={telephone}
               onChange={(e) => setTelephone(e.target.value)}
-              style={{ width: '70%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+              style={{ width: '70%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
             />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
             <label htmlFor="email" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Email :</label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{ width: '70%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+              style={{ width: '70%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
             />
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', border: '1px solid black', padding: '5px', borderRadius: '5px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', padding: '5px' }}>
             <label htmlFor="identifiant" style={{ textAlign: 'right', color: '#006C92', marginRight: '5px' }}>Identifiant :</label>
             <input
               type="text"
               id="identifiant"
               value={identifiant}
               onChange={(e) => setIdentifiant(e.target.value)}
-              style={{ width: '70%', height: '30px', border: '1px solid black', borderRadius: '5px', padding: '5px' }}
+              style={{ width: '70%', height: '30px', padding: '5px', border: 'none', borderBottom: '1px solid black', borderRadius: '0' }}
             />
           </div>
 
