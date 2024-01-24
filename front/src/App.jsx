@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AccueilAdmin } from "./pages/accueilAdmin";
 import { AccueilUser } from "./pages/accueilUser";
@@ -16,11 +16,11 @@ const App = () => {
     <BrowserRouter>
       <NavBar/>
       <Routes>
-        <Route path="/" element={<Connexion />} />
-        <Route path="/accueilUser" element={<AccueilUser />} />
-        <Route path="/accueilAdmin" element={<AccueilAdmin />} />
-        <Route path="/ajoutEntreprise" element={<AjoutEntreprise />} />
-        <Route path="/modifierEntreprise/:id" element={<ModifierEntreprise/>} />
+        <Route path={'/'} element={<Connexion />} />
+        <Route path={'/accueilUser'} element={<AccueilUser />} />
+        <Route path={'/accueilAdmin'} element={<AccueilAdmin />} />
+        <Route path={'/ajoutEntreprise'} element={<AjoutEntreprise />} />
+        <Route path={'/modifierEntreprise/:id'} element={<ModifierEntreprise/>} />
       </Routes>
     </BrowserRouter>
   );

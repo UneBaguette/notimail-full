@@ -23,14 +23,24 @@ font-weight: 400;
 line-height: normal;
 }
 
-.page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20%;
+.description{
+    width: 10%;
 }
 
-.logo {
-    width: 10px;
+.contact {
+    text-align: right;
+    color: #006C92;
 }
 
+.admin {
+    margin-top: 5px;
+}
+
+.identifiant {
+    text-align: right;
+    color: #006C92;
+}
+
+.antreprise {
+    color: #006C92;
+}

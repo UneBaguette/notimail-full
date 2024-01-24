@@ -25,6 +25,7 @@ form button {
 }
 
 form input {
+    color: #000;
     padding: 5px;
     border: 1px solid var(--background-gray); /* Bordure grise */
     border-radius: 5px; /* Ajouter une bordure arrondie */

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
@@ -17,7 +17,7 @@ export const NavBar=()=>{
         })
             .then(result => result.json())
             .then(data => {
-                console.log(data);;
+                console.log(data);
                 setUsers(data);
             })
             .catch(Error => {
@@ -44,7 +44,7 @@ export const NavBar=()=>{
 
     return(
         <>        
-            {(pathname === '/' || pathname === '/ajoutEntreprise') ? null : (
+            {(pathname === '/' || pathname === '/ajoutEntreprise' || pathname === '/modiferEntreprise/:id') ? null : (
                 <nav>
                     <div id="left-content">
                         <img src="/imagefront/Nouveauprojet1.png" alt="logo projet"/>
@@ -54,7 +54,7 @@ export const NavBar=()=>{
                         {pathname === `/accueilUser`? (<span>{users?.userConnected?.firm_name}</span>):(<span>Admin</span>)}
                         <button onClick={handleClick}>Déconnexion</button>
                     </div>  
-            </nav>
+                </nav>
             )}
         </>
     )

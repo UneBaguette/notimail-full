@@ -4,6 +4,7 @@ import { IoAddCircleOutline } from "react-icons/io5";
 import { BiMailSend } from "react-icons/bi";
 import { SearchUser } from './searchUser';
 import Modal from 'react-modal';
+import { Link } from 'react-router-dom';
 
 export const AccueilAdmin=()=>{
     const [users, setUsers] = useState([]);
@@ -11,6 +12,7 @@ export const AccueilAdmin=()=>{
     const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [mailSent, setMailSent] = useState(false);
+    const [, setUpdateUser] = useState([]);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -103,6 +105,27 @@ export const AccueilAdmin=()=>{
         });
     };
     
+    const handleUpdateUser = (userId) => {
+        const updateUser = users.find(user => user.id === userId);
+        fetch(`http://localhost:3000/user/users/${updateUser.id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            // Supprimez la partie body dans une requête GET
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Mettez à jour l'état ou effectuez d'autres opérations avec les données de l'utilisateur
+            // Par exemple, vous pouvez stocker ces données dans l'état updateUser
+            setUpdateUser(data);
+        })
+        .catch(error => {
+            console.error(`Erreur lors de la récupération des détails de l'utilisateur ${updateUser.firm_name}:`, error);
+        });
+    }    
+
     return(
         <>
             <div className="content-container">
@@ -132,23 +155,34 @@ export const AccueilAdmin=()=>{
                                         {/* Formatage de la date */}
                                         <p>{new Date(user.last_received_mail).toLocaleDateString()}</p>
                                     </div>
-                                    <a href="/ajoutEntreprise">
+                                    <Link to={`/modifierEntreprise/${user.id}`} onClick={() => handleUpdateUser(user.id)}>
                                         <img src="../../imagefront/888_edit.png" alt="edit"/>
-                                    </a> 
+                                    </Link>
                                 </div>
                             </section>
                             <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
-                                <p>Email: {user.email}</p>
-                                <p>Téléphone: {user.phone_number}</p>
-                                <p>Identifiant: {user.id}</p>
+                                <div className="align_items_hide">
+                                    <p>Email:</p>
+                                    <p>{user.email}</p>
+                                </div>    
+                                <div className="align_items_hide">
+                                    <p>Téléphone:</p>
+                                    <p>{user.phone_number}</p>
+                                </div>
+                                <div className="align_items_hide">
+                                    <p>Identifiant:</p>
+                                    <p>{user.id}</p>
+                                </div>
                             </section>
                         </div>
                     ))}
                 </section>
-                <section class="ajoutUser">
-                    <a href="/ajoutEntreprise" className="blue-background">
+                <section className="ajoutUser">
+                    {/* <a href="/ajoutEntreprise" className="blue-background"> */}
+                    <Link to ={'/ajoutEntreprise'}className="blue-background">
                         <IoAddCircleOutline />
-                    </a>
+                    </Link>
+                    {/* </a> */}
                     <div className="blue-background" onClick={() => setShowModal(true, users.find(user => user.id === selectedUsers[0]))}>
                         <BiMailSend />
                     </div>

@@ -33,6 +33,7 @@ nav {
 
 /* Mettre en colonne le contenu de droite en colonne et la marge à droite */
 #right-content {
+    display: flex;
     flex-direction: column;
     text-align: center;
     margin-right: 50px;
