@@ -130,7 +130,7 @@ export const AccueilAdmin=()=>{
         <>
             <div className="content-container">
                 <section className="searchUserContainer">
-                <   SearchUser />
+                    <SearchUser />
                 </section>
                 <section className="contact">
                     {users.map((user) => (
