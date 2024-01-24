@@ -12,7 +12,7 @@ export const AccueilAdmin=()=>{
     const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [mailSent, setMailSent] = useState(false);
-    const [updateUser, setUpdateUser] = useState([]);
+    const [, setUpdateUser] = useState([]);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
