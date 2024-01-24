@@ -1,0 +1,76 @@
+/* Ajout du style pour le bouton "Enregistrer" */
+.btn-save {
+    background-color: black;
+    color: white;
+  }
+  
+.label-input {
+    position: relative;
+  }
+  
+  /* Ajoutez une marge noire autour des zones de texte des labels */
+  .label-input label::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
+  
+  /* Style pour l'image de description */
+  .description {
+    width: 100%;
+    max-width: 400px; /* Ajustez la taille selon vos besoins */
+     }
+  
+  /* Style pour centrer le texte */
+  .center-text {
+    text-align: center;
+  }
+  
+  /* Style pour l'image de la flèche */
+  .fleche {
+    width: 50px;
+    height: auto;
+  }
+  
+  /* Style pour le texte "Entreprise" */
+  .texte {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  /* Style pour le formulaire en colonne */
+  .form-vertical {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Style pour les groupes de formulaires */
+  .form-group {
+    margin: 10px;
+  }
+  
+  /* Style pour les étiquettes des champs de formulaire */
+  .antreprise,
+  .contact,
+  .identifiant,
+  .admin {
+    font-weight: bold;
+  }
+  
+  /* Style pour les boutons */
+  .btn {
+    margin-right: 10px;
+  }
+  
+  /* Style pour l'espace entre les boutons */
+  .form-group > div {
+    margin-top: 10px;
+  }
+  
+  /* Ajoutez d'autres styles personnalisés selon vos besoins */
+  
