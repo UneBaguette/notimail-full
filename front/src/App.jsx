@@ -1,4 +1,4 @@
-import React from "react";
+import "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AccueilAdmin } from "./pages/accueilAdmin";
 import { AccueilUser } from "./pages/accueilUser";

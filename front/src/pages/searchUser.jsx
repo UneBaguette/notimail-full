@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
-import "./searchUser.module.css";
+import "./searchUser.css";
 
+// eslint-disable-next-line react/prop-types
 export const SearchUser = ({ setOpen }) => {
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();

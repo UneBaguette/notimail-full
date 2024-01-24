@@ -12,7 +12,7 @@ export const AccueilAdmin=()=>{
     const [detailUser, setDetailUser] = useState([]);
     const [selectedUsers, setSelectedUsers] = useState([]);
     const [mailSent, setMailSent] = useState(false);
-    const [updateUser, setUpdateUser] = useState([]);
+    const [, setUpdateUser] = useState([]);
 
     // Effectue une requête GET pour récupérer la liste des catégories
     useEffect(() => {
@@ -161,14 +161,23 @@ export const AccueilAdmin=()=>{
                                 </div>
                             </section>
                             <section className={`hidedetail ${detailUser === user.id ? 'show' : ''}`}>
-                                <p>Email: {user.email}</p>
-                                <p>Téléphone: {user.phone_number}</p>
-                                <p>Identifiant: {user.id}</p>
+                                <div className="align_items_hide">
+                                    <p>Email:</p>
+                                    <p>{user.email}</p>
+                                </div>    
+                                <div className="align_items_hide">
+                                    <p>Téléphone:</p>
+                                    <p>{user.phone_number}</p>
+                                </div>
+                                <div className="align_items_hide">
+                                    <p>Identifiant:</p>
+                                    <p>{user.id}</p>
+                                </div>
                             </section>
                         </div>
                     ))}
                 </section>
-                <section class="ajoutUser">
+                <section className="ajoutUser">
                     {/* <a href="/ajoutEntreprise" className="blue-background"> */}
                     <Link to ={'/ajoutEntreprise'}className="blue-background">
                         <IoAddCircleOutline />

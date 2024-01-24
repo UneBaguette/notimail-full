@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router-dom';
 import './NavBar.css'
@@ -17,7 +17,7 @@ export const NavBar=()=>{
         })
             .then(result => result.json())
             .then(data => {
-                console.log(data);;
+                console.log(data);
                 setUsers(data);
             })
             .catch(Error => {
