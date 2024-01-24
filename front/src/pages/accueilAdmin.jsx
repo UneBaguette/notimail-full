@@ -129,7 +129,9 @@ export const AccueilAdmin=()=>{
     return(
         <>
             <div className="content-container">
-                <SearchUser />
+                <section className="searchUserContainer">
+                <   SearchUser />
+                </section>
                 <section className="contact">
                     {users.map((user) => (
                         <div key={user.id}>

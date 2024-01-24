@@ -15,14 +15,20 @@
     gap:10px;
 }
 
+.searchUserContainer {
+    width: 60%; /* La barre de recherche occupera la largeur complète */
+    margin-bottom: 10px; /* Ajout d'une marge en bas pour l'espace */
+}
+
 .contact{
-    padding: 10px;
-    border-radius: 10px;
-    /* display:flex; */
-    /* flex-wrap: wrap; */
+    padding: 20px;
+    border-radius: 40px;
+    width: 60%;
+    flex-wrap: wrap;
     justify-content: space-around; /* Espacez les éléments horizontalement */
     align-items: flex-start;
     flex-direction: column;
+    gap: 40px;
 }
 
 /* Ajoutez une marge inférieure à chaque élément utilisateur dans la section de contact */
@@ -148,6 +154,7 @@ body{
     margin-top: 0;
     overflow: hidden;
     transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+    width: 100%;
 }
 
 /* Ajoutez le style pour la classe align_items_hide */
@@ -157,12 +164,14 @@ body{
     background-color: #C0C0C0 !important; /* Utilisez la même couleur que align_items_hide */
     border-radius: 10px;
     line-height: 0.5;
+    width: 100%;
 }
 
 /* Style pour les éléments à l'intérieur de la classe align_items_hide */
 .align_items_hide p {
     margin: 0; /* Supprimez la marge par défaut des balises <p> */
     flex: 1; /* Chaque élément prend autant d'espace que possible */
+    width: 100%;
 }
 
 /* Style pour les éléments à l'intérieur de la classe align_items_hide avec une marge inférieure */
