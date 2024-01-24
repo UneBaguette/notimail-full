@@ -177,7 +177,7 @@ export const AccueilAdmin=()=>{
                         </div>
                     ))}
                 </section>
-                <section class="ajoutUser">
+                <section className="ajoutUser">
                     {/* <a href="/ajoutEntreprise" className="blue-background"> */}
                     <Link to ={'/ajoutEntreprise'}className="blue-background">
                         <IoAddCircleOutline />

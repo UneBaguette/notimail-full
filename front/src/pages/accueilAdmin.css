@@ -32,6 +32,11 @@
     line-height: 0.5;
 }
 
+body{
+    margin: 0;
+    padding: 0;
+}
+
 /* défini la hauteur maximun */
 .top {
     max-height: 100px;
@@ -53,9 +58,9 @@
     display: flex; /* Utilisez flexbox pour aligner les éléments horizontalement */
     justify-content: space-around; /* Espacez les éléments horizontalement */
     align-items: center; /* Centre les éléments verticalement */
-    flex-direction: row; /* Dispose les éléments horizontalement */
+    /*flex-direction: row;*/ /* Dispose les éléments horizontalement */
     margin-bottom: 0;
-    flex:0.5;
+    /* flex:0.5; */
 }
 
 /* Style pour la classe align_items */
