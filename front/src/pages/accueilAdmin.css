@@ -18,8 +18,11 @@
 .contact{
     padding: 10px;
     border-radius: 10px;
+    /* display:flex; */
+    /* flex-wrap: wrap; */
     justify-content: space-around; /* Espacez les éléments horizontalement */
     align-items: flex-start;
+    flex-direction: column;
 }
 
 /* Ajoutez une marge inférieure à chaque élément utilisateur dans la section de contact */
@@ -27,9 +30,11 @@
     margin-bottom: 5px; /* Réduire la marge entre les éléments */
     background-color: var(--background-gray);
     border-radius: 10px;
+    /* flex: 0 0 90%; */
     padding: 20px;
     color:var(--background-blue);
     line-height: 0.5;
+    /* flex: 0 0 calc(33.333% - 10px); */
 }
 
 body{
