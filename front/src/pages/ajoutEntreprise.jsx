@@ -149,7 +149,7 @@ export const AjoutEntreprise = ({ onSubmit, onCancel }) => {
                 Supprimer
               </button>
               <div style={{ width: '40px' }}></div>
-              <button type="button" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleSubmit}>
+              <button type="submit" style={{ backgroundColor: 'blue', color: 'white' }} onClick={handleSubmit}>
                 Terminer
               </button>
             </div>
