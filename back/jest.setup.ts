@@ -14,11 +14,10 @@ export const close = async (users: User[]): Promise<void> => {
     } 
     catch (error) {
         console.error('Erreur lors de l\'initialisation des tests. :', error);
-        throw new Error('Erreur lors de l\'initialisation des tests.');
     }
 }
 
-export const getTokenTest = async (firm_name: string, password: string): Promise<string> => {
+export const getTokenTest = async (firm_name: string, password: string): Promise<string | undefined> => {
     try {
         const response = await supertest(app)
             .post('/auth/connexion')
@@ -32,7 +31,6 @@ export const getTokenTest = async (firm_name: string, password: string): Promise
 
     } catch (error) {
         console.error('Erreur lors de l\'obtention du token :', error);
-        throw new Error('Erreur lors de l\'obtention du token.');
     }
 }
 

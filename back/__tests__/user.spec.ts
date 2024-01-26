@@ -19,9 +19,9 @@ describe("ROUTE /user", () => {
         password: ":test:",
     }
 
-    let adminToken: string;
+    let adminToken: string | undefined;
     
-    let userToken: string;
+    let userToken: string | undefined;
 
     let server: TestAgent<Test>;
 
